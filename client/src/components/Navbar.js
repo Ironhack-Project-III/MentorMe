@@ -16,8 +16,15 @@ const Navbar = props => {
       <Nav.Brand>
         <Link style={{color:'white'}} to='/'>Home</Link>
       </Nav.Brand>
+      
       {props.user ? (
         <>
+        <Nav.Brand>
+            <Link style={{color:'white'}} to='/mentor/profile'>
+              My Profile
+            </Link>
+          </Nav.Brand>
+          
           <Nav.Brand>
             <Link style={{color:'white'}} to='/' onClick={() => handleLogout(props)}>
               Logout

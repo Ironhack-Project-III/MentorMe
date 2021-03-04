@@ -6,6 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 import Login from './components/Login'
+import MentorProfile from './components/mentor/MentorProfile'
 
 class App extends React.Component {
 
@@ -24,7 +25,7 @@ class App extends React.Component {
       <div className='App' >
         <Navbar user={this.state.user} setUser={this.setUser} />
         
-        {this.state.user ? <h1>Welcome</h1> : <h1>Please log-in</h1>}
+        {/* {this.state.user ? <h1>Welcome</h1> : <h1>Please log-in</h1>} */}
 
         <Route
           exact
@@ -42,6 +43,11 @@ class App extends React.Component {
           path='/login'
           render={(props) => <Login setUser={this.setUser} {...props}/>}
         />
+        <Route
+          exact path='/mentor/profile'
+          render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+        />
+
       </div>
     );
   }

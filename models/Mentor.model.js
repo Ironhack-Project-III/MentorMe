@@ -6,7 +6,9 @@ const mentorSchema = new Schema({
     type: String,
     unique: true
   },
-  password: String
+  password: String,
+  firstName: String,
+  lastName: String
 });
 
 const Mentor = model("Mentor", mentorSchema);
