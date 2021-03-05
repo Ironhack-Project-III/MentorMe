@@ -162,10 +162,10 @@ const auth = require('./routes/auth')
 app.use('/api/auth', auth);
 
 const mentee = require('./routes/mentee')
-app.use('/api/mentee', mentee);
+app.use('/api/', mentee);
 
 const mentor= require('./routes/mentor')
-app.use('/api/mentor', mentor);
+app.use('/api/', mentor);
 
 const dc= require('./routes/dc')
 app.use('/api/dc', dc);
@@ -174,8 +174,9 @@ app.use('/api/dc', dc);
 // app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use((req, res) => {
+  
   // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/client/build/index.html");
+  //res.sendFile(__dirname + "/client/build/index.html");
 });
 
 
