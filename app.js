@@ -80,12 +80,13 @@ passport.deserializeUser((id, done) => {
 passport.use(
   new LocalStrategy((username, password, done) => {
     // login
-    
-    Mentor.findOne({ username: username,  role: 'Mentor'})
+    //check if username with role mentor exists in mentor-collection
+    Mentor.findOne({ username: username})
       .then(userFromDB => {
         if (userFromDB === null) {
-          // there is no user with this username
-          Mentee.findOne({ username: username, role: 'Mentee' })
+          // there is no user with this username and role in Mentor-Collection, 
+            // therfore check if username with role mentor exists in mentor-collection
+          Mentee.findOne({ username: username})
           .then(userFromDB => {
             if (userFromDB === null) {
               // there is no user with this username

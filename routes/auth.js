@@ -30,7 +30,18 @@ router.post('/signup', (req, res) => {
             .status(400)
             .json({ message: 'This username is already taken' });
         }
-  
+        if (!found) {
+          Mentee.findOne({ username: username })
+        .then (menteeName => {
+          if (menteeName) {
+            return res
+              .status(400)
+              .json({ message: 'This username is already taken' });
+          }
+        })
+        
+
+        
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
   
@@ -47,6 +58,7 @@ router.post('/signup', (req, res) => {
             });
           }
         );
+        }
       })
       .catch(err => {
         res.json(err);
@@ -70,6 +82,16 @@ router.post('/signup', (req, res) => {
             .status(400)
             .json({ message: 'This username is already taken' });
         }
+
+        if (!found) {
+          Mentor.findOne({ username: username })
+        .then (mentorName => {
+          if (mentorName) {
+            return res
+              .status(400)
+              .json({ message: 'This username is already taken' });
+          }
+        })
   
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
@@ -87,6 +109,7 @@ router.post('/signup', (req, res) => {
             });
           }
         );
+       }
       })
       .catch(err => {
         res.json(err);
