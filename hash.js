@@ -1,6 +1,6 @@
 //'node hash.js' to run the script
 const bcrypt = require('bcrypt');
-const password = '123456';
+const password = process.env.KumbiraiPassword;
 const salt = bcrypt.genSaltSync();
 console.log({ salt });
 const hash = bcrypt.hashSync(password, salt);
@@ -35,7 +35,7 @@ mongoose
 DeutschConnect.create(
   {
     username: "Kumbirai",
-    password: "$2b$10$I2TMNiv3day95ypafDEnVe5T.8MuuIn1KEa7tzbLCldxD5PZYORhK",
+    password: process.env.DCpassword,
     role: "DeutschConnect"
   }
 )

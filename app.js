@@ -161,6 +161,16 @@ app.use("/api", index);
 const auth = require('./routes/auth')
 app.use('/api/auth', auth);
 
+const mentee = require('./routes/mentee')
+app.use('/api/mentee', mentee);
+
+const mentor= require('./routes/mentor')
+app.use('/api/mentor', mentor);
+
+const dc= require('./routes/dc')
+app.use('/api/dc', dc);
+
+
 // app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use((req, res) => {
