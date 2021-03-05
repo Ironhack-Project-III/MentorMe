@@ -7,7 +7,8 @@ export default class Signup extends Component {
   state = {
     username: '',
     password: '',
-    message: ''
+    message: '',
+    role: ''
   };
 
   handleChange = event => {
@@ -21,18 +22,19 @@ export default class Signup extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, password, role } = this.state;
 
-    signup(username, password).then(data => {
+    signup(username, password, role).then(data => {
       if (data.message) {
         this.setState({
           message: data.message,
           username: '',
-          password: ''
+          password: '',
+          role: ''
         });
       } else {
         this.props.setUser(data);
-        this.props.history.push('/projects');
+        this.props.history.push('/');
       }
     });
   };
@@ -51,6 +53,7 @@ export default class Signup extends Component {
               onChange={this.handleChange}
               id='username'
             />
+
           </Form.Group>
           <Form.Group>
             <Form.Label htmlFor='password'>Password: </Form.Label>
@@ -61,6 +64,22 @@ export default class Signup extends Component {
               onChange={this.handleChange}
               id='password'
             />
+
+            <Form.Group>
+                <Form.Label>Sign up as:</Form.Label>
+                <Form.Control 
+                  as="select"
+                  name='role'
+                  value={this.state.role}
+                  onChange={this.handleChange}
+                  id='role'
+                >
+                  <option>Mentor</option>
+                  <option>Mentee</option>
+                  
+                </Form.Control>
+            </Form.Group>
+            
           </Form.Group>
           {this.state.message && (
             <Alert variant='danger'>{this.state.message}</Alert>

@@ -45,6 +45,7 @@ app.use(
 
 // passport configuration
 const Mentor = require('./models/Mentor.model');
+const Mentee = require('./models/Mentee.model');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
@@ -65,14 +66,42 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+passport.deserializeUser((id, done) => {
+  Mentee.findById(id)
+    .then(dbUser => {
+      done(null, dbUser);
+    })
+    .catch(err => {
+      done(err);
+    });
+});
+
+
 passport.use(
   new LocalStrategy((username, password, done) => {
     // login
-    Mentor.findOne({ username: username })
+    
+    Mentor.findOne({ username: username,  role: 'Mentor'})
       .then(userFromDB => {
         if (userFromDB === null) {
           // there is no user with this username
-          done(null, false, { message: 'Wrong Credentials' });
+          Mentee.findOne({ username: username, role: 'Mentee' })
+          .then(userFromDB => {
+            if (userFromDB === null) {
+              // there is no user with this username
+              done(null, false, { message: 'Wrong Credentials' });
+            } else if (!bcrypt.compareSync(password, userFromDB.password)) {
+              // the password is not matching
+              done(null, false, { message: 'Wrong Credentials' });
+            } else {
+              // the userFromDB should now be logged in
+              console.log('Mentee logged in')
+              done(null, userFromDB)
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
         } else if (!bcrypt.compareSync(password, userFromDB.password)) {
           // the password is not matching
           done(null, false, { message: 'Wrong Credentials' });
@@ -87,6 +116,7 @@ passport.use(
   })
 )
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -95,9 +125,8 @@ app.use(passport.session());
 
 
 
-
 // 👇 Start handling routes here
-const index = require("./routes");
+const index = require("./routes/index");
 app.use("/api", index);
 
 const auth = require('./routes/auth')
