@@ -19,11 +19,27 @@ const Navbar = props => {
       
       {props.user ? (
         <>
-        <Nav.Brand>
+        {console.log(props.user.role)}
+        {(props.user.role === 'Mentor') ? (
+          <Nav.Brand>
             <Link style={{color:'white'}} to='/mentor/profile'>
               My Profile
             </Link>
           </Nav.Brand>
+        ): (props.user.role === 'Mentee') ? (
+          <Nav.Brand>
+            <Link style={{color:'white'}} to='/mentee/profile'>
+              My Profile
+            </Link>
+          </Nav.Brand>
+        ): <Nav.Brand>
+            <Link style={{color:'white'}} to='/deutschconnect/profile'>
+              My Profile
+            </Link>
+          </Nav.Brand>
+        }
+        
+
           
           <Nav.Brand>
             <Link style={{color:'white'}} to='/' onClick={() => handleLogout(props)}>

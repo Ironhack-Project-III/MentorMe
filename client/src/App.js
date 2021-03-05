@@ -7,6 +7,8 @@ import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 import Login from './components/Login'
 import MentorProfile from './components/mentor/MentorProfile'
+import MenteeProfile from './components/mentee/MenteeProfile'
+import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
 
 class App extends React.Component {
 
@@ -43,10 +45,36 @@ class App extends React.Component {
           path='/login'
           render={(props) => <Login setUser={this.setUser} {...props}/>}
         />
+
+        
         <Route
           exact path='/mentor/profile'
-          render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'Mentor') return <MentorProfile user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
         />
+
+        <Route
+          exact path='/mentee/profile'
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <MenteeProfile user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
+
+        <Route
+          exact path='/deutschconnect/profile'
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'DeutschConnect') return <DeutschConnectProfile user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
+        
+        
 
       </div>
     );

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-export default class MentorProfile extends Component {
+export default class DeutschConnectProfile extends Component {
   render() {
     console.log(this.props.user.username)
     return (
       
       <div>
-        <h1>Your Mentor Profile</h1>
+        <h1>Your DeutschConnect Profile</h1>
 
         <p>Username: {this.props.user.username}</p> 
 

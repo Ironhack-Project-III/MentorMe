@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Mentor = require('../models/Mentor.model');
 const Mentee = require('../models/Mentee.model');
+const DeutschConnect = require('../models/DeutschConnect.model');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 

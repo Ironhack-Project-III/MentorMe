@@ -10,7 +10,10 @@ const mentorSchema = new Schema({
   role: { type: String, default: 'Mentor' },
   firstName: String,
   lastName: String
-});
+},
+{timestamps: true}
+);
+
 
 const Mentor = model("Mentor", mentorSchema);
 

@@ -1,19 +1,17 @@
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
-const menteeSchema = new Schema({
+const deutschConnectSchema = new Schema({
   username: {
     type: String,
     unique: true
   },
   password: String,
-  role: { type: String, default: 'Mentee' },
-  firstName: String,
-  lastName: String
+  role: { type: String, default: 'DeutschConnect' },
 },
 {timestamps: true}
 );
 
-const Mentee = model("Mentee", menteeSchema);
+const DeutschConnect = model("DeutschConnect", deutschConnectSchema);
 
-module.exports = Mentee;
+module.exports = DeutschConnect;
