@@ -22,7 +22,7 @@ const Navbar = props => {
         {console.log(props.user.role)}
         {(props.user.role === 'Mentor') ? (
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/mentor/profile'>
+            <Link style={{color:'white'}} to={`/mentor/profile/${props.user._id}`}>
               My Profile
             </Link>
           </Nav.Brand>
