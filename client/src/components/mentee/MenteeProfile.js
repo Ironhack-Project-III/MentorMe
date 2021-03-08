@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import EditMenteeProfile from './EditMenteeProfile'
+import { Redirect, Link, Route } from 'react-router-dom';
 
 export default class MenteeProfile extends Component {
   
@@ -33,7 +34,6 @@ export default class MenteeProfile extends Component {
       })
   }
   
-  
   render() {
     if (this.state.menteeProfile === null) {
       return <h3>Loading...</h3>
@@ -42,7 +42,24 @@ export default class MenteeProfile extends Component {
       <div>
         <h1>Your Mentee Profile</h1>
 
-        <p>Username: {this.state.menteeProfile.username}</p> 
+        <img src={this.state.menteeProfile.imgPath} alt="userPhoto"/>
+        <p>Username: {this.props.user.username}</p> 
+        <p>First Name: {this.state.menteeProfile.firstName}</p>
+        <p>Last Name: {this.state.menteeProfile.lastName}</p>
+        <p>Age: {this.state.menteeProfile.age}</p>
+
+        <Link style={{color:'blue'}} to={`/mentee/profile/${this.state.menteeProfile._id}/edit`}>
+              Edit your profile
+        </Link>
+        
+        <Route
+          exact path='/mentee/profile/:id/edit'
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <EditMenteeProfile {...props} user={this.state.user} />
+            else return <Redirect to='/' />
+          }}
+        />
 
       </div>
     )

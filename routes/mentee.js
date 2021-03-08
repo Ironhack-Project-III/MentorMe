@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Mentee = require('../models/Mentee.model');
+const Mentor = require ('../models/Mentor.model')
 
 router.get('/mentee/profile/:id', (req, res, next) => {
   Mentee.findById(req.params.id)
@@ -28,5 +29,17 @@ router.put('/mentee/profile/:id', (req, res, next) => {
       next(err)
     })
 });
+
+//get all mentors
+router.get('/mentee/mentor-list', (req, res, next) => {
+
+  Mentor.find()
+    .then(mentor => {
+      res.status(200).json(mentor)
+    })
+    .catch(err => {
+      next(err)
+  })
+})
 
 module.exports = router;

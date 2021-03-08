@@ -10,13 +10,27 @@ const menteeSchema = new Schema({
   role: { type: String, default: 'Mentee' },
   firstName: String,
   lastName: String,
+  age: Number,
+  nationality: String,
   personality: String,
-  needSupportIn: String,
+  requiredSupport: String,
   businessName: String,
   businessDescription: String, 
+  yearsOfOperation: String,
   teamSize: String,
   website: String,
   sector: String,
+  imgName: String,
+  imgPath: {
+    type: String,
+    default: "https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg"
+  },
+  prefferedMentors: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Mentor'
+    }
+  ]
 },
 {timestamps: true}
 );
