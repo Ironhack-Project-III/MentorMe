@@ -25,12 +25,20 @@ const menteeSchema = new Schema({
     type: String,
     default: "https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg"
   },
-  prefferedMentors: [
+  preferredMentors: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Mentor'
     }
-  ]
+  ],
+   Mentorship: [
+    {
+      mentor: { type: Schema.Types.ObjectId, ref: 'Mentor' },
+      startDate: String,
+      endDate: String,
+      confirmed: Boolean
+    }
+  ],
 },
 {timestamps: true}
 );

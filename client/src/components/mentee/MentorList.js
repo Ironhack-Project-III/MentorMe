@@ -4,8 +4,9 @@ import axios from 'axios'
 export default class MentorList extends Component {
 
 state = {
+  user: this.props.user,
   allMentors: null,
-  mentorID: null,
+  preferredMentors: null,
   error: null
 }
 
@@ -18,7 +19,7 @@ getMentors = () => {
     .then(response => {
       console.log(response)
       this.setState({
-        allMentors: response.data
+        allMentors: response.data,
       })
     })
     .catch(err => {
@@ -40,22 +41,26 @@ getMentors = () => {
   //   })
   // }
 
-  // likeMentor = event => {
-  //   console.log(event)
-  //   axios.put(`/api/mentee/mentor-list/${event}`,  {
-  //    mentorID: event })
-  //    .then(response => {
-  //      console.log(response)
-  //    })
-  //    .catch(err => {
-  //     console.log(err)
-  //   })
-  // }
-
+  likeMentor = event => {
+    console.log(event)
+    console.log(this.state.user._id)
+    axios.put(`/api/mentee/mentor-list/${this.state.user._id}`, {
+     preferredMentor: event })
+     .then(response => {
+       this.setState({
+        preferredMentors: response.data.preferredMentors
+       })
+      //  console.log(this.state.preferredMentors)
+     })
+     .catch(err => {
+      console.log(err)
+    })
+  }
 
   render() {
     if (this.state.allMentors === null) {
       return <h3>Loading...</h3>
+  
     } return (
       
       <div>
@@ -66,10 +71,14 @@ getMentors = () => {
           <div key = {mentor._id}> 
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>{mentor.username}</h3>
-          {/* <button onClick={() => {this.likeMentor(mentor._id)}}>Put Mentor on the list </button> */}
+          <button onClick={() => {this.likeMentor(mentor._id)}}>Put mentor on the list </button>
           </div>
         )
-        
+      })}
+
+      {this.state.preferredMentors != null &&
+      this.state.preferredMentors.map (preferredMentor => { 
+        <h3>{preferredMentor.username}</h3>
       })}
 
       </div>
@@ -77,3 +86,4 @@ getMentors = () => {
     )
   }
 }
+git 
