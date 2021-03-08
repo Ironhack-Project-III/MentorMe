@@ -38,9 +38,14 @@ const Navbar = props => {
             </Link>
           </Nav.Brand>
         }
-        
 
-          
+        { props.user.role === 'Mentee' && 
+          <Nav.Brand>
+            <Link style={{color:'white'}} to='/mentee/mentor-list'>
+              Mentor Overview
+            </Link>
+          </Nav.Brand>
+        }
           <Nav.Brand>
             <Link style={{color:'white'}} to='/' onClick={() => handleLogout(props)}>
               Logout

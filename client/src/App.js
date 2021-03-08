@@ -9,12 +9,18 @@ import Login from './components/Login'
 import MentorProfile from './components/mentor/MentorProfile'
 import MenteeProfile from './components/mentee/MenteeProfile'
 import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
+
+// import EditMenteeProfile from './components/mentee/EditMenteeProfile'
+import axios from 'axios'
+import MentorList from './components/mentee/MentorList'
+
 import EditMentorProfile from './components/mentor/EditMentorProfile'
+
 
 class App extends React.Component {
 
   state = {
-    user: this.props.user
+    user: this.props.user,
   }
 
   setUser = user => {
@@ -24,6 +30,7 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div className='App' >
         <Navbar user={this.state.user} setUser={this.setUser} />
@@ -48,7 +55,6 @@ class App extends React.Component {
           render={(props) => <Login setUser={this.setUser} {...props}/>}
         />
 
-        
         <Route
           exact path='/mentor/profile/:id'
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
@@ -83,9 +89,18 @@ class App extends React.Component {
             else return <Redirect to='/' />
           }}
         />
-        
-        
 
+        {/* Mentor overview for mentee */}
+
+        <Route
+          exact path='/mentee/mentor-list'
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} />
+            else return <Redirect to='/' />
+          }}
+        />
+        
       </div>
     );
   }
