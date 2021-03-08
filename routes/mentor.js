@@ -72,6 +72,7 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     availableFromDate
       }, { new: true })
     .then(mentor => {
+      console.log(mentor)
       res.status(200).json(mentor)
     })
     .catch(err => {

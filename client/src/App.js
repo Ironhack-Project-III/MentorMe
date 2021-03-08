@@ -61,7 +61,7 @@ class App extends React.Component {
         <Route
           exact path='/mentor/profile/:id/edit'
           render={(props) => {
-            if (this.state.user.role === 'Mentor') return <EditMentorProfile {...props} user={this.state.user} />
+            if (this.state.user.role === 'Mentor') return <EditMentorProfile {...props} user={this.state.user} setUser={this.setUser}/>
             else return <Redirect to='/' />
           }}
         />

@@ -105,6 +105,26 @@ export default class EditMentorProfile extends Component {
           activelyMentoring: '',
           availableFromDate: '',
         })
+      //   const user = {
+      //     firstName: this.state.firstName,
+      //     lastName: this.state.lastName,
+      //     age: this.state.age,
+      //     nationality: this.state.nationality,
+      //     eMail: this.state.eMail,
+      //     contactInfo: this.state.contactInfo,
+      //     website: this.state.website,
+      //     aboutMe: this.state.aboutMe,
+      //     industryExpertise: this.state.industryExpertise,
+      //     generalExpertise: this.state.generalExpertise,
+      //     keyHardSkills: this.state.keyHardSkills,
+      //     keySoftSkills: this.state.keySoftSkills,
+      //     keyPersonalityTraits: this.state.keyPersonalityTraits,
+      //     preferredSectors: this.state.preferredSectors,
+      //     availableForNewMentorship: this.state.availableForNewMentorship,
+      //     activelyMentoring: this.state.activelyMentoring,
+      //     availableFromDate: this.state.availableFromDate,
+      //   }
+      // this.props.setUser(user)
       })
       .catch(err => {
         console.log(err)
