@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const Mentor = require("./Mentor.model");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const menteeSchema = new Schema({
@@ -26,18 +25,10 @@ const menteeSchema = new Schema({
     type: String,
     default: "https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg"
   },
-  preferedMentors: [
+  preferredMentors: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Mentor'
-    }
-  ],
-  Mentorship: [
-    {
-      mentor: { type: Schema.Types.ObjectId, ref: 'Mentor' },
-      startDate: String,
-      endDate: String,
-      confirmed: Boolean
     }
   ]
 },

@@ -167,8 +167,8 @@ app.use('/api/', mentee);
 const mentor= require('./routes/mentor')
 app.use('/api/', mentor);
 
-const dc= require('./routes/dc')
-app.use('/api/', dc);
+const deutschconnect = require('./routes/deutschconnect')
+app.use('/api/', deutschconnect);
 
 
 // app.use(express.static(path.join(__dirname, "/client/build")));
