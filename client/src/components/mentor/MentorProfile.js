@@ -77,13 +77,7 @@ export default class MentorProfile extends Component {
       
       <div>
         <h1>Your Mentor Profile</h1>
-        <p>Username: {this.state.mentorProfile.username}</p>
-        <p>Username: {this.props.user.username}</p> 
-        <p>First Name: {this.state.mentorProfile.firstName}</p>
-        <p>Last Name: {this.state.mentorProfile.lastName}</p>
-        <p>E-Mail: {this.state.mentorProfile.eMail}</p>
-        <p>Contact-Info: {this.state.mentorProfile.contactInfo}</p>
-        <button onClick={this.toggleEditForm}>Show/Hide Edit Form 📊</button>
+        <button onClick={this.toggleEditForm}>Show/Hide Edit Form</button>
         {this.state.editForm && (
           <EditMentorProfile
             user={this.props.user}
@@ -92,6 +86,17 @@ export default class MentorProfile extends Component {
             {...this.state}
           />
         )}
+        <img src={this.state.mentorProfile.imgPath} alt="userPhoto"/>
+        <p>Username: {this.state.mentorProfile.username}</p>
+        <p>Username: {this.props.user.username}</p> 
+        <p>First Name: {this.state.mentorProfile.firstName}</p>
+        <p>Last Name: {this.state.mentorProfile.lastName}</p>
+        <p>E-Mail: {this.state.mentorProfile.eMail}</p>
+        <p>Contact-Info: {this.state.mentorProfile.contactInfo}</p>
+        <p>Website: {this.state.mentorProfile.website}</p>
+        <p>About me: {this.state.mentorProfile.aboutMe}</p>
+        <p>Industry expertise: {this.state.mentorProfile.industryExpertise}</p>
+        <p>Hard skill expertise: {this.state.mentorProfile.hardSkillExpertise}</p>
       </div>
     )
   }

@@ -168,7 +168,7 @@ const mentor= require('./routes/mentor')
 app.use('/api/', mentor);
 
 const dc= require('./routes/dc')
-app.use('/api/dc', dc);
+app.use('/api/', dc);
 
 
 // app.use(express.static(path.join(__dirname, "/client/build")));
