@@ -18,11 +18,15 @@ const mentorSchema = new Schema({
   eMail: String,
   contactInfo: String,
   website: String,
+  age: String,
+  nationality: String,
   aboutMe: String,
-  industryExpertise: String,
-  hardSkillExpertise: String,
-  softSkillExpertise: String,
-  importantPersonalityTraits: String,
+  keyIndustryExpertise: String,
+  keyHardSkills: String,
+  keySoftSkills: String,
+  generalExpertise: String,
+  keyPersonalityTraits: String,
+  preferredSectors: String,
   availableForNewMentorship: Boolean,
   activelyMentoring: Boolean,
   availableFromDate: String
@@ -40,3 +44,12 @@ module.exports = Mentor;
 //   type: Schema.Types.ObjectId,
 //   ref: 'Kiez'
 // },
+
+// Mentor
+// Name
+// Age
+// Nationality
+// Experience
+// Key Skills
+// Personality Traits ( they fill in )
+// Preferred Sectors
