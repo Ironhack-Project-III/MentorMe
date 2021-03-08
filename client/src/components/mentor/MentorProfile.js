@@ -87,17 +87,43 @@ export default class MentorProfile extends Component {
           />
         )}
         <img src={this.state.mentorProfile.imgPath} alt="userPhoto"/>
-        <p>Username: {this.state.mentorProfile.username}</p>
         <p>Username: {this.props.user.username}</p> 
         <p>First Name: {this.state.mentorProfile.firstName}</p>
         <p>Last Name: {this.state.mentorProfile.lastName}</p>
+        <p>Age: {this.state.mentorProfile.age}</p>
+        <p>Nationality: {this.state.mentorProfile.nationality}</p>
         <p>E-Mail: {this.state.mentorProfile.eMail}</p>
         <p>Contact-Info: {this.state.mentorProfile.contactInfo}</p>
         <p>Website: {this.state.mentorProfile.website}</p>
         <p>About me: {this.state.mentorProfile.aboutMe}</p>
-        <p>Industry expertise: {this.state.mentorProfile.industryExpertise}</p>
-        <p>Hard skill expertise: {this.state.mentorProfile.hardSkillExpertise}</p>
+        <p>Key Industry expertise: {this.state.mentorProfile.industryExpertise}</p>
+        <p>General expertise: {this.state.mentorProfile.generalExpertise}</p>
+        <p>Key hard skills: {this.state.mentorProfile.keyHardSkills}</p>
+        <p>Key soft skills: {this.state.mentorProfile.keySoftSkills}</p>
+        <p>Your key personality traits: {this.state.mentorProfile.keyPersonalityTraits}</p>
+        <p>Which sectors do you prefer? {this.state.mentorProfile.preferredSectors}</p>
+        <p>Are you available for a new mentorship? {this.state.mentorProfile.availableForNewMentorship}</p>
+        <p>Do have active mentorships right now? {this.state.mentorProfile.activelyMentoring}</p>
+        <p>From when will you be available for a mentorship? (now or mm/yyyy) {this.state.mentorProfile.availableFromDate}</p>
       </div>
     )
   }
 }
+
+// firstName
+// lastName
+// age
+// nationality
+// eMail
+// contactInfo
+// website
+// aboutMe
+// industryExpertise
+// generalExpertise
+// keyHardSkills
+// keySoftSkills
+// keyPersonalityTraits
+// preferredSectors
+// availableForNewMentorship
+// activelyMentoring
+// availableFromDate
