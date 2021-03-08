@@ -32,6 +32,7 @@ router.get('/mentor/profile/:id', (req, res, next) => {
 // });
 
 router.put('/mentor/profile/:id/edit', (req, res, next) => {
+  
   const { 
     firstName,
     lastName,
@@ -51,6 +52,8 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     activelyMentoring,
     availableFromDate
   } = req.body;
+
+  console.log('Step2', req.body)
 
   Mentor.findByIdAndUpdate(req.params.id, { 
     firstName,
@@ -72,7 +75,6 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     availableFromDate
       }, { new: true })
     .then(mentor => {
-      console.log(mentor)
       res.status(200).json(mentor)
     })
     .catch(err => {

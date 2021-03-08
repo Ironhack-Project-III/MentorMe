@@ -27,29 +27,6 @@ export default class EditMentorProfile extends Component {
     availableFromDate: this.props.user.availableFromDate
   }
 
-  // componentDidMount() {
-  //   this.getData();
-  // }
-
-  // getData = () => {
-  //   axios.get(`/api/mentor/profile/${this.props.match.params.id}/edit`)
-  //     .then(response => {
-  //       console.log(response)
-  //       this.setState({
-  //         mentorProfile: response.data
-  //       })
-  //     })
-  //     .catch(err => {
-  //       console.log(err.response)
-  //       if (err.response.status === 404) {
-  //         // we have a 404 error
-  //         this.setState({
-  //           error: 'Not found 🤷🏽‍♀️ 🤷🏾'
-  //         })
-  //       }
-  //     })
-  // }
-
  
   handleChange = event => {
     const target = event.target;
@@ -58,12 +35,12 @@ export default class EditMentorProfile extends Component {
     this.setState({
       [name]: value
     })
+    console.log('Step1', this.state)
   }
 
   handleSubmit = event => {
     event.preventDefault();
 
-    console.log('update')
     axios.put(`/api/mentor/profile/${this.state.mentorProfile._id}/edit`, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -84,47 +61,12 @@ export default class EditMentorProfile extends Component {
       availableFromDate: this.state.availableFromDate,
     })
       .then(response => {
-        this.setState({
-          mentorProfile: response.data,
-          nameHeader: response.data.firstName,
-          firstName: '',
-          lastName: '',
-          age: '',
-          nationality: '',
-          eMail: '',
-          contactInfo: '',
-          website: '',
-          aboutMe: '',
-          industryExpertise: '',
-          generalExpertise: '',
-          keyHardSkills: '',
-          keySoftSkills: '',
-          keyPersonalityTraits: '',
-          preferredSectors: '',
-          availableForNewMentorship: '',
-          activelyMentoring: '',
-          availableFromDate: '',
-        })
-      //   const user = {
-      //     firstName: this.state.firstName,
-      //     lastName: this.state.lastName,
-      //     age: this.state.age,
-      //     nationality: this.state.nationality,
-      //     eMail: this.state.eMail,
-      //     contactInfo: this.state.contactInfo,
-      //     website: this.state.website,
-      //     aboutMe: this.state.aboutMe,
-      //     industryExpertise: this.state.industryExpertise,
-      //     generalExpertise: this.state.generalExpertise,
-      //     keyHardSkills: this.state.keyHardSkills,
-      //     keySoftSkills: this.state.keySoftSkills,
-      //     keyPersonalityTraits: this.state.keyPersonalityTraits,
-      //     preferredSectors: this.state.preferredSectors,
-      //     availableForNewMentorship: this.state.availableForNewMentorship,
-      //     activelyMentoring: this.state.activelyMentoring,
-      //     availableFromDate: this.state.availableFromDate,
-      //   }
-      // this.props.setUser(user)
+
+        //update usersession with updated data to get it without the need of refreshing the browser window
+       this.props.setUser(response.data)
+        //redirect to profile
+       this.props.history.push(`/mentor/profile/${response.data._id}`)
+
       })
       .catch(err => {
         console.log(err)
