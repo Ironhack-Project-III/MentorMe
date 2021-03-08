@@ -9,6 +9,7 @@ import Login from './components/Login'
 import MentorProfile from './components/mentor/MentorProfile'
 import MenteeProfile from './components/mentee/MenteeProfile'
 import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
+import EditMentorProfile from './components/mentor/EditMentorProfile'
 
 class App extends React.Component {
 
@@ -40,6 +41,7 @@ class App extends React.Component {
           // instead of implementing its own render logic.
           render={props => <Signup setUser={this.setUser} {...props} />}
         />
+        
         <Route
           exact
           path='/login'
@@ -52,6 +54,14 @@ class App extends React.Component {
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={(props) => {
             if (this.state.user.role === 'Mentor') return <MentorProfile {...props} user={this.state.user} />
+            else return <Redirect to='/' />
+          }}
+        />
+
+        <Route
+          exact path='/mentor/profile/:id/edit'
+          render={(props) => {
+            if (this.state.user.role === 'Mentor') return <EditMentorProfile {...props} user={this.state.user} />
             else return <Redirect to='/' />
           }}
         />
