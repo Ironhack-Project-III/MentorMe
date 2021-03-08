@@ -81,7 +81,7 @@ export default class EditMentorProfile extends Component {
       <div>
         <h1>Edit Your Mentor Profile, {this.state.nameHeader}</h1>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="firstName">firstName: </label>
+          <label htmlFor="firstName">First Name: </label>
           <input
             type="text"
             id="firstName"
@@ -89,7 +89,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.firstName}
             onChange={this.handleChange}
           />
-          <label htmlFor="lastName">lastName: </label>
+          <label htmlFor="lastName">Last Name: </label>
           <input
             type="text"
             id="lastName"
@@ -97,7 +97,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.lastName}
             onChange={this.handleChange}
           />
-          <label htmlFor="age">age: </label>
+          <label htmlFor="age">Age: </label>
           <input
             type="number"
             id="age"
@@ -105,7 +105,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.age}
             onChange={this.handleChange}
           />
-          <label htmlFor="nationality">nationality: </label>
+          <label htmlFor="nationality">Nationality: </label>
           <input
             type="text"
             id="nationality"
@@ -113,7 +113,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.nationality}
             onChange={this.handleChange}
           />
-          <label htmlFor="eMail">eMail: </label>
+          <label htmlFor="eMail">E-Mail: </label>
           <input
             type="text"
             id="eMail"
@@ -121,7 +121,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.eMail}
             onChange={this.handleChange}
           />
-          <label htmlFor="contactInfo">contactInfo: </label>
+          <label htmlFor="contactInfo">Contact Info: </label>
           <input
             type="text"
             id="contactInfo"
@@ -129,7 +129,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.contactInfo}
             onChange={this.handleChange}
           />
-          <label htmlFor="website">website: </label>
+          <label htmlFor="website">Website: </label>
           <input
             type="text"
             id="website"
@@ -137,7 +137,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.website}
             onChange={this.handleChange}
           />
-          <label htmlFor="aboutMe">aboutMe: </label>
+          <label htmlFor="aboutMe">About Me: </label>
           <input
             type="text"
             id="aboutMe"
@@ -145,7 +145,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.aboutMe}
             onChange={this.handleChange}
           />
-          <label htmlFor="industryExpertise">industryExpertise: </label>
+          <label htmlFor="industryExpertise">Industry Expertise: </label>
           <input
             type="text"
             id="industryExpertise"
@@ -153,7 +153,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.industryExpertise}
             onChange={this.handleChange}
           />
-          <label htmlFor="generalExpertise">generalExpertise: </label>
+          <label htmlFor="generalExpertise">General Expertise: </label>
           <input
             type="text"
             id="generalExpertise"
@@ -161,7 +161,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.generalExpertise}
             onChange={this.handleChange}
           />
-          <label htmlFor="keyHardSkills">keyHardSkills: </label>
+          <label htmlFor="keyHardSkills">Key Hard Skills: </label>
           <input
             type="text"
             id="keyHardSkills"
@@ -169,7 +169,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.keyHardSkills}
             onChange={this.handleChange}
           />
-          <label htmlFor="keySoftSkills">keySoftSkills: </label>
+          <label htmlFor="keySoftSkills">Key Soft Skills: </label>
           <input
             type="text"
             id="keySoftSkills"
@@ -177,7 +177,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.keySoftSkills}
             onChange={this.handleChange}
           />
-          <label htmlFor="keyPersonalityTraits">keyPersonalityTraits: </label>
+          <label htmlFor="keyPersonalityTraits">Key Personality Traits: </label>
           <input
             type="text"
             id="keyPersonalityTraits"
@@ -185,7 +185,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.keyPersonalityTraits}
             onChange={this.handleChange}
           />
-          <label htmlFor="preferredSectors">preferredSectors: </label>
+          <label htmlFor="preferredSectors">Which Sectors Do You Prefer?</label>
           <input
             type="text"
             id="preferredSectors"
@@ -193,7 +193,7 @@ export default class EditMentorProfile extends Component {
             value={this.state.preferredSectors}
             onChange={this.handleChange}
           />
-          <label htmlFor="availableForNewMentorship">availableForNewMentorship: </label>
+          <label htmlFor="availableForNewMentorship">Are You Available For A New Mentorship?</label>
           <input
             type="checkbox"
             id="availableForNewMentorship"
@@ -201,7 +201,7 @@ export default class EditMentorProfile extends Component {
             checked={this.state.availableForNewMentorship}
             onChange={this.handleChange}
           />
-          <label htmlFor="activelyMentoring">activelyMentoring: </label>
+          <label htmlFor="activelyMentoring">Do Have Active Mentorships At The Moment?</label>
           <input
             type="checkbox"
             id="activelyMentoring"
@@ -209,7 +209,7 @@ export default class EditMentorProfile extends Component {
             checked={this.state.activelyMentoring}
             onChange={this.handleChange}
           />
-          <label htmlFor="availableFromDate">availableFromDate: </label>
+          <label htmlFor="availableFromDate">From When On Will You Be Available For A New Mentorship?</label>
           <input
             type="date"
             id="availableFromDate"
@@ -217,27 +217,9 @@ export default class EditMentorProfile extends Component {
             value={this.state.availableFromDate}
             onChange={this.handleChange}
           />
-          <button type='submit'>Update your Profile</button>
+          <button type='submit'>Update Your Profile</button>
         </form>
       </div>
     )
   }
 }
-
-// firstName
-// lastName
-// age
-// nationality
-// eMail
-// contactInfo
-// website
-// aboutMe
-// industryExpertise
-// generalExpertise
-// keyHardSkills
-// keySoftSkills
-// keyPersonalityTraits
-// preferredSectors
-// availableForNewMentorship
-// activelyMentoring
-// availableFromDate

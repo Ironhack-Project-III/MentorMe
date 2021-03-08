@@ -54,18 +54,18 @@ export default class MentorProfile extends Component {
         <p>Age: {this.state.mentorProfile.age}</p>
         <p>Nationality: {this.state.mentorProfile.nationality}</p>
         <p>E-Mail: {this.state.mentorProfile.eMail}</p>
-        <p>Contact-Info: {this.state.mentorProfile.contactInfo}</p>
+        <p>Contact Info: {this.state.mentorProfile.contactInfo}</p>
         <p>Website: {this.state.mentorProfile.website}</p>
-        <p>About me: {this.state.mentorProfile.aboutMe}</p>
-        <p>Key Industry expertise: {this.state.mentorProfile.industryExpertise}</p>
-        <p>General expertise: {this.state.mentorProfile.generalExpertise}</p>
-        <p>Key hard skills: {this.state.mentorProfile.keyHardSkills}</p>
-        <p>Key soft skills: {this.state.mentorProfile.keySoftSkills}</p>
-        <p>Your key personality traits: {this.state.mentorProfile.keyPersonalityTraits}</p>
-        <p>Which sectors do you prefer? {this.state.mentorProfile.preferredSectors}</p>
-        <p>Are you available for a new mentorship? {String(this.state.mentorProfile.availableForNewMentorship)}</p>
-        <p>Do have active mentorships right now? {String(this.state.mentorProfile.activelyMentoring)}</p>
-        <p>From when will you be available for a mentorship? {this.state.mentorProfile.availableFromDate}</p>
+        <p>About Me: {this.state.mentorProfile.aboutMe}</p>
+        <p>Key Industry Expertise: {this.state.mentorProfile.industryExpertise}</p>
+        <p>General Expertise: {this.state.mentorProfile.generalExpertise}</p>
+        <p>Key Hard Skills: {this.state.mentorProfile.keyHardSkills}</p>
+        <p>Key Soft Skills: {this.state.mentorProfile.keySoftSkills}</p>
+        <p>Your Key Personality Traits: {this.state.mentorProfile.keyPersonalityTraits}</p>
+        <p>Which Sectors Do You Prefer? {this.state.mentorProfile.preferredSectors}</p>
+        <p>Are You Available For A New Mentorship? {String(this.state.mentorProfile.availableForNewMentorship)}</p>
+        <p>Do Have Active Mentorships At The Moment? {String(this.state.mentorProfile.activelyMentoring)}</p>
+        <p>From When On Will You Be Available For A New Mentorship? {this.state.mentorProfile.availableFromDate}</p>
 
       
         <Link to={`/mentor/profile/${this.props.user._id}/edit`}>
@@ -76,5 +76,3 @@ export default class MentorProfile extends Component {
     )
   }
 }
-
-
