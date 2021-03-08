@@ -9,7 +9,14 @@ const menteeSchema = new Schema({
   password: String,
   role: { type: String, default: 'Mentee' },
   firstName: String,
-  lastName: String
+  lastName: String,
+  personality: String,
+  needSupportIn: String,
+  businessName: String,
+  businessDescription: String, 
+  teamSize: String,
+  website: String,
+  sector: String,
 },
 {timestamps: true}
 );

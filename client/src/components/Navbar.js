@@ -28,7 +28,7 @@ const Navbar = props => {
           </Nav.Brand>
         ): (props.user.role === 'Mentee') ? (
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/mentee/profile'>
+            <Link style={{color:'white'}} to={`/mentee/profile/${props.user._id}`}>
               My Profile
             </Link>
           </Nav.Brand>
