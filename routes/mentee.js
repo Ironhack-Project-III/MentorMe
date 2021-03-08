@@ -1,10 +1,32 @@
 const router = require("express").Router();
+const Mentee = require('../models/Mentee.model');
 
-router.get("/", (req, res, next) => {
-  res.json("All good in here");
+router.get('/mentee/profile/:id', (req, res, next) => {
+  Mentee.findById(req.params.id)
+    .then(mentor => {
+      if (!mentor) {
+        res.status(404).json(mentor)
+      } else {
+        res.status(200).json(mentor)
+      }
+    })
+    .catch(err => {
+      next(err)
+    })
 });
 
-// You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
+//update mentee profile
+router.put('/mentee/profile/:id', (req, res, next) => {
+  const { firstName } = req.body;
+  // if we don't have {new: true} findByIdAndUpdate() will return the old version of 
+  // the project
+  Mentee.findByIdAndUpdate(req.params.id, { firstName }, { new: true })
+    .then(mentor => {
+      res.status(200).json(mentor)
+    })
+    .catch(err => {
+      next(err)
+    })
+});
 
 module.exports = router;
