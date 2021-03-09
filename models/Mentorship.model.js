@@ -6,7 +6,12 @@ const mentorshipSchema = new Schema({
     mentee: { type: Schema.Types.ObjectId, ref: 'Mentee' },
     startDate: String,
     endDate: String,
-    confirmed: Boolean
+    confirmed: Boolean,
+    messages: [
+        {
+        type: String
+        }
+    ]
 },
 {timestamps: true}
 );

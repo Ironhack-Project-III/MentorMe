@@ -14,6 +14,7 @@ import EditMenteeProfile from './components/mentee/EditMenteeProfile'
 import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
 import MentorshipOverview from './components/deutschConnect/MentorshipOverview'
 import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship'
+import MyMentorship from './components/mentee/MyMentorship';
 
 
 
@@ -23,11 +24,18 @@ class App extends React.Component {
 
   state = {
     user: this.props.user,
+    messages: null
   }
 
   setUser = user => {
     this.setState({
       user: user
+    })
+  }
+
+  setMessages = message => {
+    this.setState({
+      messages: message
     })
   }
 
@@ -88,6 +96,14 @@ class App extends React.Component {
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={props => {
             if (this.state.user.role === 'Mentee') return <EditMenteeProfile {...props} user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
+
+        <Route
+          exact path='/mentee/my-mentorship'
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <MyMentorship {...props} user={this.state.user} setUser={this.setUser}/>
             else return <Redirect to='/' />
           }}
         />

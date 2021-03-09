@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Mentee = require('../models/Mentee.model');
-const Mentor = require ('../models/Mentor.model')
+const Mentor = require ('../models/Mentor.model');
+const Mentorship = require ('../models/Mentorship.model')
 
 router.get('/mentee/profile/:id', (req, res, next) => {
   Mentee.findById(req.params.id)
@@ -109,4 +110,34 @@ router.put('/mentee/profile/:id/edit', (req, res, next) => {
     })
 });
 
-module.exports = router;
+router.get('/mentee/my-mentorship/:id', (req, res, next) => {
+
+  Mentorship.find({mentee: req.params.id})
+    .populate('mentor')
+    .populate('mentee')
+    .then(mentorship => {
+      console.log(mentorship, 'allMentorships')
+      res.status(200).json(mentorship)
+    })
+    .catch(err => {
+      next(err)
+  })
+})
+
+router.put('/mentee/my-mentorship/:id', (req, res, next) => {
+  const {newMessage} = req.body
+  const id = req.params.id
+
+  Mentorship.findByIdAndUpdate(id, {$push:{messages: newMessage}})
+    .populate('mentor')
+    .populate('mentee')
+    .then(mentorship => {
+      console.log(mentorship, 'allMentorships')
+      res.status(200).json(mentorship)
+    })
+    .catch(err => {
+      next(err)
+  })
+})
+
+module.exports = router;  
