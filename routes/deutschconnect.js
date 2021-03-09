@@ -74,11 +74,13 @@ router.delete('/deutschconnect/mentorships-overview/:id', (req, res) => {
 router.put('/deutschconnect/mentorships-overview/:id', (req, res, next) => {
   console.log('backend', req.body)
   const { 
-    startDate
+    startDate,
+    endDate
   } = req.body;
 
   Mentorship.findByIdAndUpdate(req.params.id, { 
-    startDate
+    startDate,
+    endDate
       }, { new: true })
     .then(mentorship => {
       console.log('new mentorship in db', mentorship)
