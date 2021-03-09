@@ -74,9 +74,9 @@ export default class EditMenteeProfile extends Component {
     return (
       
       <div>
-        <h1>Edit Your Mentor Profile, {this.state.nameHeader}</h1>
+        <h1>Edit Your Mentee Profile, {this.state.nameHeader}</h1>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="firstName">firstName: </label>
+          <label htmlFor="firstName">First Name: </label>
           <input
             type="text"
             id="firstName"
@@ -84,7 +84,7 @@ export default class EditMenteeProfile extends Component {
             value={this.state.firstName}
             onChange={this.handleChange}
           />
-          <label htmlFor="lastName">lastName: </label>
+          <label htmlFor="lastName">Last Name: </label>
           <input
             type="text"
             id="lastName"
@@ -92,7 +92,7 @@ export default class EditMenteeProfile extends Component {
             value={this.state.lastName}
             onChange={this.handleChange}
           />
-          <label htmlFor="age">age: </label>
+          <label htmlFor="age">Age: </label>
           <input
             type="number"
             id="age"
@@ -100,7 +100,7 @@ export default class EditMenteeProfile extends Component {
             value={this.state.age}
             onChange={this.handleChange}
           />
-          <label htmlFor="nationality">nationality: </label>
+          <label htmlFor="nationality">Nationality: </label>
           <input
             type="text"
             id="nationality"
@@ -161,7 +161,7 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="sector">Years of Operation: </label>
+          <label htmlFor="sector">Sector: </label>
           <input
             type="text"
             id="sector"
