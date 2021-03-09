@@ -117,7 +117,7 @@ class App extends React.Component {
         <Route
           exact path='/deutschconnect/mentorship-create'
           render={props => {
-            if (this.state.user.role === 'DeutschConnect') return <CreateNewMentorship {...props} user={this.state.user} />
+            if (this.state.user.role === 'DeutschConnect') return <CreateNewMentorship {...props} user={this.state.user} setUser={this.setUser}/>
             else return <Redirect to='/' />
           }}
         />
