@@ -76,6 +76,7 @@ export default class Signup extends Component {
                   onChange={this.handleChange}
                   id='role'
                 >
+                  <option>Please select your role</option>
                   <option>Mentor</option>
                   <option>Mentee</option>
                   
