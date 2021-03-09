@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import EditMentorship from './EditMentorship'
 //import { v4 as uuid } from "uuid";
 
 export default class MentorshipOverview extends Component {
@@ -49,6 +50,34 @@ export default class MentorshipOverview extends Component {
         })
     }
 
+    // handleChange = event => {
+    //   const { name, value } = event.target;
+    //   this.setState({
+    //     [name]: value
+    //   })
+    // }
+  
+    handleSubmit = (mentorshipId, mentorshipDates) => {
+      //event.preventDefault();
+      
+      console.log('hello2', mentorshipId, mentorshipDates)
+      // axios.put(`/api/mentor/profile/${this.state.mentorProfile._id}`, {
+      //   firstName: this.state.firstName
+      // })
+      //   .then(response => {
+      //     this.setState({
+      //       mentorProfile: response.data,
+      //       firstName: response.data.firstName,
+      //       editForm: false
+      //     })
+  
+      //   })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
+    }  
+  
+
 render() {
   let mentorshipProfiles;
   if (this.state.allMentorships === null) {
@@ -65,6 +94,12 @@ render() {
           <p>{mentorship.startDate} - {mentorship.endDate}</p>
           <p>Confirmed: {String(mentorship.confirmed)}</p>
           <button onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete this Mentorship</button>
+          <EditMentorship
+            user={this.props.user}
+            mentorship = {mentorship}
+            handleSubmit={this.handleSubmit}
+            {...this.state}
+          />
         </div>
         )
     })
