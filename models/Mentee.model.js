@@ -12,14 +12,16 @@ const menteeSchema = new Schema({
   lastName: String,
   age: Number,
   nationality: String,
-  personality: String,
   requiredSupport: String,
   businessName: String,
   businessDescription: String, 
   yearsOfOperation: String,
-  teamSize: String,
+  contactDetails: String,
   website: String,
   sector: String,
+  keyPersonalityTraits: String,
+  activeMentorship: Boolean,
+  availableFromDate: String,
   imgName: String,
   imgPath: {
     type: String,
@@ -30,7 +32,7 @@ const menteeSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Mentor'
     }
-  ]
+  ],
 },
 {timestamps: true}
 );

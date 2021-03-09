@@ -10,6 +10,7 @@ import MentorProfile from './components/mentor/MentorProfile'
 import EditMentorProfile from './components/mentor/EditMentorProfile'
 import MenteeProfile from './components/mentee/MenteeProfile'
 import MentorList from './components/mentee/MentorList'
+import EditMenteeProfile from './components/mentee/EditMenteeProfile'
 import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
 import MentorshipOverview from './components/deutschConnect/MentorshipOverview'
 import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship'
@@ -83,6 +84,15 @@ class App extends React.Component {
         />
 
         <Route
+          exact path='/mentee/profile/:id/edit'
+          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <EditMenteeProfile {...props} user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
+
+        <Route
           exact path='/deutschconnect/profile'
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={props => {
@@ -97,7 +107,7 @@ class App extends React.Component {
           exact path='/mentee/mentor-list'
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={props => {
-            if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} />
+            if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} setUser={this.setUser} />
             else return <Redirect to='/' />
           }}
         />
