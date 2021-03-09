@@ -15,6 +15,7 @@ import DeutschConnectProfile from './components/deutschConnect/DeutschConnectPro
 import MentorshipOverview from './components/deutschConnect/MentorshipOverview'
 import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship'
 import MyMentorship from './components/mentee/MyMentorship';
+import MentorListDC from './components/deutschConnect/Mentor-list'
 
 
 
@@ -148,6 +149,14 @@ class App extends React.Component {
           }}
         />
         
+        {/* Mentors-List for DeutschConnect */}
+        <Route
+          exact path='/deutschconnect/mentor-list'
+          render={props => {
+            if (this.state.user.role === 'DeutschConnect') return <MentorListDC {...props} user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
       </div>
     );
   }
