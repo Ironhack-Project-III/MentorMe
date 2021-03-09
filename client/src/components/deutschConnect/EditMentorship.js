@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class EditMentorship extends Component {
 
   state= {
-    toggled: true,
-    startDate: this.props.mentorship.startDate
+    startDate: this.props.mentorship.startDate,
+    toggled: false,
   }
 
   toggleEditForm = () => {
@@ -20,18 +20,22 @@ export default class EditMentorship extends Component {
     })
   }
 
+  handleSubmit = (event, mentorshipId, mentorshipDates) => {
+    event.preventDefault();
+    this.props.handleSubmit(event, mentorshipId, mentorshipDates)
+    console.log('hello1', mentorshipId, mentorshipDates)
+  }  
+
   render() {
     
     return (
       
       <div>
-        
-        <button onClick={this.toggleEditForm}>Change Dates</button>
-
+        <button onClick={() => {this.toggleEditForm()}}>Change Dates?</button>
         {this.state.toggled ? 
         <div>
           <p>Edit Mentorship</p>
-          <form onSubmit={() => this.props.handleSubmit(this.props.mentorship._id, {startDate: this.state.startDate})}>
+          <form onSubmit={(event) => this.handleSubmit(event, this.props.mentorship._id, this.state.startDate)}>
             <input
               type="date"
               id="startDate"
@@ -40,7 +44,7 @@ export default class EditMentorship extends Component {
               onChange={this.handleChange}
               >
             </input>
-            <button type='submit'>Update this mentorship</button>
+            <button type='submit'>Update Dates</button>
           </form>
         </div>
          : '' }

@@ -70,4 +70,23 @@ router.delete('/deutschconnect/mentorships-overview/:id', (req, res) => {
     });
 });
 
+//update mentorship dates
+router.put('/deutschconnect/mentorships-overview/:id', (req, res, next) => {
+  console.log('backend', req.body)
+  const { 
+    startDate
+  } = req.body;
+
+  Mentorship.findByIdAndUpdate(req.params.id, { 
+    startDate
+      }, { new: true })
+    .then(mentorship => {
+      console.log('new mentorship in db', mentorship)
+      res.status(200).json(mentorship)
+    })
+    .catch(err => {
+      next(err)
+    })
+});
+
 module.exports = router;
