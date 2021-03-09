@@ -9,8 +9,6 @@ export default class MentorshipOverview extends Component {
     error: null
   }
 
-
-  
   componentDidMount() {
     this.getMentorships();
   }
@@ -51,43 +49,28 @@ export default class MentorshipOverview extends Component {
           console.log(err)
         })
     }
-
-    // handleChange = event => {
-    //   const { name, value } = event.target;
-    //   this.setState({
-    //     [name]: value
-    //   })
-    // }
   
-    handleSubmit = (event, mentorshipId, mentorshipDates) => {
+    handleSubmit = (event, mentorshipId, startDate, endDate) => {
       event.preventDefault();
       
-      console.log('hello2', mentorshipId, mentorshipDates)
+      console.log('hello2', mentorshipId, startDate, endDate)
 
         axios.put(`/api/deutschconnect/mentorships-overview/${mentorshipId}`, {
-          startDate: mentorshipDates
+          startDate: startDate,
+          endDate: endDate
         })
         .then( response => {
           console.log('frontend', response)
 
-          const updateMentorshipArray = this.state.allMentorships.map(m => {
+          this.state.allMentorships.map(m => {
             if (m._id === response.data._id){
+              
+              m.startDate = response.data.startDate
+              m.endDate = response.data.endDate
               console.log(m.startDate)
-              //m['startDate'] = response.data.startDate
             }
+              
         })
-        console.log(updateMentorshipArray)
-          // console.log('updated1', updateMentorshipArray)
-          // const newMentorshipArray = [...updateMentorshipArray]
-          // newMentorshipArray.push(response.data)
-          // console.log('updated2', newMentorshipArray)
-          // //{...this.state.allMentorships, response.data.}
-          // this.setState({
-          //   allMentorships: newMentorshipArray
-          // })
-          // console.log(this.state.allMentorships)
-          // this.props.setUser(response.data)
-          // //redirect to profile
           this.props.history.push(`/deutschconnect/mentorships-overview/`)
         })
     }  
