@@ -71,7 +71,7 @@ getMentors = () => {
           <div key = {mentor._id}> 
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>{mentor.username}</h3>
-          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Mentor preferred" : "Put mentor on the list"} </button>
+          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
           </div>
 
         )

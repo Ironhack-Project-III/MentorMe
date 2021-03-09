@@ -48,25 +48,17 @@ export default class MenteeProfile extends Component {
         <p>Last Name: {this.state.menteeProfile.lastName}</p>
         <p>Age: {this.state.menteeProfile.age}</p>
         <p>Nationality: {this.state.menteeProfile.nationality}</p>
+        <p>Contact Details: {this.state.menteeProfile.contactDetails}</p>
         <p>Required Support: {this.state.menteeProfile.requiredSupport}</p>
         <p>Business Name: {this.state.menteeProfile.businessName}</p>
         <p>Business Description: {this.state.menteeProfile.businessDescription}</p>
         <p>Years of Operation: {this.state.menteeProfile.yearsOfOperation}</p>
         <p>Sector: {this.state.menteeProfile.sector}</p>
         <p>Website: {this.state.menteeProfile.website}</p>
-        
+
         <Link style={{color:'blue'}} to={`/mentee/profile/${this.state.menteeProfile._id}/edit`}>
               Edit your profile
         </Link>
-        
-        <Route
-          exact path='/mentee/profile/:id/edit'
-          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
-          render={props => {
-            if (this.state.user.role === 'Mentee') return <EditMenteeProfile {...props} user={this.state.user} />
-            else return <Redirect to='/' />
-          }}
-        />
 
       </div>
     )

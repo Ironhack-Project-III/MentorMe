@@ -62,4 +62,51 @@ router.put('/mentee/mentor-list/:id', (req, res, next) => {
     })
 })
 
+router.put('/mentee/profile/:id/edit', (req, res, next) => {
+  
+  const { 
+    firstName,
+    lastName,
+    age,
+    nationality,
+    contactDetails,
+    website,
+    requiredSupport,
+    businessName,
+    businessDescription,
+    yearsOfOperation,
+    sector,
+    availableForNewMentorship,
+    activeMentorship,
+    availableFromDate,
+    keyPersonalityTraits
+  } = req.body;
+
+  console.log('Step2', req.body)
+
+  Mentee.findByIdAndUpdate(req.params.id, { 
+    firstName,
+    lastName,
+    age,
+    nationality,
+    contactDetails,
+    website,
+    requiredSupport,
+    businessName,
+    businessDescription,
+    yearsOfOperation,
+    sector,
+    availableForNewMentorship,
+    activeMentorship,
+    availableFromDate,
+    keyPersonalityTraits
+      }, { new: true })
+    .then(mentee => {
+      res.status(200).json(mentee)
+    })
+    .catch(err => {
+      next(err)
+    })
+});
+
 module.exports = router;

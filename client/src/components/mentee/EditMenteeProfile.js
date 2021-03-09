@@ -6,21 +6,22 @@ export default class EditMenteeProfile extends Component {
 
 
   state = {
-    mentorProfile: this.props.user,
+    menteeProfile: this.props.user,
     nameHeader: this.props.user.firstName,
     firstName: this.props.user.firstName,
     lastName: this.props.user.lastName,
     age: this.props.user.age,
     nationality: this.props.user.nationality,
-    eMail: this.props.user.eMail,
+    contactDetails: this.props.user.contactDetails,
     website: this.props.user.website,
     requiredSupport: this.props.user.requiredSupport,
     businessName: this.props.user.businessName,
     businessDescription: this.props.user.businessDescription,
     yearsOfOperation: this.props.user.yearsOfOperation,
     sector: this.props.user.sector,
+    keyPersonalityTraits: this.props.user.keyPersonalityTraits,
     availableForNewMentorship: this.props.user.availableForNewMentorship,
-    activelyMentoring: this.props.user.activelyMentoring,
+    activeMentorship: this.props.user.activeMentorship,
     availableFromDate: this.props.user.availableFromDate
   }
  
@@ -37,31 +38,29 @@ export default class EditMenteeProfile extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.put(`/api/mentor/profile/${this.state.mentorProfile._id}/edit`, {
+    axios.put(`/api/mentee/profile/${this.state.menteeProfile._id}/edit`, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       age: this.state.age,
       nationality: this.state.nationality,
-      eMail: this.state.eMail,
-      contactInfo: this.state.contactInfo,
+      contactDetails: this.state.contactDetails,
       website: this.state.website,
-      aboutMe: this.state.aboutMe,
-      industryExpertise: this.state.industryExpertise,
-      generalExpertise: this.state.generalExpertise,
-      keyHardSkills: this.state.keyHardSkills,
-      keySoftSkills: this.state.keySoftSkills,
+      requiredSupport: this.state.requiredSupport,
+      businessName: this.state.businessName,
+      businessDescription: this.state.businessDescription,
+      yearsOfOperation: this.state.yearsOfOperation,
+      sector: this.state.sector,
       keyPersonalityTraits: this.state.keyPersonalityTraits,
-      preferredSectors: this.state.preferredSectors,
       availableForNewMentorship: this.state.availableForNewMentorship,
-      activelyMentoring: this.state.activelyMentoring,
-      availableFromDate: this.state.availableFromDate,
+      activeMentorship: this.state.activeMentorship,
+      availableFromDate: this.state.availableFromDate
     })
       .then(response => {
 
         //update usersession with updated data to get it without the need of refreshing the browser window
        this.props.setUser(response.data)
         //redirect to profile
-       this.props.history.push(`/mentor/profile/${response.data._id}`)
+       this.props.history.push(`/mentee/profile/${response.data._id}`)
 
       })
       .catch(err => {
@@ -109,20 +108,12 @@ export default class EditMenteeProfile extends Component {
             value={this.state.nationality}
             onChange={this.handleChange}
           />
-          <label htmlFor="eMail">eMail: </label>
+          <label htmlFor="contactDetails">Contact Details: </label>
           <input
             type="text"
-            id="eMail"
-            name="eMail"
-            value={this.state.eMail}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="contactInfo">contactInfo: </label>
-          <input
-            type="text"
-            id="contactInfo"
-            name="contactInfo"
-            value={this.state.contactInfo}
+            id="contactDetails"
+            name="contactDetails"
+            value={this.state.contactDetails}
             onChange={this.handleChange}
           />
           <label htmlFor="website">website: </label>
@@ -133,47 +124,53 @@ export default class EditMenteeProfile extends Component {
             value={this.state.website}
             onChange={this.handleChange}
           />
-          <label htmlFor="aboutMe">aboutMe: </label>
+         
+          <label htmlFor="requiredSupport">Required Support: </label>
           <input
             type="text"
-            id="aboutMe"
-            name="aboutMe"
-            value={this.state.aboutMe}
+            id="requiredSupport"
+            name="requiredSupport"
+            value={this.state.requiredSupport}
             onChange={this.handleChange}
           />
-          <label htmlFor="industryExpertise">industryExpertise: </label>
+
+          <label htmlFor="businessName">Business Name: </label>
           <input
             type="text"
-            id="industryExpertise"
-            name="industryExpertise"
-            value={this.state.industryExpertise}
+            id="businessName"
+            name="businessName"
+            value={this.state.businessName}
             onChange={this.handleChange}
           />
-          <label htmlFor="generalExpertise">generalExpertise: </label>
+
+          <label htmlFor="businessDescription">Business Description: </label>
           <input
             type="text"
-            id="generalExpertise"
-            name="generalExpertise"
-            value={this.state.generalExpertise}
+            id="businessDescription"
+            name="businessDescription"
+            value={this.state.businessDescription}
             onChange={this.handleChange}
           />
-          <label htmlFor="keyHardSkills">keyHardSkills: </label>
+
+          <label htmlFor="yearsOfOperation">Years of Operation: </label>
           <input
             type="text"
-            id="keyHardSkills"
-            name="keyHardSkills"
-            value={this.state.keyHardSkills}
+            id="yearsOfOperation"
+            name="yearsOfOperation"
+            value={this.state.yearsOfOperation}
             onChange={this.handleChange}
           />
-          <label htmlFor="keySoftSkills">keySoftSkills: </label>
+
+          <label htmlFor="sector">Years of Operation: </label>
           <input
             type="text"
-            id="keySoftSkills"
-            name="keySoftSkills"
-            value={this.state.keySoftSkills}
+            id="sector"
+            name="sector"
+            value={this.state.sector}
             onChange={this.handleChange}
           />
-          <label htmlFor="keyPersonalityTraits">keyPersonalityTraits: </label>
+
+          <label htmlFor="keyPersonalityTraits">Key Personality Traits: </label>
           <input
             type="text"
             id="keyPersonalityTraits"
@@ -181,14 +178,7 @@ export default class EditMenteeProfile extends Component {
             value={this.state.keyPersonalityTraits}
             onChange={this.handleChange}
           />
-          <label htmlFor="preferredSectors">preferredSectors: </label>
-          <input
-            type="text"
-            id="preferredSectors"
-            name="preferredSectors"
-            value={this.state.preferredSectors}
-            onChange={this.handleChange}
-          />
+          
           <label htmlFor="availableForNewMentorship">availableForNewMentorship: </label>
           <input
             type="checkbox"
@@ -197,12 +187,12 @@ export default class EditMenteeProfile extends Component {
             checked={this.state.availableForNewMentorship}
             onChange={this.handleChange}
           />
-          <label htmlFor="activelyMentoring">activelyMentoring: </label>
+          <label htmlFor="activeMentorship">activeMentorship: </label>
           <input
             type="checkbox"
-            id="activelyMentoring"
-            name="activelyMentoring"
-            checked={this.state.activelyMentoring}
+            id="activeMentorship"
+            name="activeMentorship"
+            checked={this.state.activeMentorship}
             onChange={this.handleChange}
           />
           <label htmlFor="availableFromDate">availableFromDate: </label>

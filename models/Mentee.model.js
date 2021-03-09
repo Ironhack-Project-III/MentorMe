@@ -16,8 +16,12 @@ const menteeSchema = new Schema({
   businessName: String,
   businessDescription: String, 
   yearsOfOperation: String,
+  contactDetails: String,
   website: String,
   sector: String,
+  keyPersonalityTraits: String,
+  activeMentorship: Boolean,
+  availableFromDate: String,
   imgName: String,
   imgPath: {
     type: String,
@@ -27,14 +31,6 @@ const menteeSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Mentor'
-    }
-  ],
-   Mentorship: [
-    {
-      mentor: { type: Schema.Types.ObjectId, ref: 'Mentor' },
-      startDate: String,
-      endDate: String,
-      confirmed: Boolean
     }
   ],
 },
