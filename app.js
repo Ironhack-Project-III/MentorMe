@@ -112,7 +112,7 @@ passport.use(
                     done(null, false, { message: 'Wrong Credentials' });
                   } else {
                     // the userFromDB should now be logged in
-                    console.log('Mentee logged in')
+                    console.log('logged in')
                     done(null, userFromDB)
                   }
                 })
