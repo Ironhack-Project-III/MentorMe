@@ -80,15 +80,8 @@ getMentors = () => {
     this.setState({
       detailView: mentorId
     })
-      
-    if (this.state.detailViewSelector) { 
-      <MentorDetail
-        {...this.props} 
-      />
-      }
   }
 
- 
 
   render() {
     console.log(this.props.user)
@@ -106,9 +99,11 @@ getMentors = () => {
           <div key = {mentor._id}> 
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>{mentor.username}</h3>
-          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
-          <button onClick={() => {this.detailView(mentor._id)}}>Details</button>
-        
+          <MentorDetail
+            mentor = {mentor}
+            {...this.props} 
+          />
+           <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
           </div>
 
         )

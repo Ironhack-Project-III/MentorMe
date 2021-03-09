@@ -5,7 +5,7 @@ import axios from 'axios'
 export default class MyMentorship extends Component {
   state = {
     allMentorships: null,
-    messages: [],
+    // messages: [],
     editForm: false,
     message: null,
     error: null
@@ -54,9 +54,13 @@ export default class MyMentorship extends Component {
         newMessage: this.state.message
       })
         .then(response => {
-          this.setState({
-            messages: response.data.messages
-          })
+          this.state.allMentorships.map(m => {
+            if (m._id === response.data._id){
+              m.messages = response.data.messages 
+              console.log('old messages', m.messages)
+              console.log('updated messages', response.data.messages)
+            }
+        })
          this.props.history.push('/mentee/my-mentorship')
         })
         .catch(err => {
