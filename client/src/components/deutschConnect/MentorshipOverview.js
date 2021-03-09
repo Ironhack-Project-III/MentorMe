@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { v4 as uuid } from "uuid";
+//import { v4 as uuid } from "uuid";
 
 export default class MentorshipOverview extends Component {
   state = {
@@ -37,10 +37,10 @@ render() {
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
   } else {
-    mentorshipProfiles = this.state.allMentorships.map((mentorship) => {
-      mentorship.id = uuid();
+    mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
+      //mentorship.id = uuid();
       return (
-        <div key={mentorship.id}>
+        <div key={index}>
           <p>Mentorname: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
           <p>Mentor username: {mentorship.mentor.username}</p>
           <p>Menteename: {mentorship.mentee.firstName} {mentorship.mentee.lastName}</p>
