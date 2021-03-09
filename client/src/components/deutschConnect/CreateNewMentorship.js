@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Redirect } from "react-router"
 import axios from 'axios'
 //import { v4 as uuid } from "uuid";
 
@@ -58,7 +57,7 @@ export default class CreateNewMentorship extends Component {
   
   handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value, "name&value at hadnleChange")
+    //console.log(name, value, "name&value at hadnleChange")
     this.setState({ 
         [name]: value 
     });
@@ -73,7 +72,7 @@ handleSubmit = (event) => {
       endDate,
       confirmed
     } = this.state;
-console.log("post request at FE")
+//console.log("post request at FE")
     axios
         .post('/api/deutschconnect/mentorship-create', {
           mentor,
@@ -83,7 +82,7 @@ console.log("post request at FE")
           confirmed
         })
         .then((response) => {
-          console.log(response, 'this is a response')
+         // console.log(response, 'this is a response')
           //this.props.setUser(response.data)
           //redirect to profile
          
@@ -99,12 +98,12 @@ console.log("post request at FE")
     if (this.state.mentorProfiles=== '' || this.state.menteeProfiles=== '') {
       return <h3>Loading...</h3>
     } else {
-      console.log(this.state.mentorProfiles)
+    //  console.log(this.state.mentorProfiles)
       mentorOptions = this.state.mentorProfiles.map((mentor, index) => {
        // mentor.id = uuid();
         return <option key={index} value={mentor._id}>{mentor.username}</option>
       })
-      console.log(this.state.menteeProfiles)
+    //  console.log(this.state.menteeProfiles)
       menteeOptions = this.state.menteeProfiles.map((mentee, index) => {
         //mentee.id = uuid();
         return <option key={index} value={mentee._id}>{mentee.username}</option>

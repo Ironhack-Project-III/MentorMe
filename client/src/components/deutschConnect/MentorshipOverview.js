@@ -15,13 +15,13 @@ export default class MentorshipOverview extends Component {
   getMentorships = () => {
     axios.get(`/api/deutschconnect/mentorships-overview`)
       .then(response => {
-        console.log(response, 'the response')
+        //console.log(response, 'the response')
         this.setState({
           allMentorships: response.data
         })
       })
       .catch(err => {
-        console.log(err.response)
+        //console.log(err.response)
         if (err.response.status === 404) {
           // we have a 404 error
           this.setState({
@@ -31,6 +31,23 @@ export default class MentorshipOverview extends Component {
       })
     }
 
+    deleteMentorship = (event) => {
+      console.log('event:', event)
+      axios.delete(`/api/deutschconnect/mentorships-overview/${event}`)
+        .then( response => {
+          console.log('the response', response)
+          // we want to redirect to the projects list
+
+          //filter doesnt mutate the state
+          this.setState({
+            allMentorships: this.state.allMentorships.filter( m => m._id !== response.data._id )
+          })
+          this.props.history.push('/deutschconnect/mentorships-overview')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
 
 render() {
   let mentorshipProfiles;
@@ -47,6 +64,7 @@ render() {
           <p>Mentee username: {mentorship.mentee.username}</p>
           <p>{mentorship.startDate} - {mentorship.endDate}</p>
           <p>Confirmed: {String(mentorship.confirmed)}</p>
+          <button onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete this Mentorship</button>
         </div>
         )
     })
