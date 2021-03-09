@@ -42,7 +42,7 @@ router.get('/mentee/mentor-list', (req, res, next) => {
   })
 })
 
-router.put('/mentee/mentor-list/:id', (req, res, next) => {
+router.put('/mentee/mentor-list/:id/like', (req, res, next) => {
   // console.log(req.params)
   // console.log(req.body)
   // const { userId } = req.params.id 
@@ -50,6 +50,27 @@ router.put('/mentee/mentor-list/:id', (req, res, next) => {
 
   Mentee.findByIdAndUpdate(req.params.id, { 
       $push: {
+        preferredMentors: preferredMentor
+      }
+    }, { new: true }
+    )
+    // .populate('preferredMentors')
+    .then(response => {
+      res.status(200).json(response)
+    })
+    .catch(err => {
+      next(err)
+    })
+})
+
+router.put('/mentee/mentor-list/:id/unlike', (req, res, next) => {
+  // console.log(req.params)
+  // console.log(req.body)
+  // const { userId } = req.params.id 
+  const { preferredMentor } = req.body
+
+  Mentee.findByIdAndUpdate(req.params.id, { 
+      $pull: {
         preferredMentors: preferredMentor
       }
     }, { new: true }
@@ -139,5 +160,6 @@ router.put('/mentee/my-mentorship/:id', (req, res, next) => {
       next(err)
   })
 })
+
 
 module.exports = router;  
