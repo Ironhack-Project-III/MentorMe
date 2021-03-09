@@ -7,15 +7,16 @@ import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 import Login from './components/Login'
 import MentorProfile from './components/mentor/MentorProfile'
+import EditMentorProfile from './components/mentor/EditMentorProfile'
 import MenteeProfile from './components/mentee/MenteeProfile'
+import MentorList from './components/mentee/MentorList'
 import EditMenteeProfile from './components/mentee/EditMenteeProfile'
 import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
+import MentorshipOverview from './components/deutschConnect/MentorshipOverview'
+import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship'
 
-// import EditMenteeProfile from './components/mentee/EditMenteeProfile'
-import axios from 'axios'
-import MentorList from './components/mentee/MentorList'
 
-import EditMentorProfile from './components/mentor/EditMentorProfile'
+
 
 
 class App extends React.Component {
@@ -107,6 +108,26 @@ class App extends React.Component {
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={props => {
             if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} setUser={this.setUser} />
+            else return <Redirect to='/' />
+          }}
+        />
+
+        {/* Mentorships Overview for DeutschConnect */}
+
+        <Route
+          exact path='/deutschconnect/mentorships-overview'
+          render={props => {
+            if (this.state.user.role === 'DeutschConnect') return <MentorshipOverview {...props} user={this.state.user} setUser={this.setUser}/>
+            else return <Redirect to='/' />
+          }}
+        />
+
+        {/* Create New Mentorship for DeutschConnect */}
+
+        <Route
+          exact path='/deutschconnect/mentorship-create'
+          render={props => {
+            if (this.state.user.role === 'DeutschConnect') return <CreateNewMentorship {...props} user={this.state.user} setUser={this.setUser}/>
             else return <Redirect to='/' />
           }}
         />

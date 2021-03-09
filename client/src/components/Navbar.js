@@ -39,6 +39,22 @@ const Navbar = props => {
           </Nav.Brand>
         }
 
+        { props.user.role === 'DeutschConnect' && 
+          <Nav.Brand>
+            <Link style={{color:'white'}} to='/deutschconnect/mentorships-overview'>
+              Overview
+            </Link>
+          </Nav.Brand>
+        }
+
+        { props.user.role === 'DeutschConnect' && 
+          <Nav.Brand>
+            <Link style={{color:'white'}} to='/deutschconnect/mentorship-create'>
+              Create New
+            </Link>
+          </Nav.Brand>
+        }
+
         { props.user.role === 'Mentee' && 
           <Nav.Brand>
             <Link style={{color:'white'}} to='/mentee/mentor-list'>

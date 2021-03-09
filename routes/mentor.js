@@ -17,20 +17,6 @@ router.get('/mentor/profile/:id', (req, res, next) => {
 
 //update mentor profile
 
-// router.get('/mentor/profile/:id/edit', (req, res, next) => {
-//   Mentor.findById(req.params.id)
-//     .then(mentor => {
-//       if (!mentor) {
-//         res.status(404).json(mentor)
-//       } else {
-//         res.status(200).json(mentor)
-//       }
-//     })
-//     .catch(err => {
-//       next(err)
-//     })
-// });
-
 router.put('/mentor/profile/:id/edit', (req, res, next) => {
   
   const { 
@@ -38,38 +24,26 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     lastName,
     age,
     nationality,
-    eMail,
-    contactInfo,
-    website,
-    aboutMe,
+    contactDetails,
+    experience,
     industryExpertise,
-    generalExpertise,
-    keyHardSkills,
-    keySoftSkills,
+    keySkills,
     keyPersonalityTraits,
-    preferredSectors,
     availableForNewMentorship,
     activelyMentoring,
     availableFromDate
   } = req.body;
-
-  console.log('Step2', req.body)
 
   Mentor.findByIdAndUpdate(req.params.id, { 
     firstName,
     lastName,
     age,
     nationality,
-    eMail,
-    contactInfo,
-    website,
-    aboutMe,
+    contactDetails,
+    experience,
     industryExpertise,
-    generalExpertise,
-    keyHardSkills,
-    keySoftSkills,
+    keySkills,
     keyPersonalityTraits,
-    preferredSectors,
     availableForNewMentorship,
     activelyMentoring,
     availableFromDate
