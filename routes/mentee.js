@@ -53,7 +53,7 @@ router.put('/mentee/mentor-list/:id', (req, res, next) => {
       }
     }, { new: true }
     )
-    .populate('preferredMentors')
+    // .populate('preferredMentors')
     .then(response => {
       res.status(200).json(response)
     })

@@ -6,12 +6,16 @@ export default class MentorList extends Component {
 state = {
   user: this.props.user,
   allMentors: null,
-  preferredMentors: null,
+  // preferredMentors: [],
   error: null
 }
 
 componentDidMount() {
   this.getMentors();
+  // this.setState({
+  //   preferredMentors: this.props.user.preferredMentors
+  // })
+  // this.state.prefferedMentors = this.props.user.prefferedMentors
 }
 
 getMentors = () => {
@@ -33,14 +37,6 @@ getMentors = () => {
     })
   }
 
-  // handleChange = event => {
-  //   console.log(event.target)
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   })
-  // }
-
   likeMentor = event => {
     console.log(event)
     console.log(this.state.user._id)
@@ -50,6 +46,8 @@ getMentors = () => {
        this.setState({
         preferredMentors: response.data.preferredMentors
        })
+       //update the setUser in App.js after the prefrred mentor array gets updated
+       this.props.setUser(response.data)
       //  console.log(this.state.preferredMentors)
      })
      .catch(err => {
@@ -58,9 +56,11 @@ getMentors = () => {
   }
 
   render() {
+    console.log(this.props.user)
+    console.log(this.state)
     if (this.state.allMentors === null) {
       return <h3>Loading...</h3>
-  
+      
     } return (
       
       <div>
@@ -71,14 +71,10 @@ getMentors = () => {
           <div key = {mentor._id}> 
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>{mentor.username}</h3>
-          <button onClick={() => {this.likeMentor(mentor._id)}}>Put mentor on the list </button>
+          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Mentor preferred" : "Put mentor on the list"} </button>
           </div>
-        )
-      })}
 
-      {this.state.preferredMentors != null &&
-      this.state.preferredMentors.map (preferredMentor => { 
-        <h3>{preferredMentor.username}</h3>
+        )
       })}
 
       </div>
@@ -86,4 +82,3 @@ getMentors = () => {
     )
   }
 }
-git 

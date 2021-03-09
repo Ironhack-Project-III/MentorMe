@@ -96,7 +96,7 @@ class App extends React.Component {
           exact path='/mentee/mentor-list'
           //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
           render={props => {
-            if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} />
+            if (this.state.user.role === 'Mentee') return <MentorList {...props} user={this.state.user} setUser={this.setUser} />
             else return <Redirect to='/' />
           }}
         />

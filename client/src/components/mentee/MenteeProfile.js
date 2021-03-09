@@ -47,7 +47,14 @@ export default class MenteeProfile extends Component {
         <p>First Name: {this.state.menteeProfile.firstName}</p>
         <p>Last Name: {this.state.menteeProfile.lastName}</p>
         <p>Age: {this.state.menteeProfile.age}</p>
-
+        <p>Nationality: {this.state.menteeProfile.nationality}</p>
+        <p>Required Support: {this.state.menteeProfile.requiredSupport}</p>
+        <p>Business Name: {this.state.menteeProfile.businessName}</p>
+        <p>Business Description: {this.state.menteeProfile.businessDescription}</p>
+        <p>Years of Operation: {this.state.menteeProfile.yearsOfOperation}</p>
+        <p>Sector: {this.state.menteeProfile.sector}</p>
+        <p>Website: {this.state.menteeProfile.website}</p>
+        
         <Link style={{color:'blue'}} to={`/mentee/profile/${this.state.menteeProfile._id}/edit`}>
               Edit your profile
         </Link>
@@ -65,3 +72,14 @@ export default class MenteeProfile extends Component {
     )
   }
 }
+
+// firstName: String,
+//   lastName: String,
+//   requiredSupport: Number,
+//   nationality: String,
+//   requiredSupport: String,
+//   businessName: String,
+//   businessDescription: String, 
+//   yearsOfOperation: String,
+//   website: String,
+//   sector: String,
