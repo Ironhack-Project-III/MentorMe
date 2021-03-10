@@ -3,14 +3,20 @@ import axios from 'axios'
 //import { v4 as uuid } from "uuid";
 
 export default class MyMentorship extends Component {
+
+  
   state = {
     allMentorships: null,
     // messages: [],
     editForm: false,
-    message: null,
-    error: null
+    message: "",
+    error: null,
+    mentorshipId:"",
+    authorId: "",
+    user: this.props.user._id
+
   }
-  
+ 
   componentDidMount() {
     this.getMentorships();
   }
@@ -34,48 +40,63 @@ export default class MyMentorship extends Component {
       })
     }
 
-    handleChange = event => {
+    handleChange = (event) => {
       
       console.log(event.target)
       const target = event.target;
       const name = target.name;
-      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const value = target.value
       this.setState({
         [name]: value
       })
-      // console.log('Step1', this.state.data._id)
+      console.log('Step1', this.state.message)
     }
   
-    sendMessage = (event, mentorshipId) => {
-      event.preventDefault();
-      console.log(event)
+    sendMessage = (e) => {
+      e.preventDefault()
+      let mentorshipId = this.state.mentorshipId
+
       axios.put(`/api/mentee/my-mentorship/${mentorshipId}`, {
         // mentor: this.state
-        newMessage: this.state.message
+        newMessage: this.state.message,
+        author: this.state.authorId
       })
         .then(response => {
-          this.state.allMentorships.map(m => {
-            if (m._id === response.data._id){
-              m.messages = response.data.messages 
-              console.log('old messages', m.messages)
-              console.log('updated messages', response.data.messages)
-            }
-        })
+          console.log(response, "this hsoudl onlz be all m,entorships")
+          this.setState({
+            allMentorships: response.data,
+            message: ""
+          })
+          // this.state.allMentorships.map(m => {
+          //   if (m._id === response.data._id){
+          //     m.messages = response.data.messages 
+          //     console.log('old messages', m.messages)
+          //     console.log('updated messages', response.data.messages)
+          //   }
+        // })
          this.props.history.push('/mentee/my-mentorship')
         })
         .catch(err => {
           console.log(err)
         })
     }
+    handleShitter = (mentorID, authorId) => {
+      this.setState({
+        mentorshipId: mentorID,
+        authorId: authorId
+      })
+    }
   
 render() {
   let mentorshipProfiles;
+
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
   } else {
     mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
       //mentorship.id = uuid();
       return (
+        
         <div key={index}>
           <p>Mentorname: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
           <p>Mentor username: {mentorship.mentor.username}</p>
@@ -84,8 +105,12 @@ render() {
           <p>Duration: {mentorship.startDate} - {mentorship.endDate}</p>
           <p>Confirmed: {String(mentorship.confirmed)}</p>
           <p>Messages:</p> 
-          { mentorship.messages.map(message => {
-              return (<p>{message}</p>)
+          { mentorship.messages.map(message => {  
+
+            {/* return <p>{message.message}</p>  */}
+
+            return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
+
           })
         }
             {/* this.state.messages !== null ? 
@@ -93,24 +118,29 @@ render() {
               return (<p>{message}</p>)
           }) :  */}
          
-          <form>
+          <form onSubmit={this.sendMessage}>
           
           <label htmlFor="message"></label>
           <input
             type="text"
             id="message"
             name="message"
-            // value={this.state.messages}
+            value={this.state.message}
             onChange={this.handleChange}
           />
-          <button onClick={(event) => this.sendMessage(event, mentorship._id)}>Send message</button>
+          <input
+          type="mentorship"
+          id="mentorship"
+          value={mentorship._id} 
+          style={{display: "none"}}
+          />
+          <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
           </form>
         
         </div>
         )
     })
   }
-  
   
   return (
     <div>

@@ -9,7 +9,8 @@ const mentorshipSchema = new Schema({
     confirmed: Boolean,
     messages: [
         {
-        type: String
+        message: String,
+        author: String
         }
     ]
 },
