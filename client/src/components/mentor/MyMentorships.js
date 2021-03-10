@@ -14,7 +14,6 @@ export default class MyMentorships extends Component {
     mentorshipId:"",
     authorId: "",
     user: this.props.user._id
-
   }
  
   componentDidMount() {
@@ -74,7 +73,7 @@ export default class MyMentorships extends Component {
           //     console.log('updated messages', response.data.messages)
           //   }
         // })
-         this.props.history.push('/mentor/my-mentorship')
+         this.props.history.push('/mentor/my-mentorships')
         })
         .catch(err => {
           console.log(err)
