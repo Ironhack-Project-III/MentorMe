@@ -43,7 +43,7 @@ export default class Login extends Component {
       <>
         <h2>Login</h2>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="formGroupEmail">
+          <Form.Group>
             <Form.Label htmlFor='username'>Username: </Form.Label>
             <Form.Control
               type='text'
@@ -53,7 +53,7 @@ export default class Login extends Component {
               id='username'
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword">
+          <Form.Group>
             <Form.Label htmlFor='password'>Password: </Form.Label>
             <Form.Control
               type='password'

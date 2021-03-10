@@ -64,7 +64,6 @@ export default class Signup extends Component {
               name='password'
               value={this.state.password}
               onChange={this.handleChange}
-              
               aria-describedby="passwordHelpBlock"
             />
             <Form.Text id="passwordHelpBlock" muted>

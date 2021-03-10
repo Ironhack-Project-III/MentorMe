@@ -100,6 +100,14 @@ const Navbar = props => {
               Logout
             </Link>
           </Nav.Brand>
+
+          { props.user.role === 'Mentor' && 
+          <Nav.Brand>
+            <Link style={{color:'grey'}} to='/mentor/my-mentorship'>
+              My Mentorship
+            </Link>
+          </Nav.Brand>
+        }
           </Nav.Collapse>
         </>
       ) : (

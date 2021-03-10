@@ -59,4 +59,38 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
 });
   // if we don't have {new: true} findByIdAndUpdate() will return the old version of the mentor
 
+  router.get('/mentor/my-mentorship/:id', (req, res, next) => {
+
+    Mentorship.find({mentee: req.params.id})
+      .populate('mentor')
+      .populate('mentee')
+      .then(mentorship => {
+        console.log(mentorship, 'allMentorships')
+        res.status(200).json(mentorship)
+      })
+      .catch(err => {
+        next(err)
+    })
+  })
+  
+  router.put('/mentor/my-mentorship/:id', (req, res, next) => {
+    console.log(req.body)
+    const {newMessage, author} = req.body
+    const id = req.params.id
+  
+    Mentorship.findByIdAndUpdate(id, {$push: {messages: {message: newMessage, author: author}}})
+      // .populate('mentor')
+      // .populate('mentee')
+      .then(() => {
+        Mentorship.find()
+        .populate('mentor')
+        .populate('mentee')
+        .then((allMentorships) => res.send(allMentorships))      // console.log(mentorship, 'allMentorships')
+        // res.status(200).json(mentorship)
+      })
+      .catch(err => {
+        next(err)
+    })
+  })
+
 module.exports = router;

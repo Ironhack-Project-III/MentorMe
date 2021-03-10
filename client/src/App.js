@@ -17,8 +17,8 @@ import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship
 import MyMentorship from './components/mentee/MyMentorship';
 import MentorListDC from './components/deutschConnect/Mentor-list'
 import MenteeListDC from './components/deutschConnect/Mentee-list'
-import Upload from './components/Upload'
 import CreateNewMentorshipID from './components/deutschConnect/CreateNewMentorshipID';
+import MyMentorships from './components/mentor/MyMentorships'
 
 
 
@@ -82,6 +82,14 @@ class App extends React.Component {
           exact path='/mentor/profile/:id/edit'
           render={(props) => {
             if (this.state.user.role === 'Mentor') return <EditMentorProfile {...props} user={this.state.user} setUser={this.setUser}/>
+            else return <Redirect to='/' />
+          }}
+        />
+
+        <Route
+          exact path='/mentor/my-mentorship'
+          render={props => {
+            if (this.state.user.role === 'Mentee') return <MyMentorships {...props} user={this.state.user} setUser={this.setUser}/>
             else return <Redirect to='/' />
           }}
         />
