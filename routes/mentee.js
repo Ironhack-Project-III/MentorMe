@@ -101,7 +101,8 @@ router.put('/mentee/profile/:id/edit', (req, res, next) => {
     availableForNewMentorship,
     activeMentorship,
     availableFromDate,
-    keyPersonalityTraits
+    keyPersonalityTraits,
+    imgPath
   } = req.body;
 
   console.log('Step2', req.body)
@@ -121,7 +122,8 @@ router.put('/mentee/profile/:id/edit', (req, res, next) => {
     availableForNewMentorship,
     activeMentorship,
     availableFromDate,
-    keyPersonalityTraits
+    keyPersonalityTraits,
+    imgPath
       }, { new: true })
     .then(mentee => {
       res.status(200).json(mentee)
@@ -160,6 +162,5 @@ router.put('/mentee/my-mentorship/:id', (req, res, next) => {
       next(err)
   })
 })
-
 
 module.exports = router;  

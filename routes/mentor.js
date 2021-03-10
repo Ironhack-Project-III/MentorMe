@@ -31,7 +31,8 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     keyPersonalityTraits,
     availableForNewMentorship,
     activelyMentoring,
-    availableFromDate
+    availableFromDate,
+    imgPath
   } = req.body;
 
   Mentor.findByIdAndUpdate(req.params.id, { 
@@ -46,7 +47,8 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
     keyPersonalityTraits,
     availableForNewMentorship,
     activelyMentoring,
-    availableFromDate
+    availableFromDate,
+    imgPath
       }, { new: true })
     .then(mentor => {
       res.status(200).json(mentor)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import service from '../../services/cloudinary'
 
 
 export default class EditMentorProfile extends Component {
@@ -18,7 +19,8 @@ export default class EditMentorProfile extends Component {
     keyPersonalityTraits: this.props.user.keyPersonalityTraits,
     availableForNewMentorship: this.props.user.availableForNewMentorship,
     activelyMentoring: this.props.user.activelyMentoring,
-    availableFromDate: this.props.user.availableFromDate
+    availableFromDate: this.props.user.availableFromDate,
+    imgPath: this.props.user.imgPath
   }
 
  
@@ -48,6 +50,7 @@ export default class EditMentorProfile extends Component {
       availableForNewMentorship: this.state.availableForNewMentorship,
       activelyMentoring: this.state.activelyMentoring,
       availableFromDate: this.state.availableFromDate,
+      imgPath: this.props.imgPath
     })
       .then(response => {
 
@@ -61,6 +64,33 @@ export default class EditMentorProfile extends Component {
         console.log(err)
       })
   }
+
+    handleChangeUpload = e => {
+      const { name, value } = e.target;
+      this.setState({ [name]: value });
+    };
+
+    handleFileUpload = e => {
+      console.log('The file to be uploaded is: ', e.target.files[0]);
+  
+      const uploadData = new FormData();
+      // imageUrl => this name has to be the same as in the model since we pass
+      // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+      uploadData.append('imgPath', e.target.files[0]);
+  
+      service
+        .handleUpload(uploadData)
+        .then(response => {
+          console.log(response.secure_url)
+          // console.log('response is: ', response);
+          // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+          this.setState({ imgPath: response.secure_url });
+          console.log(this.state)
+        })
+        .catch(err => {
+          console.log('Error while uploading the file: ', err);
+        });
+    };
 
 
   render() {
@@ -172,6 +202,12 @@ export default class EditMentorProfile extends Component {
           />
           <button type='submit'>Update Your Profile</button>
         </form>
+        <form onSubmit={e => this.handleSubmitUpload(e)}>
+            <label>Name</label>
+            <input type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
+            <input type="file" onChange={e => this.handleFileUpload(e)} />
+            <button type="submit">Upload photo</button>
+          </form>
       </div>
     )
   }

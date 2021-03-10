@@ -53,7 +53,7 @@ export default class Signup extends Component {
               name='username'
               value={this.state.username}
               onChange={this.handleChange}
-              id='username'
+              
             />
 
           </Form.Group>
@@ -64,8 +64,12 @@ export default class Signup extends Component {
               name='password'
               value={this.state.password}
               onChange={this.handleChange}
-              id='password'
+              
+              aria-describedby="passwordHelpBlock"
             />
+            <Form.Text id="passwordHelpBlock" muted>
+              Your password must be 8 characters long.
+            </Form.Text>
 
             <Form.Group>
                 <Form.Label>Sign up as:</Form.Label>
@@ -87,7 +91,7 @@ export default class Signup extends Component {
           {this.state.message && (
             <Alert variant='danger'>{this.state.message}</Alert>
           )}
-          <Button type='submit'>Signup</Button>
+          <Button Button variant="outline-primary" type='submit'>Signup</Button>
         </Form>
       </>
     );

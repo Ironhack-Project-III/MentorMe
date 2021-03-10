@@ -11,7 +11,8 @@ const mentorSchema = new Schema({
   imgName: String,
   imgPath: {
     type: String,
-    default: "https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg"
+    default: "https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg",
+    required: true
   },
   firstName: String,
   lastName: String,

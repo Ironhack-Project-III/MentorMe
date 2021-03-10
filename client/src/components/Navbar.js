@@ -11,37 +11,48 @@ const handleLogout = props => {
 
 const Navbar = props => {
   return (
-    <Nav className='nav justify-content-end' bg='primary'>
+    <Nav className='nav justify-content-end' bg="light" variant="light" expand="lg" sticky="top" >
+
       {props.user && <Nav.Brand>Welcome, {props.user.username}</Nav.Brand>}
-      <Nav.Brand>
-        <Link style={{color:'white'}} to='/'>Home</Link>
-      </Nav.Brand>
+
       
+   
       {props.user ? (
         <>
+        <Nav.Toggle aria-controls="basic-navbar-nav" />
+
+        <Nav.Collapse id="basic-navbar-nav">
+       
+        <Nav.Brand>
+          <Link style={{color:'grey'}} to='/'>Home</Link>
+        </Nav.Brand>
         {console.log(props.user.role)}
+        
         {(props.user.role === 'Mentor') ? (
+
+          
           <Nav.Brand>
-            <Link style={{color:'white'}} to={`/mentor/profile/${props.user._id}`}>
+            <Link style={{color:'grey'}} to={`/mentor/profile/${props.user._id}`}>
               My Profile
             </Link>
           </Nav.Brand>
         ): (props.user.role === 'Mentee') ? (
           <Nav.Brand>
-            <Link style={{color:'white'}} to={`/mentee/profile/${props.user._id}`}>
+            <Link style={{color:'grey'}} to={`/mentee/profile/${props.user._id}`}>
               My Profile
             </Link>
           </Nav.Brand>
         ): <Nav.Brand>
-            <Link style={{color:'white'}} to='/deutschconnect/profile'>
+            <Link style={{color:'grey'}} to='/deutschconnect/profile'>
               My Profile
             </Link>
           </Nav.Brand>
         }
+   
 
         { props.user.role === 'DeutschConnect' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/deutschconnect/mentorships-overview'>
+            <Link style={{color:'grey'}} to='/deutschconnect/mentorships-overview'>
               Overview
             </Link>
           </Nav.Brand>
@@ -49,7 +60,7 @@ const Navbar = props => {
 
         { props.user.role === 'DeutschConnect' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/deutschconnect/mentorship-create'>
+            <Link style={{color:'grey'}} to='/deutschconnect/mentorship-create'>
               Create New
             </Link>
           </Nav.Brand>
@@ -57,7 +68,7 @@ const Navbar = props => {
 
         { props.user.role === 'DeutschConnect' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/deutschconnect/mentor-list'>
+            <Link style={{color:'grey'}} to='/deutschconnect/mentor-list'>
               Mentors-List
             </Link>
           </Nav.Brand>
@@ -65,7 +76,7 @@ const Navbar = props => {
 
         { props.user.role === 'DeutschConnect' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/deutschconnect/mentee-list'>
+            <Link style={{color:'grey'}} to='/deutschconnect/mentee-list'>
               Mentees-List
             </Link>
           </Nav.Brand>
@@ -73,7 +84,7 @@ const Navbar = props => {
 
         { props.user.role === 'Mentee' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/mentee/mentor-list'>
+            <Link style={{color:'grey'}} to='/mentee/mentor-list'>
               Mentor Overview
             </Link>
           </Nav.Brand>
@@ -81,27 +92,29 @@ const Navbar = props => {
 
         { props.user.role === 'Mentee' && 
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/mentee/my-mentorship'>
+            <Link style={{color:'grey'}} to='/mentee/my-mentorship'>
               My Mentorship
             </Link>
           </Nav.Brand>
         }
           <Nav.Brand>
-            <Link style={{color:'white'}} to='/' onClick={() => handleLogout(props)}>
+            <Link style={{color:'grey'}} to='/' onClick={() => handleLogout(props)}>
               Logout
             </Link>
           </Nav.Brand>
+          </Nav.Collapse>
         </>
       ) : (
           <>
             <Nav.Brand>
-              <Link style={{color:'white'}} to='/signup'>Signup</Link>
+              <Link style={{color:'grey'}} to='/signup'>Signup</Link>
             </Nav.Brand>
             <Nav.Brand>
-              <Link style={{color:'white'}} to='/login'>Login</Link>
+              <Link style={{color:'grey'}} to='/login'>Login</Link>
             </Nav.Brand>
           </>
         )}
+        
     </Nav>
   )
 }
