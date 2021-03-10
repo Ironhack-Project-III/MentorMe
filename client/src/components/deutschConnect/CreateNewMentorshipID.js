@@ -35,13 +35,12 @@ export default class CreateNewMentorshipID extends Component {
   
   handleChange = (event) => {
     const { name, value } = event.target;
-    //console.log(name, value, "name&value at hadnleChange")
     this.setState({ 
         [name]: value 
     });
   };
 
-handleSubmit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const {
       mentor,
@@ -69,6 +68,7 @@ handleSubmit = (event) => {
         .catch((err) => console.log(err));
 };
   
+  
   render() {
     let mentorOptions;
     let menteeOptions;
@@ -85,13 +85,7 @@ handleSubmit = (event) => {
     //  console.log(this.state.menteeProfiles)
       menteeOptions = this.state.menteeProfiles.map((menteeProfile, index) => {
         //mentee.id = uuid();
-        
-          if (menteeProfile._id === this.props.location.state.mentee._id) {
-            return <option key={index} value={this.props.location.state.mentee._id} selected>{this.props.location.state.mentee.username}</option>
-          } else {
             return <option key={index} value={menteeProfile._id}>{menteeProfile.username}</option>
-          }
-       
       })
     }
    

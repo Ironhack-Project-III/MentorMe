@@ -84,6 +84,7 @@ filterMentees() {
         mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) ||
         (mentee.firstName ? mentee.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
         (mentee.lastName ? mentee.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+        (mentee.age ? String(mentee.age).includes(this.state.search.toLowerCase()) : false) ||
         (mentee.requiredSupport ? mentee.requiredSupport.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
         (mentee.nationality ? mentee.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.keyPersonalityTraits ? mentee.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
@@ -91,7 +92,8 @@ filterMentees() {
         (mentee.businessDescription ? mentee.businessDescription.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.yearsOfOperation ? mentee.yearsOfOperation.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.website ? mentee.website.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-        (mentee.sector ? mentee.sector.toLowerCase().includes(this.state.search.toLowerCase()) : false) 
+        (mentee.sector ? mentee.sector.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+        (mentee.availableFromDate ? mentee.availableFromDate.includes(this.state.search.toLowerCase()) : false)
         )
       });
     }
@@ -102,6 +104,7 @@ filterMentees() {
         mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) ||
         (mentee.firstName ? mentee.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
         (mentee.lastName ? mentee.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+        (mentee.age ? String(mentee.age).includes(this.state.search.toLowerCase()) : false) ||
         (mentee.requiredSupport ? mentee.requiredSupport.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
         (mentee.nationality ? mentee.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.keyPersonalityTraits ? mentee.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
@@ -109,13 +112,28 @@ filterMentees() {
         (mentee.businessDescription ? mentee.businessDescription.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.yearsOfOperation ? mentee.yearsOfOperation.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
         (mentee.website ? mentee.website.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-        (mentee.sector ? mentee.sector.toLowerCase().includes(this.state.search.toLowerCase()) : false) 
+        (mentee.sector ? mentee.sector.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+        (mentee.availableFromDate ? mentee.availableFromDate.includes(this.state.search.toLowerCase()) : false)
         )
       });
     } 
-    
-  
+}
+deleteMentee = (event) => {
+  console.log('event:', event)
+  axios.delete(`/api/deutschconnect/mentee-list/${event}`)
+    .then( response => {
+      console.log('the response', response)
+      // we want to redirect to the projects list
 
+      //filter doesnt mutate the state
+      this.setState({
+        allMentees: this.state.allMentees.filter( m => m._id !== response.data._id )
+      })
+      this.props.history.push('/deutschconnect/mentee-list')
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 
@@ -141,6 +159,7 @@ filterMentees() {
                 }}>
               Create Mentorship for Mentee
               </Link>
+              <button onClick={() => {this.deleteMentee(mentee._id)}}>Delete Mentee and corresponding Mentorships from Database</button>
               <MenteeDetailDC
                 mentee = {mentee}
                 {...this.props} 

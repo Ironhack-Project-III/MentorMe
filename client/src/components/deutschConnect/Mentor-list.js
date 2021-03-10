@@ -9,9 +9,7 @@ state = {
   user: this.props.user,
   allMentors: null,
   error: null,
-  search: '',
-  availableCheckBox: false,
-  activeCheckBox: false
+  search: ''
 }
 
 componentDidMount() {
@@ -48,22 +46,42 @@ filterMentors() {
 
 return this.state.allMentors.filter((mentor) => {
     console.log(mentor.availableForNewMentorship, 'check Mentor')
-    return (   
-    //(this.state.activeCheckBox ? mentor.activelyMentoring : true) &&
-    (this.state.availableCheckBox ? mentor.availableForNewMentorship: true) &&
-    mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) || 
-    (mentor.firstName ? mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false)
-    // (mentor.lastName ? mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    // (mentor.age ? mentor.age.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    // (mentor.nationality ? mentor.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    // (mentor.experience ? mentor.experience.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    // (mentor.industryExpertise ? mentor.industryExpertise.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-    // (mentor.keySkills ? mentor.keySkills.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-    // (mentor.keyPersonalityTraits ? mentor.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false)
+    return (
+    String(mentor.activelyMentoring).toLowerCase().includes(this.state.search.toLowerCase()) ||
+    String(mentor.availableForNewMentorship).toLowerCase().includes(this.state.search.toLowerCase()) ||
+    (mentor.username ? mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) : false)   ||
+    (mentor.firstName ? mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.lastName ? mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.age ? String(mentor.age).includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.nationality ? mentor.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.experience ? mentor.experience.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.industryExpertise ? mentor.industryExpertise.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.keySkills ? mentor.keySkills.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.keyPersonalityTraits ? mentor.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.availableFromDate ? mentor.availableFromDate.includes(this.state.search.toLowerCase()) : false)
     )
 });
 }
 
+deleteMentor = (event) => {
+  console.log('event:', event)
+  axios.delete(`/api/deutschconnect/mentor-list/${event}`)
+    .then( response => {
+      console.log('the response', response)
+
+      //filter doesnt mutate the state
+     
+      this.setState({
+        allMentors: this.state.allMentors.filter( m => m._id !== response.data._id )
+      })
+      
+
+      this.props.history.push('/deutschconnect/mentor-list')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
 
   render() {
 
@@ -73,6 +91,7 @@ return this.state.allMentors.filter((mentor) => {
       return <h3>Loading...</h3>  
     }
       const displayMentors = this.filterMentors();
+      //console.log('after filtered', displayMentors)
       const showMentors = displayMentors.map(mentor => {
         return (
           
@@ -80,6 +99,7 @@ return this.state.allMentors.filter((mentor) => {
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>Username: {mentor.username}</h3>
           <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
+          <button onClick={() => {this.deleteMentor(mentor._id)}}>Delete Mentor and corresponding Mentorships from Database</button>
           <MentorDetailDC
             mentor = {mentor}
             {...this.props} 
@@ -97,8 +117,6 @@ return this.state.allMentors.filter((mentor) => {
         <SearchBarMentors 
           setQuery={this.setQuery} 
           search={this.state.search}
-          availableCheckBox={this.state.availableCheckBox}
-          activeCheckBox={this.state.activeCheckBox}
         />
 
         {showMentors}

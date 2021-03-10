@@ -121,19 +121,40 @@ router.get('/deutschconnect/mentee-list', (req, res, next) => {
   })
 })
 
-//get all Mentorships for mentee-list to check already matched mentees
-// router.get('/deutschconnect/mentee-list', (req, res, next) => {
+//delete mentor and connected mentorships from database
+router.delete('/deutschconnect/mentor-list/:id', (req, res) => {
+  // delete the project
 
-//   Mentorship.find()
-//     .populate('mentor')
-//     .populate('mentee')
-//     .then(mentorship => {
-//       //console.log(mentorship, 'allMentorships')
-//       res.status(200).json(mentorship)
-//     })
-//     .catch(err => {
-//       next(err)
-//   })
-// })
+  Mentor.findByIdAndDelete(req.params.id)
+    .then(mentor => {
+      Mentorship.deleteMany({mentor: req.params.id})
+       .then(mentorships => {
+         console.log('check', mentorships)
+        res.status(200).json(mentor);
+       })
+        
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+//delete mentee and connected mentorships from database
+router.delete('/deutschconnect/mentee-list/:id', (req, res) => {
+  // delete the project
+
+  Mentee.findByIdAndDelete(req.params.id)
+    .then(mentee => {
+      Mentorship.deleteMany({mentee: req.params.id})
+       .then(mentorships => {
+         console.log('check', mentorships)
+        res.status(200).json(mentee);
+       })
+        
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 module.exports = router;
