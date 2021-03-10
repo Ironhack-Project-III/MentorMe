@@ -21,6 +21,16 @@ class SearchBarMentees extends React.Component {
                     onChange={this.handleChange}
                     id="searchBar"
                 />
+                <label htmlFor="checkBox">
+                    Only show not matched mentees
+                </label>
+                <input
+                    name="checkBox"
+                    checked={this.props.checkBox}
+                    type="checkbox"
+                    id="checkBox"
+                    onChange={this.handleChange}
+                />
             </div>
         )
     }
