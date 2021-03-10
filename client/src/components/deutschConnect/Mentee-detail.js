@@ -16,9 +16,10 @@ export default class MenteeDetailDC extends Component {
   
   render() {
 
-    const preferred = this.props.mentee.preferredMentors.map( (mentor) => {
+    const preferred = this.props.mentee.preferredMentors.map( (mentor, index) => {
       return (
-          <div>
+          <div key={mentor._id}>
+            <p> {index+1}.: </p>
             <p>Username: {mentor.username}</p>
             <p>First Name: {mentor.firstName}</p>
             <p>Last Name: {mentor.lastName}</p>

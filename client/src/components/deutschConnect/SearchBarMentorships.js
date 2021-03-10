@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SearchBarMentees extends React.Component {
+class SearchBarMentorships extends React.Component {
 
     handleChange = event => {
         const target = event.target;
@@ -22,19 +22,10 @@ class SearchBarMentees extends React.Component {
                     id="searchBar"
                     placeholder="Enter Keyword.."
                 />
-                <label htmlFor="checkBox">
-                    Only show not matched mentees
-                </label>
-                <input
-                    name="checkBox"
-                    checked={this.props.checkBox}
-                    type="checkbox"
-                    id="checkBox"
-                    onChange={this.handleChange}
-                />
+
             </div>
         )
     }
 }
 
-export default SearchBarMentees;
+export default SearchBarMentorships;

@@ -1,36 +1,40 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import EditMentorship from './EditMentorship'
+import SearchBarMentorships from './SearchBarMentorships'
 //import { v4 as uuid } from "uuid";
 
 export default class MentorshipOverview extends Component {
   state = {
     allMentorships: null,
-    error: null
+    error: null,
+    search: ''
   }
 
   componentDidMount() {
     this.getMentorships();
   }
+
+
+  getMentorships = async () => {
+    try {
+      let request = await axios.get(`/api/deutschconnect/mentorships-overview`)
+      let response = await request
+      console.log(response.data)
+      this.setState({
+        allMentorships: response.data
+      })
   
-  getMentorships = () => {
-    axios.get(`/api/deutschconnect/mentorships-overview`)
-      .then(response => {
-        //console.log(response, 'the response')
-        this.setState({
-          allMentorships: response.data
-        })
-      })
-      .catch(err => {
-        //console.log(err.response)
-        if (err.response.status === 404) {
-          // we have a 404 error
-          this.setState({
-            error: 'Not found 🤷🏽‍♀️ 🤷🏾'
-          })
-        }
-      })
+      } catch(err) {
+        console.log(err)
+      }
     }
+  
+  setQuery = (name, value) => {
+      this.setState(() => ({
+          [name]: value
+        }));
+    };
 
     deleteMentorship = (event) => {
       console.log('event:', event)
@@ -73,13 +77,38 @@ export default class MentorshipOverview extends Component {
           this.props.history.push(`/deutschconnect/mentorships-overview/`)
         })
     }  
+
+setQuery = (name, value) => {
+  this.setState({
+      [name]: value
+    });
+};
+  
+filterMentorships() {
+return this.state.allMentorships.filter((mentorship) => {
+    return (
+      (mentorship.mentor.username ? mentorship.mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.mentor.firstName ? mentorship.mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.mentor.lastName ? mentorship.mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.mentee.username ? mentorship.mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) : false)   ||
+      (mentorship.mentee.firstName ? mentorship.mentee.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.mentee.lastName ? mentorship.mentee.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.startDate ? mentorship.startDate.includes(this.state.search.toLowerCase()) : false) ||
+      (mentorship.endDate ? mentorship.endDate.includes(this.state.search.toLowerCase()) : false)
+    )
+});
+}
   
 render() {
   let mentorshipProfiles;
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
   } else {
-    mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
+    console.log('testtest', this.state.allMentorships )
+
+    const displayMentorships = this.filterMentorships();
+
+    mentorshipProfiles = displayMentorships.map((mentorship, index) => {
       //mentorship.id = uuid();
       return (
         <div key={index}>
@@ -106,7 +135,10 @@ render() {
     <div>
       {console.log('test')}
       <h1>Mentorship Overview</h1>
-
+      <SearchBarMentorships
+          setQuery={this.setQuery} 
+          search={this.state.search}
+      />
         {mentorshipProfiles}
 
     </div>
