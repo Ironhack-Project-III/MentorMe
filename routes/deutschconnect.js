@@ -92,11 +92,23 @@ router.put('/deutschconnect/mentorships-overview/:id', (req, res, next) => {
 });
 
 //get all Mentors for mentor-list
-//get all mentors
+
 router.get('/deutschconnect/mentor-list', (req, res, next) => {
   Mentor.find()
     .then(mentor => {
       res.status(200).json(mentor)
+    })
+    .catch(err => {
+      next(err)
+  })
+})
+
+//get all Mentees for mentee-list
+
+router.get('/deutschconnect/mentee-list', (req, res, next) => {
+  Mentee.find()
+    .then(mentee => {
+      res.status(200).json(mentee)
     })
     .catch(err => {
       next(err)

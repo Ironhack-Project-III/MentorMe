@@ -1,12 +1,6 @@
 import React from 'react';
 
-{/* <SearchBar 
-setQuery={this.setQuery} 
-search={this.state.search} 
-checkBox={this.state.checkBox}
-/> */}
-
-class SearchBar extends React.Component {
+class SearchBarMentors extends React.Component {
 
     handleChange = event => {
         const target = event.target;
@@ -53,4 +47,4 @@ class SearchBar extends React.Component {
     }
 }
 
-export default SearchBar;
+export default SearchBarMentors;

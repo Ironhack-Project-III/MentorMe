@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import MentorDetail from './Mentor-detail'
-import SearchBar from './SearchBar'
+import MentorDetailDC from './Mentor-detail'
+import SearchBarMentors from './SearchBarMentors'
 
 export default class MentorListDC extends Component {
 
@@ -9,7 +9,6 @@ state = {
   user: this.props.user,
   allMentors: null,
   error: null,
-  detailView: null,
   search: '',
   availableCheckBox: false,
   activeCheckBox: false
@@ -78,7 +77,7 @@ return this.state.allMentors.filter((mentor) => {
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
           <h3>Username: {mentor.username}</h3>
           <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
-          <MentorDetail
+          <MentorDetailDC
             mentor = {mentor}
             {...this.props} 
           />
@@ -92,7 +91,7 @@ return this.state.allMentors.filter((mentor) => {
       
       <div>
         <h1>Mentor Overview</h1>
-        <SearchBar 
+        <SearchBarMentors 
           setQuery={this.setQuery} 
           search={this.state.search}
           availableCheckBox={this.state.availableCheckBox}
