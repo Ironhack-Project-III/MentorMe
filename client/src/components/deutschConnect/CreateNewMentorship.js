@@ -32,27 +32,6 @@ export default class CreateNewMentorship extends Component {
       } catch(err) {
         console.log(err)
       }
-
-    // axios.get(`/api/deutschconnect/mentorship-create`)
-    //   .then(response => {
-    //     console.log(response.data.mentors)
-
-    //     const mentorArray = response.data.mentors.map(mentor => mentor)
-    //     console.log(mentorArray)
-
-    //     this.setState({
-    //       mentor: mentorArray
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log(err.response)
-    //     if (err.response.status === 404) {
-    //       // we have a 404 error
-    //       this.setState({
-    //         error: 'Not found 🤷🏽‍♀️ 🤷🏾'
-    //       })
-    //     }
-    //   })
     }
   
   handleChange = (event) => {

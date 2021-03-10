@@ -16,7 +16,17 @@ export default class MenteeDetailDC extends Component {
   
   render() {
 
-    const preferred = this.props.mentee.preferredMentors.map( mentor => mentor)
+    const preferred = this.props.mentee.preferredMentors.map( (mentor) => {
+      return (
+          <div>
+            <p>Username: {mentor.username}</p>
+            <p>First Name: {mentor.firstName}</p>
+            <p>Last Name: {mentor.lastName}</p>
+          </div>
+      )
+    })
+    
+    console.log(preferred)
     return (
       <div>
          <button onClick={this.detailView}>Details</button>
@@ -24,7 +34,7 @@ export default class MenteeDetailDC extends Component {
           <>
           <p>Active Mentorship? {this.props.mentee.activeMentorship}</p>
           <p>Available From Date: {this.props.mentee.availableFromDate}</p>
-          <p>Preferred Mentors: {preferred}</p>
+          <h4>Preferred Mentors:</h4> {preferred}
           <p>Required Support: {this.props.mentee.requiredSupport}</p>
           <p>Age: {this.props.mentee.age}</p>
           <p>Nationality: {this.props.mentee.nationality}</p>
