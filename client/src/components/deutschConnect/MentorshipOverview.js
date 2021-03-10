@@ -64,7 +64,6 @@ export default class MentorshipOverview extends Component {
 
           this.state.allMentorships.map(m => {
             if (m._id === response.data._id){
-              
               m.startDate = response.data.startDate
               m.endDate = response.data.endDate
               console.log(m.startDate)
@@ -75,7 +74,6 @@ export default class MentorshipOverview extends Component {
         })
     }  
   
-
 render() {
   let mentorshipProfiles;
   if (this.state.allMentorships === null) {

@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import MentorDetailDC from './Mentor-detail'
+import SearchBarMentors from './SearchBarMentors'
 
 export default class MentorListDC extends Component {
 
 state = {
   user: this.props.user,
   allMentors: null,
-  // preferredMentors: [],
-  error: null
+  error: null,
+  search: '',
+  availableCheckBox: false,
+  activeCheckBox: false
 }
 
 componentDidMount() {
   this.getMentors();
-  // this.setState({
-  //   preferredMentors: this.props.user.preferredMentors
-  // })
-  // this.state.prefferedMentors = this.props.user.prefferedMentors
 }
 
 getMentors = () => {
@@ -37,27 +37,68 @@ getMentors = () => {
     })
   }
 
+setQuery = (name, value) => {
+    this.setState(() => ({
+        [name]: value
+      }));
+  };
+
+filterMentors() {
+return this.state.allMentors.filter((mentor) => {
+    return (  
+    mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) && 
+    (this.state.availableCheckBox ? mentor.availableForNewMentorship : true) &&
+    (this.state.activeCheckBox ? mentor.activelyMentoring : true) ||
+    (mentor.firstName ? mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.lastName ? mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.age ? mentor.age.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.nationality ? mentor.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.experience ? mentor.experience.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    (mentor.industryExpertise ? mentor.industryExpertise.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.keySkills ? mentor.keySkills.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    (mentor.keyPersonalityTraits ? mentor.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false)
+    )
+});
+}
+
+
   render() {
-    console.log(this.props.user)
-    console.log(this.state)
+
+    
+
     if (this.state.allMentors === null) {
-      return <h3>Loading...</h3>
-      
-    } return (
-      
-      <div>
-      <h1>Mentor Overview</h1>
-      {this.state.allMentors.map(mentor => {
+      return <h3>Loading...</h3>  
+    }
+      const displayMentors = this.filterMentors();
+      const showMentors = displayMentors.map(mentor => {
         return (
           
           <div key = {mentor._id}> 
           <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
-          <h3>{mentor.username}</h3>
-          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
+          <h3>Username: {mentor.username}</h3>
+          <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
+          <MentorDetailDC
+            mentor = {mentor}
+            {...this.props} 
+          />
           </div>
 
         )
-      })}
+      })
+    
+    
+    return (
+      
+      <div>
+        <h1>Mentor Overview</h1>
+        <SearchBarMentors 
+          setQuery={this.setQuery} 
+          search={this.state.search}
+          availableCheckBox={this.state.availableCheckBox}
+          activeCheckBox={this.state.activeCheckBox}
+        />
+
+        {showMentors}
 
       </div>
 
