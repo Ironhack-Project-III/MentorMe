@@ -146,20 +146,23 @@ router.get('/mentee/my-mentorship/:id', (req, res, next) => {
 })
 
 router.put('/mentee/my-mentorship/:id', (req, res, next) => {
-  const {newMessage} = req.body
+  console.log(req.body)
+  const {newMessage, author} = req.body
   const id = req.params.id
 
-  Mentorship.findByIdAndUpdate(id, {$push:{messages: newMessage}})
-    .populate('mentor')
-    .populate('mentee')
-    .then(mentorship => {
-      console.log(mentorship, 'allMentorships')
-      res.status(200).json(mentorship)
+  Mentorship.findByIdAndUpdate(id, {$push: {messages: {message: newMessage, author: author}}})
+    // .populate('mentor')
+    // .populate('mentee')
+    .then(() => {
+      Mentorship.find()
+      .populate('mentor')
+      .populate('mentee')
+      .then((allMentorships) => res.send(allMentorships))      // console.log(mentorship, 'allMentorships')
+      // res.status(200).json(mentorship)
     })
     .catch(err => {
       next(err)
   })
 })
 
-
-module.exports = router;  
+module.exports = router;
