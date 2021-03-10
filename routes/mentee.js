@@ -156,11 +156,15 @@ router.put('/mentee/my-mentorship/:id', (req, res, next) => {
     // .populate('mentor')
     // .populate('mentee')
     .then(() => {
-      Mentorship.find()
+      console.log(author, 'author')
+      Mentorship.find({mentee: author})
       .populate('mentor')
       .populate('mentee')
-      .then((allMentorships) => res.send(allMentorships))      // console.log(mentorship, 'allMentorships')
-      // res.status(200).json(mentorship)
+      .then((allMentorships) => {
+        console.log(allMentorships, 'backend')
+        res.status(200).json(allMentorships)
+      })      // console.log(mentorship, 'allMentorships')
+      //res.status(200).json(mentorship)
     })
     .catch(err => {
       next(err)
