@@ -58,7 +58,7 @@ checkNotMatchedMentees () {
             matchedMentees: helperArray1
           })
         }
-
+        return;
       })
     })
     
@@ -70,6 +70,7 @@ checkNotMatchedMentees () {
           notMatchedMentees: helperArray2
         })
       }
+      return;
     })
   }
 

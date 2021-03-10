@@ -72,7 +72,7 @@ export default class MentorshipOverview extends Component {
               m.endDate = response.data.endDate
               console.log(m.startDate)
             }
-              
+            return;
         })
           this.props.history.push(`/deutschconnect/mentorships-overview/`)
         })
