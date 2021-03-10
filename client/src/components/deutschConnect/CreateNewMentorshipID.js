@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-//import { v4 as uuid } from "uuid";
 
-export default class CreateNewMentorship extends Component {
+export default class CreateNewMentorshipID extends Component {
   
   state = {
     mentorProfiles:'',
@@ -36,13 +35,12 @@ export default class CreateNewMentorship extends Component {
   
   handleChange = (event) => {
     const { name, value } = event.target;
-    //console.log(name, value, "name&value at hadnleChange")
     this.setState({ 
         [name]: value 
     });
   };
 
-handleSubmit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const {
       mentor,
@@ -70,9 +68,11 @@ handleSubmit = (event) => {
         .catch((err) => console.log(err));
 };
   
+  
   render() {
     let mentorOptions;
     let menteeOptions;
+    console.log(this.props.location.state.mentee)
    
     if (this.state.mentorProfiles=== '' || this.state.menteeProfiles=== '') {
       return <h3>Loading...</h3>
@@ -83,20 +83,34 @@ handleSubmit = (event) => {
         return <option key={index} value={mentor._id}>{mentor.username}</option>
       })
     //  console.log(this.state.menteeProfiles)
-      menteeOptions = this.state.menteeProfiles.map((mentee, index) => {
+      menteeOptions = this.state.menteeProfiles.map((menteeProfile, index) => {
         //mentee.id = uuid();
-        return <option key={index} value={mentee._id}>{mentee.username}</option>
+            return <option key={index} value={menteeProfile._id}>{menteeProfile.username}</option>
       })
     }
    
-    // const mentorRole = this.state.mentor.map(mentor => mentor.role) //this is not a function, why?
-    // {console.log('MentorYes', mentorRole)} //cannot use .firstName, why? //parse whole profile?
-    //how can I best get all mentors in select and save them back as selected?+
+    const preferred = this.props.location.state.mentee.preferredMentors.map( (mentor, index) => {
+      return (
+          <div key={mentor._id}>
+            <p> {index+1}.: </p>
+            <p>Username: {mentor.username}</p>
+            <p>First Name: {mentor.firstName}</p>
+            <p>Last Name: {mentor.lastName}</p>
+          </div>
+      )
+    })
+
     return (
       
       <div>
         <h1>Create New Mentorship</h1>
         
+        <h2>Mentee:</h2>
+          <p>Username:{this.props.location.state.mentee.username}</p>
+          <p>First Name:{this.props.location.state.mentee.firstName}</p>  
+          <p>Last Name:{this.props.location.state.mentee.lastName}</p>  
+        <h2>Preferred Mentors by Mentee:</h2>
+        {preferred}
         <form onSubmit={this.handleSubmit}>
         <label htmlFor="mentor">Mentor:</label>
         <select 

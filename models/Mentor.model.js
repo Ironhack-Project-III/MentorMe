@@ -23,8 +23,14 @@ const mentorSchema = new Schema({
   industryExpertise: String,
   keySkills: String,
   keyPersonalityTraits: String,
-  availableForNewMentorship: Boolean,
-  activelyMentoring: Boolean,
+  availableForNewMentorship: {
+    type: Boolean,
+    default: true
+  },
+  activelyMentoring: {
+    type: Boolean,
+    default: true
+  },
   availableFromDate: String
 },
 {timestamps: true}

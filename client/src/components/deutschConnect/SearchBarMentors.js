@@ -20,28 +20,9 @@ class SearchBarMentors extends React.Component {
                     value={this.props.search}
                     onChange={this.handleChange}
                     id="searchBar"
-                />
-                <label htmlFor="availableCheckBox">
-                    Only show available mentors
-                </label>
-                <input
-                    name="availableCheckBox"
-                    checked={this.props.availableCheckBox}
-                    type="checkbox"
-                    id="availableCheckBox"
-                    onChange={this.handleChange}
+                    placeholder="Enter Keyword.."
                 />
 
-                <label htmlFor="activeCheckBox">
-                    Only show mentors in active mentorships
-                </label>
-                <input
-                    name="activeCheckBox"
-                    checked={this.props.activeCheckBox}
-                    type="checkbox"
-                    id="activeCheckBox"
-                    onChange={this.handleChange}
-                />
             </div>
         )
     }
