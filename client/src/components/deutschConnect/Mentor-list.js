@@ -38,25 +38,28 @@ getMentors = () => {
   }
 
 setQuery = (name, value) => {
-    this.setState(() => ({
+    console.log(name, value, 'check values')
+    this.setState({
         [name]: value
-      }));
+      });
   };
 
 filterMentors() {
+
 return this.state.allMentors.filter((mentor) => {
-    return (  
-    mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) && 
-    (this.state.availableCheckBox ? mentor.availableForNewMentorship : true) &&
-    (this.state.activeCheckBox ? mentor.activelyMentoring : true) ||
-    (mentor.firstName ? mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    (mentor.lastName ? mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    (mentor.age ? mentor.age.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    (mentor.nationality ? mentor.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    (mentor.experience ? mentor.experience.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
-    (mentor.industryExpertise ? mentor.industryExpertise.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-    (mentor.keySkills ? mentor.keySkills.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
-    (mentor.keyPersonalityTraits ? mentor.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false)
+    console.log(mentor.availableForNewMentorship, 'check Mentor')
+    return (   
+    //(this.state.activeCheckBox ? mentor.activelyMentoring : true) &&
+    (this.state.availableCheckBox ? mentor.availableForNewMentorship: true) &&
+    mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) || 
+    (mentor.firstName ? mentor.firstName.toLowerCase().includes(this.state.search.toLowerCase()) : false)
+    // (mentor.lastName ? mentor.lastName.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    // (mentor.age ? mentor.age.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    // (mentor.nationality ? mentor.nationality.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    // (mentor.experience ? mentor.experience.toLowerCase().includes(this.state.search.toLowerCase()) : false) || 
+    // (mentor.industryExpertise ? mentor.industryExpertise.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    // (mentor.keySkills ? mentor.keySkills.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
+    // (mentor.keyPersonalityTraits ? mentor.keyPersonalityTraits.toLowerCase().includes(this.state.search.toLowerCase()) : false)
     )
 });
 }
@@ -64,7 +67,7 @@ return this.state.allMentors.filter((mentor) => {
 
   render() {
 
-    
+    console.log('checkState', this.state)
 
     if (this.state.allMentors === null) {
       return <h3>Loading...</h3>  
