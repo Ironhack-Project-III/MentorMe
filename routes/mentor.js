@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Mentor = require('../models/Mentor.model');
+const Mentorship = require('../models/Mentorship.model')
 
 router.get('/mentor/profile/:id', (req, res, next) => {
   Mentor.findById(req.params.id)
@@ -61,7 +62,7 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
 
   router.get('/mentor/my-mentorship/:id', (req, res, next) => {
 
-    Mentorship.find({mentee: req.params.id})
+    Mentorship.find({mentor: req.params.id})
       .populate('mentor')
       .populate('mentee')
       .then(mentorship => {
