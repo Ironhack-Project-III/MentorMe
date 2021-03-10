@@ -83,10 +83,10 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
       // .populate('mentor')
       // .populate('mentee')
       .then(() => {
-        Mentorship.find()
+        Mentorship.find({mentor: author})
         .populate('mentor')
         .populate('mentee')
-        .then((allMentorships) => res.send(allMentorships))      // console.log(mentorship, 'allMentorships')
+        .then((allMentorships) => res.status(200).json(allMentorships))      // console.log(mentorship, 'allMentorships')
         // res.status(200).json(mentorship)
       })
       .catch(err => {

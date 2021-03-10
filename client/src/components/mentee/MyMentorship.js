@@ -93,8 +93,8 @@ render() {
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
   } else {
+    console.log(this.props.user._id)
     mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
-      //mentorship.id = uuid();
       return (
         
         <div key={index}>
