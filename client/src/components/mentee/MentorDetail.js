@@ -24,6 +24,7 @@ export default class MentorDetail extends Component {
           <p>Industry Expertise: {this.props.mentor.industryExpertise}</p>
           <p>Experience: {this.props.mentor.experience}</p>
           <p>Key Skills: {this.props.mentor.keySkills}</p>
+          <p>Available From Date: {this.props.mentor.availableFromDate}</p>
           </>
         )} 
       </div>

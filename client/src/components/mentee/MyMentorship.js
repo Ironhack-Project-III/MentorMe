@@ -105,9 +105,7 @@ render() {
           <p>Duration: {mentorship.startDate} - {mentorship.endDate}</p>
           <p>Confirmed: {String(mentorship.confirmed)}</p>
           <p>Messages:</p> 
-          { mentorship.messages.map(message => {  
-
-            {/* return <p>{message.message}</p>  */}
+          { mentorship.messages.map(message => {
 
             return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
 

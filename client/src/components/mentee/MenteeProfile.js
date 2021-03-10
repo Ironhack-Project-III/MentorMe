@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import EditMenteeProfile from './EditMenteeProfile'
-import { Redirect, Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class MenteeProfile extends Component {
   
