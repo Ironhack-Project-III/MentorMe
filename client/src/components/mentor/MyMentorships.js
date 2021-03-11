@@ -103,7 +103,7 @@ render() {
   let mentorshipProfiles;
 
   if (this.state.allMentorships === null) {
-    return <h3>Loading...</h3>
+    return <h2>Loading...</h2>
   } 
     mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
       //mentorship.id = uuid();
@@ -135,8 +135,9 @@ render() {
           <div className="mentorship-information-category"> Industry Expertise:</div> <div className="mentorship-information-content"> {mentorship.mentor.industryExpertise} </div>
           <div className="mentorship-information-category"> Key Skills:</div> <div className="mentorship-information-content"> {mentorship.mentor.keySkills} </div>
           <br></br>
-
-          <button onClick={this.detailView}>See Or Send Messages</button>
+          <div className="button-container">
+          <button className = "form-button"  onClick={this.detailView}>Messaging</button>
+          </div>
 
         {this.state.detailView && (
           <div>
@@ -158,8 +159,9 @@ render() {
             </div>
             <form onSubmit={this.sendMessage}>
             
-            <label htmlFor="message"></label>
+            <label  htmlFor="message"></label>
             <input
+              className = "profile-information-content-update"
               type="text"
               id="message"
               name="message"
@@ -172,7 +174,9 @@ render() {
             value={mentorship._id}
             style={{display: "none"}}
             />
-            <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
+            <div className="button-container">
+            <button className = "form-button" type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send </button>
+            </div>
             </form>
           </div>
         )}
@@ -191,7 +195,7 @@ render() {
   
   
   return (
-    <div>
+    <div className="body">
       
       <h1>Mentorship Overview</h1>
 
