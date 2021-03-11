@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import MenteeDetailDC from './Mentee-detail'
 import SearchBarMentees from './SearchBarMentees'
+import './DC.css';
 
 export default class MenteeListDC extends Component {
 
@@ -160,23 +161,30 @@ deleteMentee = (event) => {
             showMentees = displayMentees.map(mentee => {
               return (
                 
-                <div key = {mentee._id}> 
-                <img style = {{width: "200px"}} src={mentee.imgPath} alt="userPhoto"/>
-                <h3>Username: {mentee.username}</h3>
-                <h3>Name (first name, last name): {mentee.firstName}, {mentee.lastName}</h3>
-                <Link to={{
-                  pathname: `/deutschconnect/mentorship-create/${mentee._id}`,
-                  state: {
-                    mentee: mentee
-                  }
-                  }}>
-                Create Mentorship for Mentee
-                </Link>
-                <button onClick={() => {this.deleteMentee(mentee._id)}}>Delete Mentee and corresponding Mentorships from Database</button>
-                <MenteeDetailDC
-                  mentee = {mentee}
-                  {...this.props} 
-                />
+                <div key = {mentee._id} className="mentorship-information"> 
+                  <img className="profile-picture" style={{alignSelf:"center"}} src={mentee.imgPath} alt="userPhoto"/>
+                  <br></br>
+                  <div className="mentorship-information-category">Username</div> <div className="mentorship-information-content">{mentee.username}</div>
+                  <div className="mentorship-information-category">Name (first name, last name)</div> <div className="mentorship-information-content">{mentee.firstName}, {mentee.lastName}</div>
+                  <div className="button-container">
+                    <Link to={{
+                      pathname: `/deutschconnect/mentorship-create/${mentee._id}`,
+                      state: {
+                        mentee: mentee
+                      }
+                      }}
+                      className="button button-text">
+                    Match Mentor
+                    </Link>
+                  </div>
+                 
+                  <MenteeDetailDC
+                    mentee = {mentee}
+                    {...this.props} 
+                  />
+                  <div className="button-container">
+                    <button className="form-button" style={{width:"200px"}} onClick={() => {this.deleteMentee(mentee._id)}}>Delete Mentee and its Mentorships</button>
+                  </div>
                 </div>
               )
             })
@@ -185,7 +193,7 @@ deleteMentee = (event) => {
 
     return (
       
-      <div>
+      <div className="body">
         <h1>Mentee Overview</h1>
         <SearchBarMentees 
           setQuery={this.setQuery} 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './DC.css';
 
 export default class MenteeDetailDC extends Component {
   
@@ -19,34 +20,39 @@ export default class MenteeDetailDC extends Component {
     const preferred = this.props.mentee.preferredMentors.map( (mentor, index) => {
       return (
           <div key={mentor._id}>
-            <p> {index+1}.: </p>
-            <p>Username: {mentor.username}</p>
-            <p>First Name: {mentor.firstName}</p>
-            <p>Last Name: {mentor.lastName}</p>
+            <p className="num"> {index+1}. </p>
+            <div className="mentorship-information-category">Username </div><div className="mentorship-information-content">{mentor.username}</div>
+            <div className="mentorship-information-category">First Name</div> <div className="mentorship-information-content">{mentor.firstName}</div>
+            <div className="mentorship-information-category">Last Name</div> <div className="mentorship-information-content">{mentor.lastName}</div>
+            <p>----</p>
           </div>
       )
     })
     
     //console.log(preferred)
     return (
-      <div>
-         <button onClick={this.detailView}>Details</button>
+      <div className="details-body">
+          <div className="button-container">
+            <button className="form-button" onClick={this.detailView}>Details</button>
+          </div>
          {this.state.detailView && (
-          <>
-          <p>Active Mentorship? {this.props.mentee.activeMentorship}</p>
-          <p>Available From Date: {this.props.mentee.availableFromDate}</p>
-          <h4>Preferred Mentors:</h4> {preferred}
-          <p>Required Support: {this.props.mentee.requiredSupport}</p>
-          <p>Age: {this.props.mentee.age}</p>
-          <p>Nationality: {this.props.mentee.nationality}</p>
-          <p>Contact Details: {this.props.mentee.contactDetails}</p>
-          <p>Key Personality Traits: {this.props.mentee.keyPersonalityTraits}</p>
-          <p>Business Name: {this.props.mentee.businessName}</p>
-          <p>Business Description: {this.props.mentee.businessDescription}</p>
-          <p>Years Of Operation: {this.props.mentee.yearsOfOperation}</p>
-          <p>Business Website: {this.props.mentee.website}</p>
-          <p>Sector: {this.props.mentee.sector}</p>
-          </>
+          <div className="mentorship-information">
+            <p>Active Mentorship? {this.props.mentee.activeMentorship}</p>
+            <p>Available From Date: {this.props.mentee.availableFromDate}</p>
+            <div className="mentors-preferred">
+              <h3>Preferred Mentors</h3> {preferred}
+            </div>
+            <p>Required Support: {this.props.mentee.requiredSupport}</p>
+            <p>Age: {this.props.mentee.age}</p>
+            <p>Nationality: {this.props.mentee.nationality}</p>
+            <p>Contact Details: {this.props.mentee.contactDetails}</p>
+            <p>Key Personality Traits: {this.props.mentee.keyPersonalityTraits}</p>
+            <p>Business Name: {this.props.mentee.businessName}</p>
+            <p>Business Description: {this.props.mentee.businessDescription}</p>
+            <p>Years Of Operation: {this.props.mentee.yearsOfOperation}</p>
+            <p>Business Website: {this.props.mentee.website}</p>
+            <p>Sector: {this.props.mentee.sector}</p>
+          </div>
         )} 
       </div>
     )

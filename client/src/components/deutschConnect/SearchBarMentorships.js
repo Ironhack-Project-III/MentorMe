@@ -1,4 +1,5 @@
 import React from 'react';
+import './DC.css';
 
 class SearchBarMentorships extends React.Component {
 
@@ -13,14 +14,13 @@ class SearchBarMentorships extends React.Component {
         return (
 
             <div> 
-                <label htmlFor="searchBar">Search</label>
-                <input
+                <input className="form-search"
                     type="text"
                     name="search"
                     value={this.props.search}
                     onChange={this.handleChange}
                     id="searchBar"
-                    placeholder="Enter Keyword.."
+                    placeholder="Search for keyword.."
                 />
 
             </div>
