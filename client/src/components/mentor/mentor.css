@@ -1,0 +1,42 @@
+.profile-picture {
+  width: 200px;
+  margin-top: 20px
+}
+
+.profile-information {
+  display:flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 20px;
+}
+
+.profile-information-category {
+  text-align: left;
+  font-size: 0.7rem
+
+}
+
+.profile-information-content {
+  text-align: left;
+  padding: 0 5px;
+  border: 2px solid #F87171;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center
+}
+
+.button {
+  background-color: #F87171;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+}
+
+.button-text {
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.7rem
+}

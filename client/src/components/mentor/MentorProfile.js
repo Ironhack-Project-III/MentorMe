@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-
+import '../../App.css';
+import './mentor.css'
 
 
 
@@ -46,27 +47,36 @@ export default class MentorProfile extends Component {
       
       <div>
         <h1>Your Mentor Profile</h1>
+        
+        <img className='profile-picture'src={this.state.mentorProfile.imgPath} alt="userPhoto"/>
+        
+        <div className="profile-information">
+        <div className="profile-information-category"> Username</div> <div className="profile-information-content"> {this.props.user.username} </div>
+        <div className="profile-information-category"> First Name </div> <div className="profile-information-content">{this.state.mentorProfile.firstName}</div>
+        <div className="profile-information-category"> Last Name</div> <div className="profile-information-content"> {this.state.mentorProfile.lastName}</div>
+        <div className="profile-information-category"> Age:</div> <div className="profile-information-content"> {this.state.mentorProfile.age}</div>
+        <div className="profile-information-category"> Nationality</div> <div className="profile-information-content"> {this.state.mentorProfile.nationality}</div>
+        <div className="profile-information-category"> Contact Details </div> <div className="profile-information-content">{this.state.mentorProfile.contactDetails}</div>
+        <div className="profile-information-category"> Industry Expertise </div> <div className="profile-information-content">{this.state.mentorProfile.industryExpertise}</div>
+        <div className="profile-information-category"> Experience </div> <div className="profile-information-content">{this.state.mentorProfile.experience}</div>
+        <div className="profile-information-category"> Key Skills</div> <div className="profile-information-content"> {this.state.mentorProfile.keySkills}</div>
+        <div className="profile-information-category"> Your Key Personality Traits </div> <div className="profile-information-content">{this.state.mentorProfile.keyPersonalityTraits}</div>
+        <div className="profile-information-category"> Are You Available For A New Mentorship? </div> <div className="profile-information-content">{String(this.state.mentorProfile.availableForNewMentorship)}</div>
+        <div className="profile-information-category"> Do Have Active Mentorships At The Moment? </div> <div className="profile-information-content">{String(this.state.mentorProfile.activelyMentoring)}</div>
+        <div className="profile-information-category"> From When On Will You Be Available For A New Mentorship?</div> <div className="profile-information-content"> {this.state.mentorProfile.availableFromDate}</div>
+        </div>
 
-        <img src={this.state.mentorProfile.imgPath} alt="userPhoto"/>
-        <p>Username: {this.props.user.username}</p> 
-        <p>First Name: {this.state.mentorProfile.firstName}</p>
-        <p>Last Name: {this.state.mentorProfile.lastName}</p>
-        <p>Age: {this.state.mentorProfile.age}</p>
-        <p>Nationality: {this.state.mentorProfile.nationality}</p>
-        <p>Contact Details: {this.state.mentorProfile.contactDetails}</p>
-        <p>Industry Expertise: {this.state.mentorProfile.industryExpertise}</p>
-        <p>Experience: {this.state.mentorProfile.experience}</p>
-        <p>Key Skills: {this.state.mentorProfile.keySkills}</p>
-        <p>Your Key Personality Traits: {this.state.mentorProfile.keyPersonalityTraits}</p>
-        <p>Are You Available For A New Mentorship? {String(this.state.mentorProfile.availableForNewMentorship)}</p>
-        <p>Do Have Active Mentorships At The Moment? {String(this.state.mentorProfile.activelyMentoring)}</p>
-        <p>From When On Will You Be Available For A New Mentorship? {this.state.mentorProfile.availableFromDate}</p>
+        <div className="button-container">
 
+        <div className="button">
       
-        <Link to={`/mentor/profile/${this.props.user._id}/edit`}>
-              Edit your Profile
-        </Link>
+          <Link className="button-text" to={`/mentor/profile/${this.props.user._id}/edit`}>
+                Edit your Profile
+          </Link>
 
+
+          </div>
+        </div>
       </div>
     )
   }
