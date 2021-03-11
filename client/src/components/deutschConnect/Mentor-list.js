@@ -19,13 +19,13 @@ componentDidMount() {
 getMentors = () => {
   axios.get(`/api/deutschconnect/mentor-list`)
     .then(response => {
-      console.log(response)
+      //console.log(response)
       this.setState({
         allMentors: response.data,
       })
     })
     .catch(err => {
-      console.log(err.response)
+      //console.log(err.response)
       if (err.response.status === 404) {
         // we have a 404 error
         this.setState({
@@ -36,16 +36,18 @@ getMentors = () => {
   }
 
 setQuery = (name, value) => {
-    console.log(name, value, 'check values')
+    //console.log(name, value, 'check values')
     this.setState({
         [name]: value
       });
   };
 
 filterMentors() {
-
+if (this.state.allMentors === null) {
+  return [];
+}
 return this.state.allMentors.filter((mentor) => {
-    console.log(mentor.availableForNewMentorship, 'check Mentor')
+    //console.log(mentor.availableForNewMentorship, 'check Mentor')
     return (
     String(mentor.activelyMentoring).toLowerCase().includes(this.state.search.toLowerCase()) ||
     String(mentor.availableForNewMentorship).toLowerCase().includes(this.state.search.toLowerCase()) ||
@@ -64,10 +66,10 @@ return this.state.allMentors.filter((mentor) => {
 }
 
 deleteMentor = (event) => {
-  console.log('event:', event)
+  //console.log('event:', event)
   axios.delete(`/api/deutschconnect/mentor-list/${event}`)
     .then( response => {
-      console.log('the response', response)
+      //console.log('the response', response)
 
       //filter doesnt mutate the state
      
@@ -84,31 +86,36 @@ deleteMentor = (event) => {
 }
 
   render() {
+    
+    //console.log('checkState', this.state)
 
-    console.log('checkState', this.state)
+    let showMentors;
 
     if (this.state.allMentors === null) {
       return <h3>Loading...</h3>  
     }
       const displayMentors = this.filterMentors();
-      //console.log('after filtered', displayMentors)
-      const showMentors = displayMentors.map(mentor => {
-        return (
-          
-          <div key = {mentor._id}> 
-          <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
-          <h3>Username: {mentor.username}</h3>
-          <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
-          <button onClick={() => {this.deleteMentor(mentor._id)}}>Delete Mentor and corresponding Mentorships from Database</button>
-          <MentorDetailDC
-            mentor = {mentor}
-            {...this.props} 
-          />
-          </div>
-
-        )
-      })
-    
+      //console.log(displayMentors)
+      if (displayMentors.length === 0) {
+        showMentors = <p>No Mentors</p>
+      } else {
+        showMentors = displayMentors.map(mentor => {
+          return (
+            
+            <div key = {mentor._id}> 
+            <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
+            <h3>Username: {mentor.username}</h3>
+            <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
+            <button onClick={() => {this.deleteMentor(mentor._id)}}>Delete Mentor and corresponding Mentorships from Database</button>
+            <MentorDetailDC
+              mentor = {mentor}
+              {...this.props} 
+            />
+            </div>
+  
+          )
+        })
+      }
     
     return (
       

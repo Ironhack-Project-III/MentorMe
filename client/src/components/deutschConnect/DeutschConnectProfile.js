@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class DeutschConnectProfile extends Component {
   render() {
-    console.log(this.props.user.username)
+    //console.log(this.props.user.username)
     return (
       
       <div>

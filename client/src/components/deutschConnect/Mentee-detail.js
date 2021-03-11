@@ -27,7 +27,7 @@ export default class MenteeDetailDC extends Component {
       )
     })
     
-    console.log(preferred)
+    //console.log(preferred)
     return (
       <div>
          <button onClick={this.detailView}>Details</button>

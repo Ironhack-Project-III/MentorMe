@@ -24,7 +24,7 @@ export default class EditMentorship extends Component {
   handleSubmit = (event, mentorshipId, startDate, endDate) => {
     event.preventDefault();
     this.props.handleSubmit(event, mentorshipId, startDate, endDate)
-    console.log('hello1', mentorshipId, startDate, endDate)
+    //console.log('hello1', mentorshipId, startDate, endDate)
   }  
 
   render() {

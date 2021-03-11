@@ -105,7 +105,7 @@ router.put('/mentee/profile/:id/edit', (req, res, next) => {
     imgPath
   } = req.body;
 
-  console.log('Step2', req.body)
+  //console.log('Step2', req.body)
 
   Mentee.findByIdAndUpdate(req.params.id, { 
     firstName,
@@ -139,7 +139,7 @@ router.get('/mentee/my-mentorship/:id', (req, res, next) => {
     .populate('mentor')
     .populate('mentee')
     .then(mentorship => {
-      console.log(mentorship, 'allMentorships')
+     //console.log(mentorship, 'allMentorships')
       res.status(200).json(mentorship)
     })
     .catch(err => {
@@ -148,7 +148,7 @@ router.get('/mentee/my-mentorship/:id', (req, res, next) => {
 })
 
 router.put('/mentee/my-mentorship/:id', (req, res, next) => {
-  console.log(req.body)
+  //console.log(req.body)
   const {newMessage, author} = req.body
   const id = req.params.id
 
@@ -156,12 +156,12 @@ router.put('/mentee/my-mentorship/:id', (req, res, next) => {
     // .populate('mentor')
     // .populate('mentee')
     .then(() => {
-      console.log(author, 'author')
+      //console.log(author, 'author')
       Mentorship.find({mentee: author})
       .populate('mentor')
       .populate('mentee')
       .then((allMentorships) => {
-        console.log(allMentorships, 'backend')
+        //console.log(allMentorships, 'backend')
         res.status(200).json(allMentorships)
       })      // console.log(mentorship, 'allMentorships')
       //res.status(200).json(mentorship)

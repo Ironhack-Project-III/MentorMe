@@ -72,7 +72,7 @@ export default class CreateNewMentorshipID extends Component {
   render() {
     let mentorOptions;
     let menteeOptions;
-    console.log(this.props.location.state.mentee)
+    //console.log(this.props.location.state.mentee)
    
     if (this.state.mentorProfiles=== '' || this.state.menteeProfiles=== '') {
       return <h3>Loading...</h3>

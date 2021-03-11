@@ -20,7 +20,7 @@ export default class MentorshipOverview extends Component {
     try {
       let request = await axios.get(`/api/deutschconnect/mentorships-overview`)
       let response = await request
-      console.log(response.data)
+      //console.log(response.data)
       this.setState({
         allMentorships: response.data
       })
@@ -37,10 +37,10 @@ export default class MentorshipOverview extends Component {
     };
 
     deleteMentorship = (event) => {
-      console.log('event:', event)
+      //console.log('event:', event)
       axios.delete(`/api/deutschconnect/mentorships-overview/${event}`)
         .then( response => {
-          console.log('the response', response)
+          //console.log('the response', response)
           // we want to redirect to the projects list
 
           //filter doesnt mutate the state
@@ -64,13 +64,13 @@ export default class MentorshipOverview extends Component {
           endDate: endDate
         })
         .then( response => {
-          console.log('frontend', response)
+          //console.log('frontend', response)
 
           this.state.allMentorships.map(m => {
             if (m._id === response.data._id){
               m.startDate = response.data.startDate
               m.endDate = response.data.endDate
-              console.log(m.startDate)
+              //console.log(m.startDate)
             }
             return;
         })
@@ -85,6 +85,9 @@ setQuery = (name, value) => {
 };
   
 filterMentorships() {
+if (this.state.allMentorships === null) {
+  return [];
+}
 return this.state.allMentorships.filter((mentorship) => {
     return (
       (mentorship.mentor.username ? mentorship.mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
@@ -103,11 +106,14 @@ render() {
   let mentorshipProfiles;
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
+  } 
+    //console.log('testtest', this.state.allMentorships )
+
+  const displayMentorships = this.filterMentorships();
+  //console.log(displayMentorships)
+  if (displayMentorships.length === 0) {
+    mentorshipProfiles = <p>No Mentorships yet, please create new</p>
   } else {
-    console.log('testtest', this.state.allMentorships )
-
-    const displayMentorships = this.filterMentorships();
-
     mentorshipProfiles = displayMentorships.map((mentorship, index) => {
       //mentorship.id = uuid();
       return (
@@ -131,9 +137,9 @@ render() {
   }
   
   
+  
   return (
     <div>
-      {console.log('test')}
       <h1>Mentorship Overview</h1>
       <SearchBarMentorships
           setQuery={this.setQuery} 

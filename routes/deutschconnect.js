@@ -60,7 +60,7 @@ router.post('/deutschconnect/mentorship-create', (req, res, next) => {
 router.delete('/deutschconnect/mentorships-overview/:id', (req, res) => {
   // delete the project
 
-  console.log('Mentorship tb deleted', req.params)
+  //console.log('Mentorship tb deleted', req.params)
   Mentorship.findByIdAndDelete(req.params.id)
     .then(mentorship => {
         res.status(200).json(mentorship);
@@ -72,7 +72,7 @@ router.delete('/deutschconnect/mentorships-overview/:id', (req, res) => {
 
 //update mentorship dates
 router.put('/deutschconnect/mentorships-overview/:id', (req, res, next) => {
-  console.log('backend', req.body)
+  //console.log('backend', req.body)
   const { 
     startDate,
     endDate
@@ -129,7 +129,7 @@ router.delete('/deutschconnect/mentor-list/:id', (req, res) => {
     .then(mentor => {
       Mentorship.deleteMany({mentor: req.params.id})
        .then(mentorships => {
-         console.log('check', mentorships)
+         //console.log('check', mentorships)
         res.status(200).json(mentor);
        })
         
@@ -147,7 +147,7 @@ router.delete('/deutschconnect/mentee-list/:id', (req, res) => {
     .then(mentee => {
       Mentorship.deleteMany({mentee: req.params.id})
        .then(mentorships => {
-         console.log('check', mentorships)
+         //console.log('check', mentorships)
         res.status(200).json(mentee);
        })
         
