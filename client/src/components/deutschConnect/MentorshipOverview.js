@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import EditMentorship from './EditMentorship'
 import SearchBarMentorships from './SearchBarMentorships'
+import './DC.css';
 //import { v4 as uuid } from "uuid";
 
 export default class MentorshipOverview extends Component {
@@ -117,14 +118,22 @@ render() {
     mentorshipProfiles = displayMentorships.map((mentorship, index) => {
       //mentorship.id = uuid();
       return (
-        <div key={index}>
-          <p>Mentorname: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
-          <p>Mentor username: {mentorship.mentor.username}</p>
-          <p>Menteename: {mentorship.mentee.firstName} {mentorship.mentee.lastName}</p>
-          <p>Mentee username: {mentorship.mentee.username}</p>
-          <p>{mentorship.startDate} - {mentorship.endDate}</p>
-          <p>Confirmed: {String(mentorship.confirmed)}</p>
-          <button onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete this Mentorship</button>
+        <div key={index} className="mentorship-information">
+          <div className="mentorship-information-category">Duration:</div> <div className="mentorship-information-content">{mentorship.startDate} - {mentorship.endDate}</div>
+          <div className="mentorship-information-category">Confirmed: </div><div className="mentorship-information-content">{String(mentorship.confirmed)}</div>
+          <br></br>
+          <h3>Mentor</h3>
+          <div className="mentorship-information-category">Name:</div> <div className="mentorship-information-content">{mentorship.mentor.firstName} {mentorship.mentor.lastName}</div>
+          <div className="mentorship-information-category">Username:</div> <div className="mentorship-information-content">{mentorship.mentor.username}</div>
+          <br></br>
+          <h3>Mentee</h3>
+          <div className="mentorship-information-category">Name:</div> <div className="mentorship-information-content">{mentorship.mentee.firstName} {mentorship.mentee.lastName}</div>
+          <div className="mentorship-information-category">Username:</div> <div className="mentorship-information-category">{mentorship.mentee.username}</div>
+          
+          <div className="button-container">
+            <button className="form-button" onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete</button>
+          </div>
+          
           <EditMentorship
             user={this.props.user}
             mentorship = {mentorship}
@@ -139,7 +148,7 @@ render() {
   
   
   return (
-    <div>
+    <div className="body">
       <h1>Mentorship Overview</h1>
       <SearchBarMentorships
           setQuery={this.setQuery} 

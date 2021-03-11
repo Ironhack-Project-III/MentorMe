@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './DC.css';
 
 export default class EditMentorship extends Component {
 
@@ -30,15 +31,15 @@ export default class EditMentorship extends Component {
   render() {
     
     return (
-      
       <div>
-        <button onClick={() => {this.toggleEditForm()}}>Change Dates?</button>
+        <div className="button-container">
+          <button className="form-button" onClick={() => {this.toggleEditForm()}}>Change Dates</button>
+        </div>
         {this.state.toggled ? 
         <div>
-          <p>Edit Mentorship</p>
-          <form onSubmit={(event) => this.handleSubmit(event, this.props.mentorship._id, this.state.startDate, this.state.endDate)}>
-            <label htmlFor="startDate">Start Date: </label>
-            <input
+          <form className="profile-information" onSubmit={(event) => this.handleSubmit(event, this.props.mentorship._id, this.state.startDate, this.state.endDate)}>
+            <label className="profile-information-category" htmlFor="startDate">Start Date: </label>
+            <input className="profile-information-content-update"
               type="date"
               id="startDate"
               name="startDate"
@@ -46,8 +47,8 @@ export default class EditMentorship extends Component {
               onChange={this.handleChange}
               >
             </input>
-            <label htmlFor="endDate">End Date: </label>
-            <input
+            <label className="profile-information-category" htmlFor="endDate">End Date: </label>
+            <input className="profile-information-content-update"
               type="date"
               id="endDate"
               name="endDate"
@@ -55,7 +56,9 @@ export default class EditMentorship extends Component {
               onChange={this.handleChange}
               >
             </input>
-            <button type='submit'>Update Dates</button>
+            <div className="button-container">
+              <button className="form-button" type='submit'>Update Dates</button>
+            </div>
           </form>
         </div>
          : '' }
