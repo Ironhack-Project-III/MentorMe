@@ -11,7 +11,7 @@ export default function StartEnd() {
     <Card.Body>
       <Card.Text>
       
-          Weclome to DeutschConnect MentorMe!
+          Welcome to DeutschConnect | MentorMe!
           <div className="button-container">
               <div className="button">
               <Link className = "button-text" to='/signup'>Signup
