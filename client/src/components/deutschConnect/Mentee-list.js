@@ -12,8 +12,8 @@ state = {
   allMentorships: '',
   error: null,
   search: '',
-  notMatchedMentees: null,
-  matchedMentees: null,
+  notMatchedMentees: '',
+  matchedMentees: '',
   checkBox: false
 }
 
@@ -62,9 +62,9 @@ checkNotMatchedMentees () {
         return;
       })
     })
-    
-    if (this.state.matchedMentees !== null) {
-      let helperArray2 = []
+    let helperArray2 = []
+    if (this.state.matchedMentees !== '') {
+     
       
       this.state.allMentees.map( (mentee) => {
         if (!this.state.matchedMentees.includes(mentee._id)) {
@@ -105,7 +105,7 @@ filterMentees() {
       });
     }
   
-    if (this.state.checkBox === true && this.state.notMatchedMentees !== null && this.state.allMentees !== '') {
+    if (this.state.checkBox === true && this.state.notMatchedMentees !== '' && this.state.allMentees !== '') {
       return this.state.notMatchedMentees.filter((mentee) => {
         return (  
         mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) ||
@@ -125,7 +125,7 @@ filterMentees() {
       });
     }
     
-    return null;
+    return '';
 }
 deleteMentee = (event) => {
   //console.log('event:', event)
