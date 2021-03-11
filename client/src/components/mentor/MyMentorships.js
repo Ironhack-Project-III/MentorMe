@@ -13,7 +13,8 @@ export default class MyMentorships extends Component {
     error: null,
     mentorshipId:"",
     authorId: "",
-    user: this.props.user._id
+    user: this.props.user._id,
+    detailView: false
   }
  
   componentDidMount() {
@@ -85,6 +86,18 @@ export default class MyMentorships extends Component {
         authorId: authorId
       })
     }
+
+    detailView = () => {
+      this.setState((prevState) => ({
+        detailView: !prevState.detailView
+      }))
+    }
+  
+    setQuery = (name, value) => {
+      this.setState({
+          [name]: value
+        });
+    };
   
 render() {
   let mentorshipProfiles;
@@ -120,38 +133,37 @@ render() {
           <p>Industry Expertise: {mentorship.mentor.industryExpertise}</p>
           <p>Key Skills: {mentorship.mentor.keySkills}</p>
           <br></br>
-          <h2>Messages:</h2> 
-          { mentorship.messages.map(message => {  
 
-            {/* return <p>{message.message}</p>  */}
+          <button onClick={this.detailView}>See Or Send Messages</button>
 
-            return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentee: ${message.message}`}</p>;
+        {this.state.detailView && (
+          <div>
+            <h2>Messages:</h2>
+            { mentorship.messages.map(message => {
+              return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentee: ${message.message}`}</p>;
+              })
+            }
+            <form onSubmit={this.sendMessage}>
+            
+            <label htmlFor="message"></label>
+            <input
+              type="text"
+              id="message"
+              name="message"
+              value={this.state.message}
+              onChange={this.handleChange}
+            />
+            <input
+            type="mentorship"
+            id="mentorship"
+            value={mentorship._id}
+            style={{display: "none"}}
+            />
+            <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
+            </form>
+          </div>
+        )}
 
-          })
-        }
-            {/* this.state.messages !== null ? 
-          this.state.messages.map(message => {
-              return (<p>{message}</p>)
-          }) :  */}
-         
-          <form onSubmit={this.sendMessage}>
-          
-          <label htmlFor="message"></label>
-          <input
-            type="text"
-            id="message"
-            name="message"
-            value={this.state.message}
-            onChange={this.handleChange}
-          />
-          <input
-          type="mentorship"
-          id="mentorship"
-          value={mentorship._id} 
-          style={{display: "none"}}
-          />
-          <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
-          </form>
           <p>-------</p>
         
         </div>

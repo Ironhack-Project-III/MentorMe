@@ -14,8 +14,7 @@ export default class MyMentorship extends Component {
     mentorshipId:"",
     authorId: "",
     user: this.props.user._id,
-    detailView: false,
-
+    detailView: false
   }
  
   componentDidMount() {
@@ -136,19 +135,17 @@ render() {
           <p>Website: {mentorship.mentee.website}</p>
           <p>Sector: {mentorship.mentee.sector}</p>
           <br></br>
+
           <button onClick={this.detailView}>See Or Send Messages</button>
           
           {this.state.detailView && (              
               <div>
                 <h2>Messages:</h2>
                 { mentorship.messages.map(message => {
-                  return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
-                })
-                            }
-                  {/* this.state.messages !== null ?
-                this.state.messages.map(message => {
-                    return (<p>{message}</p>)
-                }) :  */}
+                    return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
+                  })
+                }
+
                 <form onSubmit={this.sendMessage}>
                 
                 <label htmlFor="message"></label>
@@ -168,8 +165,9 @@ render() {
                 <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
                 </form>
               </div>
-              )}
-              <p>-------</p>
+          )}
+
+            <p>-------</p>
           </div>
           
       )
