@@ -45,25 +45,25 @@ export default class MentorProfile extends Component {
     }
     return (
       
-      <div className = "body">
+      <div className="body">
         <h2>Your Profile</h2>
         
         <img className='profile-picture'src={this.state.mentorProfile.imgPath} alt="userPhoto"/>
         
-        <div className="profile-information">
-        <div className="profile-information-category"> Username</div> <div className="profile-information-content"> {this.props.user.username} </div>
-        <div className="profile-information-category"> First Name </div> <div className="profile-information-content">{this.state.mentorProfile.firstName}</div>
-        <div className="profile-information-category"> Last Name</div> <div className="profile-information-content"> {this.state.mentorProfile.lastName}</div>
-        <div className="profile-information-category"> Age:</div> <div className="profile-information-content"> {this.state.mentorProfile.age}</div>
-        <div className="profile-information-category"> Nationality</div> <div className="profile-information-content"> {this.state.mentorProfile.nationality}</div>
-        <div className="profile-information-category"> Contact Details </div> <div className="profile-information-content">{this.state.mentorProfile.contactDetails}</div>
-        <div className="profile-information-category"> Industry Expertise </div> <div className="profile-information-content">{this.state.mentorProfile.industryExpertise}</div>
-        <div className="profile-information-category"> Experience </div> <div className="profile-information-content">{this.state.mentorProfile.experience}</div>
-        <div className="profile-information-category"> Key Skills</div> <div className="profile-information-content"> {this.state.mentorProfile.keySkills}</div>
-        <div className="profile-information-category"> Your Key Personality Traits </div> <div className="profile-information-content">{this.state.mentorProfile.keyPersonalityTraits}</div>
-        <div className="profile-information-category"> Are You Available For A New Mentorship? </div> <div className="profile-information-content">{String(this.state.mentorProfile.availableForNewMentorship)}</div>
-        <div className="profile-information-category"> Do Have Active Mentorships At The Moment? </div> <div className="profile-information-content">{String(this.state.mentorProfile.activelyMentoring)}</div>
-        <div className="profile-information-category"> From When On Will You Be Available For A New Mentorship?</div> <div className="profile-information-content"> {this.state.mentorProfile.availableFromDate}</div>
+        <div className="mentorship-information">
+        <div className="mentorship-information-category"> Username</div> <div className="mentorship-information-content"> {this.props.user.username} </div>
+        <div className="mentorship-information-category"> First Name </div> <div className="mentorship-information-content">{this.state.mentorProfile.firstName}</div>
+        <div className="mentorship-information-category"> Last Name</div> <div className="mentorship-information-content"> {this.state.mentorProfile.lastName}</div>
+        <div className="mentorship-information-category"> Age:</div> <div className="mentorship-information-content"> {this.state.mentorProfile.age}</div>
+        <div className="mentorship-information-category"> Nationality</div> <div className="mentorship-information-content"> {this.state.mentorProfile.nationality}</div>
+        <div className="mentorship-information-category"> Contact Details </div> <div className="mentorship-information-content">{this.state.mentorProfile.contactDetails}</div>
+        <div className="mentorship-information-category"> Industry Expertise </div> <div className="mentorship-information-content">{this.state.mentorProfile.industryExpertise}</div>
+        <div className="mentorship-information-category"> Experience </div> <div className="mentorship-information-content">{this.state.mentorProfile.experience}</div>
+        <div className="mentorship-information-category"> Key Skills</div> <div className="mentorship-information-content"> {this.state.mentorProfile.keySkills}</div>
+        <div className="mentorship-information-category"> Your Key Personality Traits </div> <div className="mentorship-information-content">{this.state.mentorProfile.keyPersonalityTraits}</div>
+        <div className="mentorship-information-category"> Are You Available For A New Mentorship? </div> <div className="mentorship-information-content">{String(this.state.mentorProfile.availableForNewMentorship)}</div>
+        <div className="mentorship-information-category"> Do Have Active Mentorships At The Moment? </div> <div className="mentorship-information-content">{String(this.state.mentorProfile.activelyMentoring)}</div>
+        <div className="mentorship-information-category"> From When On Will You Be Available For A New Mentorship?</div> <div className="mentorship-information-content"> {this.state.mentorProfile.availableFromDate}</div>
         </div>
 
         <div className="button-container">

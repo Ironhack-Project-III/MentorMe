@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import MentorDetail from './MentorDetail'
 import SearchBar from './SearchBar'
+import './mentee.css'
 
 export default class MentorList extends Component {
 
