@@ -181,12 +181,13 @@ app.use('/api', deutschconnect);
 app.use('/api', require('./routes/file-upload.routes'));
 
 
-// app.use(express.static(path.join(__dirname, "/client/build")));
+// app.js
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use((req, res) => {
-  
   // If no routes match, send them the React HTML.
-  //res.sendFile(__dirname + "/client/build/index.html");
+  res.sendFile(__dirname + "/client/build/index.html");
 });
 
 
