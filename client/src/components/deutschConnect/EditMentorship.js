@@ -45,8 +45,7 @@ export default class EditMentorship extends Component {
               name="startDate"
               value={this.state.startDate}
               onChange={this.handleChange}
-              >
-            </input>
+              />
             <label className="profile-information-category" htmlFor="endDate">End Date: </label>
             <input className="profile-information-content-update"
               type="date"
@@ -54,8 +53,7 @@ export default class EditMentorship extends Component {
               name="endDate"
               value={this.state.endDate}
               onChange={this.handleChange}
-              >
-            </input>
+              />
             <div className="button-container">
               <button className="form-button" type='submit'>Update Dates</button>
             </div>

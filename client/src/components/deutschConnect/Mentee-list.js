@@ -63,27 +63,32 @@ checkNotMatchedMentees () {
         return;
       })
     })
-    let helperArray2 = []
-    if (this.state.matchedMentees !== '') {
-     
+    let helperArray2 = []   
       
       this.state.allMentees.map( (mentee) => {
-        if (!this.state.matchedMentees.includes(mentee._id)) {
+        if (this.state.matchedMentees === '') {
           helperArray2.push(mentee)
           this.setState({
             notMatchedMentees: helperArray2
           })
         }
+        if (this.state.matchedMentees !== '') {
+          if (this.state.matchedMentees.includes(mentee._id) === false) {
+            helperArray2.push(mentee)
+            this.setState({
+              notMatchedMentees: helperArray2
+            })
+          }
+        }
+
         //console.log('not matched', this.state.notMatchedMentees)
         return;
       })
-    }
-
   }
 
     //console.log('notmatched', this.state.matchedMentees, 'matched', this.state.notMatchedMentees)
 }
-//this.state.matchedMentees !== null || this.state.notMatchedMentees !== null)
+
 filterMentees() {
     if (this.state.checkBox !== true && this.state.allMentees !== '') {
       //console.log('The mentees', this.state.allMentees)
@@ -126,7 +131,7 @@ filterMentees() {
       });
     }
     
-    return '';
+    return [];
 }
 deleteMentee = (event) => {
   //console.log('event:', event)
@@ -154,8 +159,8 @@ deleteMentee = (event) => {
       return <h3>Loading...</h3>  
     } else {
           const displayMentees = this.filterMentees();
-          //console.log('test', displayMentees)
-          if (displayMentees.length === 0) {
+          console.log('test', displayMentees)
+          if (displayMentees.length <= 0) {
             showMentees = <p>No Mentees</p>
           } else {
             showMentees = displayMentees.map(mentee => {
@@ -173,7 +178,8 @@ deleteMentee = (event) => {
                         mentee: mentee
                       }
                       }}
-                      className="button button-text">
+                      className="button button-text"
+                    >
                     Match Mentor
                     </Link>
                   </div>

@@ -78,7 +78,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 7%;
+  border-radius: 5px;
 }
 
 .button-text {
