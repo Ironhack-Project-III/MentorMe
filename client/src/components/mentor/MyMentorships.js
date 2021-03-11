@@ -147,9 +147,9 @@ render() {
               { mentorship.messages.map(message => {
                 return message.author === this.state.user 
                 ? 
-                <div className="message-inline-container-me"> <div className="message-content-container-me"> <p className="message-me">{`You: ${message.message}`}</p>  </div> </div>
+                <div className="message-content-container-me"> <p className="message-me">{`You: ${message.message}`}</p>  </div> 
                 :  
-                <div className="message-inline-container-you"> <div className="message-content-container-you"> <p className="message-you">{`Mentee: ${message.message}`}</p>  </div> </div>
+                <div className="message-content-container-you"> <p className="message-you">{`Mentee: ${message.message}`}</p>  </div> 
                 
                 ;
                 })
