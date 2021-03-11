@@ -1,15 +1,15 @@
-//'node hash.js' to run the script
-const bcrypt = require('bcrypt');
-const password = process.env.KumbiraiPassword;
-const salt = bcrypt.genSaltSync();
-console.log({ salt });
-const hash = bcrypt.hashSync(password, salt);
-console.log({ hash });
-function compare(password, hash) {
-  const salt = hash.slice(0, 29);
-  return hash === bcrypt.hashSync(password, salt)
-}
-console.log(compare('123457', hash))
+// //'node hash.js' to run the script
+// const bcrypt = require('bcrypt');
+// const password = process.env.KumbiraiPassword;
+// const salt = bcrypt.genSaltSync();
+// console.log({ salt });
+// const hash = bcrypt.hashSync(password, salt);
+// console.log({ hash });
+// function compare(password, hash) {
+//   const salt = hash.slice(0, 29);
+//   return hash === bcrypt.hashSync(password, salt)
+// }
+// console.log(compare('123457', hash))
 
 
 const mongoose = require("mongoose");
@@ -40,7 +40,7 @@ DeutschConnect.create(
   }
 )
 .then(DC => {
-  console.log(`Success! Added ${DC.length} kiezes to the database.`);
+  console.log(`Success! Added ${DC.length} Kumbirai to the database.`);
   mongoose.connection.close();
 })
 .catch(err => {
