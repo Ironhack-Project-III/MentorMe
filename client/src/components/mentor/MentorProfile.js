@@ -71,7 +71,7 @@ export default class MentorProfile extends Component {
         <div className="button">
       
           <Link className="button-text" to={`/mentor/profile/${this.props.user._id}/edit`}>
-                Edit your Profile
+                Edit
           </Link>
 
 
