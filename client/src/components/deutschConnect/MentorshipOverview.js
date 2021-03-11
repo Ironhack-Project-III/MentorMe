@@ -119,20 +119,16 @@ render() {
       //mentorship.id = uuid();
       return (
         <div key={index} className="mentorship-information">
-          <div className="mentorship-information-category">Duration:</div> <div className="mentorship-information-content">{mentorship.startDate} - {mentorship.endDate}</div>
-          <div className="mentorship-information-category">Confirmed: </div><div className="mentorship-information-content">{String(mentorship.confirmed)}</div>
+          <div className="mentorship-information-category">Duration</div> <div className="mentorship-information-content">{mentorship.startDate} - {mentorship.endDate}</div>
+          <div className="mentorship-information-category">Confirmed</div><div className="mentorship-information-content">{String(mentorship.confirmed)}</div>
           <br></br>
           <h3>Mentor</h3>
-          <div className="mentorship-information-category">Name:</div> <div className="mentorship-information-content">{mentorship.mentor.firstName} {mentorship.mentor.lastName}</div>
-          <div className="mentorship-information-category">Username:</div> <div className="mentorship-information-content">{mentorship.mentor.username}</div>
+          <div className="mentorship-information-category">Name</div> <div className="mentorship-information-content">{mentorship.mentor.firstName} {mentorship.mentor.lastName}</div>
+          <div className="mentorship-information-category">Username</div> <div className="mentorship-information-content">{mentorship.mentor.username}</div>
           <br></br>
           <h3>Mentee</h3>
-          <div className="mentorship-information-category">Name:</div> <div className="mentorship-information-content">{mentorship.mentee.firstName} {mentorship.mentee.lastName}</div>
-          <div className="mentorship-information-category">Username:</div> <div className="mentorship-information-category">{mentorship.mentee.username}</div>
-          
-          <div className="button-container">
-            <button className="form-button" onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete</button>
-          </div>
+          <div className="mentorship-information-category">Name</div> <div className="mentorship-information-content">{mentorship.mentee.firstName} {mentorship.mentee.lastName}</div>
+          <div className="mentorship-information-category">Username</div> <div className="mentorship-information-category">{mentorship.mentee.username}</div>
           
           <EditMentorship
             user={this.props.user}
@@ -140,6 +136,9 @@ render() {
             handleSubmit={this.handleSubmit}
             {...this.state}
           />
+          <div className="button-container">
+            <button className="form-button" onClick={() => {this.deleteMentorship(mentorship._id)}}>Delete</button>
+          </div>
         </div>
         )
     })
@@ -149,7 +148,7 @@ render() {
   
   return (
     <div className="body">
-      <h1>Mentorship Overview</h1>
+      <h1>Mentorships Overview</h1>
       <SearchBarMentorships
           setQuery={this.setQuery} 
           search={this.state.search}

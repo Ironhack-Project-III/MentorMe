@@ -13,14 +13,13 @@ class SearchBarMentors extends React.Component {
         return (
 
             <div> 
-                <label htmlFor="searchBar">Search</label>
-                <input
+                <input className="form-search"
                     type="text"
                     name="search"
                     value={this.props.search}
                     onChange={this.handleChange}
                     id="searchBar"
-                    placeholder="Enter Keyword.."
+                    placeholder="Search for keyword.."
                 />
 
             </div>
