@@ -14,8 +14,8 @@ export default class Home extends React.Component {
                     <div className="form-box">
                     {(this.props.user.role !== 'DeutschConnect' &&
                     <div>
-                        <p>We are glad to have you on board and that you are part of this Journey now!</p>
-                        <p className="italic">Have a look at your Profile and if necessary complete it, so that you can make the most of your mentorship.</p>
+                        <p>We are glad to have you on board and that you are part of this journey now!</p>
+                        <p className="italic">Have a look at your profile and if necessary complete it, so that you can make the most of your mentorship.</p>
                     </div>
                     )}
                     <p className="slogan">DeutschConnect links Sub-Saharan African businesses, organisations and people to the German ecosystem, to strengthen knowledge transfer and local economies. </p>
