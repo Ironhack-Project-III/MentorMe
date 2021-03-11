@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import MentorDetailDC from './Mentor-detail'
 import SearchBarMentors from './SearchBarMentors'
+import './DC.css'
 
 export default class MentorListDC extends Component {
 
@@ -101,25 +102,30 @@ deleteMentor = (event) => {
       } else {
         showMentors = displayMentors.map(mentor => {
           return (
+            <div className="mentorship-information"> 
             
             <div key = {mentor._id}> 
-            <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
-            <h3>Username: {mentor.username}</h3>
-            <h3>Name (first name, last name): {mentor.firstName}, {mentor.lastName}</h3>
-            <button onClick={() => {this.deleteMentor(mentor._id)}}>Delete Mentor and corresponding Mentorships from Database</button>
+            <img className = "profile-picture" src={mentor.imgPath} alt="userPhoto"/>
+            <h3>{mentor.username}</h3>
+            <h3>{mentor.firstName}, {mentor.lastName}</h3>
+            
+            <div className="button-container">
+            <button className="form-button" style={{width:"200px"}} onClick={() => {this.deleteMentor(mentor._id)}}> Delete Mentor & Mentorships </button>
+            </div>
             <MentorDetailDC
               mentor = {mentor}
               {...this.props} 
             />
+            
             </div>
-  
+            </div>
           )
         })
       }
     
     return (
       
-      <div>
+      <div className = 'body'>
         <h1>Mentor Overview</h1>
         <SearchBarMentors 
           setQuery={this.setQuery} 

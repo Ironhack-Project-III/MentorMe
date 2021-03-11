@@ -19,6 +19,7 @@ import MenteeListDC from './components/deutschConnect/Mentee-list'
 import CreateNewMentorshipID from './components/deutschConnect/CreateNewMentorshipID';
 import MyMentorships from './components/mentor/MyMentorships'
 import Home from './components/Home'
+import StartEnd from './components/StartEnd'
 
 
 
@@ -45,9 +46,14 @@ class App extends React.Component {
 
   render() {
 
+   
+
+
     return (
       <div className='App' >
         <Navbar user={this.state.user} setUser={this.setUser} />
+
+        
         
         {/* {this.state.user ? <h1>Welcome</h1> : <h1>Please log-in</h1>} */}
 
@@ -184,6 +190,12 @@ class App extends React.Component {
             if (this.state.user.role === 'DeutschConnect') return <CreateNewMentorshipID {...props} user={this.state.user} setUser={this.setUser} />
             else return <Redirect to='/' />
           }}
+        />
+
+          <Route
+          exact
+          path='/'
+          render={(props) => <StartEnd setUser={this.setUser} {...props}/>}
         />
 
       </div>

@@ -38,3 +38,22 @@ h1 {
 .italic {
   font-style: italic;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-button {
+  background-color: #F87171;
+  width: 90px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  color: #374151;
+  font-size: 0.7rem
+}

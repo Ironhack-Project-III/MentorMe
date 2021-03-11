@@ -112,7 +112,6 @@ const Navbar = props => {
             </Link>
           </Nav.Brand>
 
-       
           </Nav.Collapse>
         </>
       ) : (
