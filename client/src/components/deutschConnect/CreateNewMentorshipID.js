@@ -10,8 +10,7 @@ export default class CreateNewMentorshipID extends Component {
     mentee: '',
     startDate: '',
     endDate: '',
-    confirmed: true,
-    
+    confirmed: true 
   }
 
   componentDidMount() {
