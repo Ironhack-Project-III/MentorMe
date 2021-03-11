@@ -66,7 +66,7 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
       .populate('mentor')
       .populate('mentee')
       .then(mentorship => {
-        console.log(mentorship, 'allMentorships')
+        //console.log(mentorship, 'allMentorships')
         res.status(200).json(mentorship)
       })
       .catch(err => {
@@ -75,7 +75,7 @@ router.put('/mentor/profile/:id/edit', (req, res, next) => {
   })
   
   router.put('/mentor/my-mentorship/:id', (req, res, next) => {
-    console.log(req.body)
+    //console.log(req.body)
     const {newMessage, author} = req.body
     const id = req.params.id
   

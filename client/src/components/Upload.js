@@ -16,7 +16,7 @@ class Upload extends Component {
  
   // this method handles just the file upload
   handleFileUpload = e => {
-    console.log('The file to be uploaded is: ', e.target.files[0]);
+    //console.log('The file to be uploaded is: ', e.target.files[0]);
  
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
@@ -42,7 +42,7 @@ class Upload extends Component {
     service
       .saveNewThing(this.state)
       .then(res => {
-        console.log('added: ', res);
+        //console.log('added: ', res);
         // here you would redirect to some other page
       })
       .catch(err => {

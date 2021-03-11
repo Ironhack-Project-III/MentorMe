@@ -31,7 +31,7 @@ export default class EditMentorProfile extends Component {
     this.setState({
       [name]: value
     })
-    console.log('Step1', this.state)
+    //console.log('Step1', this.state)
   }
 
   handleSubmit = event => {
@@ -71,7 +71,7 @@ export default class EditMentorProfile extends Component {
     };
 
     handleFileUpload = e => {
-      console.log('The file to be uploaded is: ', e.target.files[0]);
+      //console.log('The file to be uploaded is: ', e.target.files[0]);
   
       const uploadData = new FormData();
       // imageUrl => this name has to be the same as in the model since we pass
@@ -81,11 +81,11 @@ export default class EditMentorProfile extends Component {
       service
         .handleUpload(uploadData)
         .then(response => {
-          console.log(response.secure_url)
+          //console.log(response.secure_url)
           // console.log('response is: ', response);
           // after the console.log we can see that response carries 'secure_url' which we can use to update the state
           this.setState({ imgPath: response.secure_url });
-          console.log(this.state)
+          //console.log(this.state)
         })
         .catch(err => {
           console.log('Error while uploading the file: ', err);

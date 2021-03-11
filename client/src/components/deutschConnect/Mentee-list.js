@@ -26,7 +26,7 @@ getData = async () => {
   try {
     let request = await axios.get(`/api/deutschconnect/mentee-list`)
     let response = await request
-    console.log(response.data)
+    //console.log(response.data)
     this.setState({
       allMentees: response.data.mentees,
       allMentorships: response.data.mentorships
@@ -58,28 +58,34 @@ checkNotMatchedMentees () {
             matchedMentees: helperArray1
           })
         }
+        //console.log('matched', this.state.matchedMentees)
         return;
       })
     })
     
-    let helperArray2 = []
-    this.state.allMentees.map( (mentee) => {
-      if (!this.state.matchedMentees.includes(mentee._id)) {
-        helperArray2.push(mentee)
-        this.setState({
-          notMatchedMentees: helperArray2
-        })
-      }
-      return;
-    })
+    if (this.state.matchedMentees !== null) {
+      let helperArray2 = []
+      
+      this.state.allMentees.map( (mentee) => {
+        if (!this.state.matchedMentees.includes(mentee._id)) {
+          helperArray2.push(mentee)
+          this.setState({
+            notMatchedMentees: helperArray2
+          })
+        }
+        //console.log('not matched', this.state.notMatchedMentees)
+        return;
+      })
+    }
+
   }
 
-    console.log('notmatched', this.state.matchedMentees, 'matched', this.state.notMatchedMentees)
+    //console.log('notmatched', this.state.matchedMentees, 'matched', this.state.notMatchedMentees)
 }
-
+//this.state.matchedMentees !== null || this.state.notMatchedMentees !== null)
 filterMentees() {
-    if (this.state.checkBox !== true) {
-      console.log('The mentees', this.state.allMentees)
+    if (this.state.checkBox !== true && this.state.allMentees !== '') {
+      //console.log('The mentees', this.state.allMentees)
       return this.state.allMentees.filter((mentee) => {
         return (  
         mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) ||
@@ -99,7 +105,7 @@ filterMentees() {
       });
     }
   
-    if (this.state.checkBox === true) {
+    if (this.state.checkBox === true && this.state.notMatchedMentees !== null && this.state.allMentees !== '') {
       return this.state.notMatchedMentees.filter((mentee) => {
         return (  
         mentee.username.toLowerCase().includes(this.state.search.toLowerCase()) ||
@@ -117,13 +123,15 @@ filterMentees() {
         (mentee.availableFromDate ? mentee.availableFromDate.includes(this.state.search.toLowerCase()) : false)
         )
       });
-    } 
+    }
+    
+    return null;
 }
 deleteMentee = (event) => {
-  console.log('event:', event)
+  //console.log('event:', event)
   axios.delete(`/api/deutschconnect/mentee-list/${event}`)
     .then( response => {
-      console.log('the response', response)
+      //console.log('the response', response)
       // we want to redirect to the projects list
 
       //filter doesnt mutate the state
@@ -145,29 +153,34 @@ deleteMentee = (event) => {
       return <h3>Loading...</h3>  
     } else {
           const displayMentees = this.filterMentees();
-          showMentees = displayMentees.map(mentee => {
-            return (
-              
-              <div key = {mentee._id}> 
-              <img style = {{width: "200px"}} src={mentee.imgPath} alt="userPhoto"/>
-              <h3>Username: {mentee.username}</h3>
-              <h3>Name (first name, last name): {mentee.firstName}, {mentee.lastName}</h3>
-              <Link to={{
-                pathname: `/deutschconnect/mentorship-create/${mentee._id}`,
-                state: {
-                  mentee: mentee
-                }
-                }}>
-              Create Mentorship for Mentee
-              </Link>
-              <button onClick={() => {this.deleteMentee(mentee._id)}}>Delete Mentee and corresponding Mentorships from Database</button>
-              <MenteeDetailDC
-                mentee = {mentee}
-                {...this.props} 
-              />
-              </div>
-            )
-          })
+          //console.log('test', displayMentees)
+          if (displayMentees.length === 0) {
+            showMentees = <p>No Mentees</p>
+          } else {
+            showMentees = displayMentees.map(mentee => {
+              return (
+                
+                <div key = {mentee._id}> 
+                <img style = {{width: "200px"}} src={mentee.imgPath} alt="userPhoto"/>
+                <h3>Username: {mentee.username}</h3>
+                <h3>Name (first name, last name): {mentee.firstName}, {mentee.lastName}</h3>
+                <Link to={{
+                  pathname: `/deutschconnect/mentorship-create/${mentee._id}`,
+                  state: {
+                    mentee: mentee
+                  }
+                  }}>
+                Create Mentorship for Mentee
+                </Link>
+                <button onClick={() => {this.deleteMentee(mentee._id)}}>Delete Mentee and corresponding Mentorships from Database</button>
+                <MenteeDetailDC
+                  mentee = {mentee}
+                  {...this.props} 
+                />
+                </div>
+              )
+            })
+          }
     }
 
     return (

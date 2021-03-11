@@ -17,13 +17,13 @@ export default class MenteeProfile extends Component {
   getData = () => {
     axios.get(`/api/mentee/profile/${this.props.match.params.id}`)
       .then(response => {
-        console.log(response)
+        //console.log(response)
         this.setState({
           menteeProfile: response.data
         })
       })
       .catch(err => {
-        console.log(err.response)
+        //console.log(err.response)
         if (err.response.status === 404) {
           // we have a 404 error
           this.setState({

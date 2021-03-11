@@ -21,7 +21,7 @@ componentDidMount() {
 getMentors = () => {
   axios.get(`/api/mentee/mentor-list`)
     .then(response => {
-      console.log(response)
+      //console.log(response)
       this.setState({
         allMentors: response.data,
       })
@@ -38,10 +38,10 @@ getMentors = () => {
   }
 
   likeMentor = mentorId => {
-    console.log(this.props.user.preferredMentors)
+    //console.log(this.props.user.preferredMentors)
     if (this.props.user.preferredMentors.includes(mentorId)) {
-    console.log(mentorId)
-    console.log(this.state.user._id)
+    // console.log(mentorId)
+    // console.log(this.state.user._id)
     axios.put(`/api/mentee/mentor-list/${this.state.user._id}/unlike`, {
       preferredMentor: mentorId })
       .then(response => {
@@ -81,14 +81,14 @@ getMentors = () => {
   }
 
   setQuery = (name, value) => {
-    console.log(name, value, 'check values')
+    //console.log(name, value, 'check values')
     this.setState({
         [name]: value
       });
   };
 
   filterMentors() {
-    console.log(this.state.allMentors, 'allMentors')
+    //console.log(this.state.allMentors, 'allMentors')
   return this.state.allMentors.filter((mentor) => {
       return (
       (mentor.username ? mentor.username.toLowerCase().includes(this.state.search.toLowerCase()) : false) ||
@@ -102,29 +102,36 @@ getMentors = () => {
 
 
   render() {
-    console.log(this.props.user)
-    console.log(this.state)
+    // console.log(this.props.user)
+    // console.log(this.state)
+    let showMentors;
+
     if (this.state.allMentors === null) {
       return <h3>Loading...</h3>
       
     } 
       
       const displayMentors = this.filterMentors();
-      console.log(displayMentors, 'checkMentors')
-      const showMentors = displayMentors.map(mentor => {
-        return (
-          
-          <div key = {mentor._id}>
-          <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
-          <h3>{mentor.username}</h3>
-          <MentorDetail
-            mentor = {mentor}
-            {...this.props} 
-          />
-          <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
-          </div>
-        )
-      })
+      //console.log(displayMentors, 'checkMentors')
+      if (displayMentors.length === 0) {
+        showMentors = <p>No Mentors</p>
+      } else {
+        showMentors = displayMentors.map(mentor => {
+          return (
+            
+            <div key = {mentor._id}>
+            <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
+            <h3>{mentor.username}</h3>
+            <MentorDetail
+              mentor = {mentor}
+              {...this.props} 
+            />
+            <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
+            </div>
+          )
+        })
+      }
+
 
       return (
       
@@ -139,33 +146,6 @@ getMentors = () => {
   
         </div>
       )
-
-
-
-
-    //   return (
-      
-    //   <div>
-    //   <h1>Mentor Overview</h1>
-    //   {displayMentors.map(mentor => {
-    //     return (
-          
-    //       <div key = {mentor._id}> 
-    //       <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
-    //       <h3>{mentor.username}</h3>
-    //       <MentorDetail
-    //         mentor = {mentor}
-    //         {...this.props} 
-    //       />
-    //        <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
-    //       </div>
-
-    //     )
-    //   })}
-
-    //   </div>
-
-    // )
   
   }
 }

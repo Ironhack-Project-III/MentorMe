@@ -7,11 +7,11 @@ const passport = require('passport');
 
 
 router.post('/signup', (req, res) => {
-  console.log("boom")
+  //console.log("boom")
   
-  console.log('req', req.body)
+  //console.log('req', req.body)
   const { username, password, role } = req.body;
-  console.log('role', role)
+  //console.log('role', role)
 
   if (role === 'Mentor') {
     if (!password || password.length < 8) {
@@ -65,7 +65,7 @@ router.post('/signup', (req, res) => {
       });
    
   } else {
-    console.log('Mentee role??? ->', role)
+    //console.log('Mentee role??? ->', role)
     if (!password || password.length < 8) {
       return res
         .status(400)

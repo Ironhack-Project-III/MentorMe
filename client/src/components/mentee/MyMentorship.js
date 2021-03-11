@@ -24,7 +24,7 @@ export default class MyMentorship extends Component {
   getMentorships = () => {
     axios.get(`/api/mentee/my-mentorship/${this.props.user._id}`)
       .then(response => {
-        console.log(response, 'the response')
+        //console.log(response, 'the response')
         this.setState({
           allMentorships: response.data
         })
@@ -42,14 +42,14 @@ export default class MyMentorship extends Component {
 
     handleChange = (event) => {
       
-      console.log(event.target)
+      //console.log(event.target)
       const target = event.target;
       const name = target.name;
       const value = target.value
       this.setState({
         [name]: value
       })
-      console.log('Step1', this.state.message)
+      //console.log('Step1', this.state.message)
     }
   
     sendMessage = (e) => {
@@ -62,7 +62,7 @@ export default class MyMentorship extends Component {
         author: this.state.authorId
       })
         .then(response => {
-          console.log(response, "this hsoudl onlz be all m,entorships")
+          //console.log(response, "this hsoudl onlz be all m,entorships")
           this.setState({
             allMentorships: response.data,
             message: ""
@@ -92,19 +92,38 @@ render() {
 
   if (this.state.allMentorships === null) {
     return <h3>Loading...</h3>
-  } else {
-    console.log(this.props.user._id)
+  }
+
+
+    //console.log(this.props.user._id)
     mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
       return (
         
         <div key={index}>
-          <p>Mentorname: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
-          <p>Mentor username: {mentorship.mentor.username}</p>
-          <p>Menteename: {mentorship.mentee.firstName} {mentorship.mentee.lastName}</p>
-          <p>Mentee username: {mentorship.mentee.username}</p>
+          <p>-------</p>
           <p>Duration: {mentorship.startDate} - {mentorship.endDate}</p>
           <p>Confirmed: {String(mentorship.confirmed)}</p>
-          <p>Messages:</p> 
+          <br></br>
+          <h2>Mentor:</h2>
+          <p>Name: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
+          <p>Username: {mentorship.mentor.username}</p>
+          <p>Contact Details: {mentorship.mentor.contactDetails}</p>
+          <p>Experience: {mentorship.mentor.experience}</p>
+          <p>Industry Expertise: {mentorship.mentor.industryExpertise}</p>
+          <p>Key Skills: {mentorship.mentor.keySkills}</p>
+          <br></br>
+          <h2>You (Mentee):</h2>
+          <p>Name: {mentorship.mentee.firstName} {mentorship.mentee.lastName}</p>
+          <p>Username: {mentorship.mentee.username}</p>
+          <p>Contact Details: {mentorship.mentee.contactDetails}</p>
+          <p>Required Support: {mentorship.mentee.requiredSupport}</p>
+          <p>Business Name: {mentorship.mentee.businessName}</p>
+          <p>Business Description: {mentorship.mentee.businessDescription}</p>
+          <p>Years Of Operation Of Business: {mentorship.mentee.yearsOfOperation}</p>
+          <p>Website: {mentorship.mentee.website}</p>
+          <p>Sector: {mentorship.mentee.sector}</p>
+          <br></br>
+          <h2>Messages:</h2> 
           { mentorship.messages.map(message => {
 
             return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
@@ -134,15 +153,18 @@ render() {
           />
           <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
           </form>
-        
+          <p>-------</p>
         </div>
         )
     })
-  }
+
+    //console.log(mentorshipProfiles)
+    if (mentorshipProfiles.length === 0) {
+      mentorshipProfiles = <p>No mentorship yet</p>
+    }
   
   return (
     <div>
-      {console.log('test')}
       <h1>Mentorship Overview</h1>
 
         {mentorshipProfiles}
