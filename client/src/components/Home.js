@@ -8,7 +8,6 @@ export default class Home extends React.Component {
         return (
 
             <div className="body"> 
-                <br></br>
                     <img className='Logo' src="https://deutsch-connect.com/wp-content/uploads/2021/01/cropped-cropped-dc_logo-1.jpeg" alt="DeutschConnect Logo"/>
                     <h1><br></br>Welcome to MentorMe <br></br>- <br></br>The Mentorship-Platform of DeutschConnect</h1>
                     <div className="form-box">

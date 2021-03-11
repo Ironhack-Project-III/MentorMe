@@ -129,15 +129,6 @@ class App extends React.Component {
           }}
         />
 
-        <Route
-          exact path='/deutschconnect/profile'
-          //render={(props) => <MentorProfile user={this.state.user} setUser={this.setUser}/>}
-          render={props => {
-            if (this.state.user.role === 'DeutschConnect') return <DeutschConnectProfile user={this.state.user} setUser={this.setUser} />
-            else return <Redirect to='/' />
-          }}
-        />
-
         {/* Mentor overview for mentee */}
 
         <Route
