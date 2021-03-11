@@ -48,11 +48,7 @@ const Navbar = props => {
               My Profile
             </Link>
           </Nav.Brand>
-        ): <Nav.Brand>
-            <Link style={{color:'grey'}} to='/deutschconnect/profile'>
-              My Profile
-            </Link>
-          </Nav.Brand>
+        ): false
         }
    
         { props.user.role === 'DeutschConnect' && 
