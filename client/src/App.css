@@ -17,5 +17,14 @@ h1 {
   color: #374151;
 }
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #374151;
+}
 
-
+h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #374151;
+}
