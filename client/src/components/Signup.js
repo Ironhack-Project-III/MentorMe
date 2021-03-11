@@ -43,7 +43,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <>
+      <div className = "body">
         <h2>Signup</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
@@ -94,7 +94,7 @@ export default class Signup extends Component {
           <Button className = "form-button" type='submit'>Submit</Button>
           </div>
         </Form>
-      </>
+      </div>
     );
   }
 }

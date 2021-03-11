@@ -110,60 +110,51 @@ render() {
     //console.log(this.props.user._id)
     mentorshipProfiles = this.state.allMentorships.map((mentorship, index) => {
       return (
-        <div className="mentorship-information">   
         
         <div key={index}>
-         
-          <div className="mentorship-information-category"> Duration: </div> <div className="mentorship-information-content">  {mentorship.startDate} - {mentorship.endDate}  </div>
-          <div className="mentorship-information-category"> Confirmed: </div> <div className="mentorship-information-content"> {String(mentorship.confirmed)} </div>
+          <p>-------</p>
+          <p>Duration: {mentorship.startDate} - {mentorship.endDate}</p>
+          <p>Confirmed: {String(mentorship.confirmed)}</p>
           <br></br>
           <h2>Mentor:</h2>
-          <div className="mentorship-information-category"> Name: </div><div className="mentorship-information-content">  {mentorship.mentor.firstName} {mentorship.mentor.lastName} </div>
-          <div className="mentorship-information-category"> Username: </div> <div className="mentorship-information-content"> {mentorship.mentor.username} </div>
-          <div className="mentorship-information-category"> Contact Details:</div> <div className="mentorship-information-content">  {mentorship.mentor.contactDetails} </div>
-          <div className="mentorship-information-category"> Experience: </div> <div className="mentorship-information-content"> {mentorship.mentor.experience} </div>
-          <div className="mentorship-information-category"> Industry Expertise:</div> <div className="mentorship-information-content">  {mentorship.mentor.industryExpertise} </div>
-          <div className="mentorship-information-category"> Key Skills:</div> <div className="mentorship-information-content">  {mentorship.mentor.keySkills} </div>
+          <p>Name: {mentorship.mentor.firstName} {mentorship.mentor.lastName}</p>
+          <p>Username: {mentorship.mentor.username}</p>
+          <p>Contact Details: {mentorship.mentor.contactDetails}</p>
+          <p>Experience: {mentorship.mentor.experience}</p>
+          <p>Industry Expertise: {mentorship.mentor.industryExpertise}</p>
+          <p>Key Skills: {mentorship.mentor.keySkills}</p>
           <br></br>
           <h2>You (Mentee):</h2>
-          <div className="mentorship-information-category"> Name: </div> <div className="mentorship-information-content"> {mentorship.mentee.firstName} {mentorship.mentee.lastName} </div>
-          <div className="mentorship-information-category"> Username: </div> <div className="mentorship-information-content"> {mentorship.mentee.username} </div>
-          <div className="mentorship-information-category"> Contact Details:</div> <div className="mentorship-information-content">  {mentorship.mentee.contactDetails} </div>
-          <div className="mentorship-information-category"> Required Support:</div> <div className="mentorship-information-content">  {mentorship.mentee.requiredSupport} </div>
-          <div className="mentorship-information-category"> Business Name:</div> <div className="mentorship-information-content">  {mentorship.mentee.businessName} </div>
-          <div className="mentorship-information-category"> Business Description:</div> <div className="mentorship-information-content">  {mentorship.mentee.businessDescription} </div>
-          <div className="mentorship-information-category"> Years Of </div> <div className="mentorship-information-content"> Operation Of Business: {mentorship.mentee.yearsOfOperation} </div>
-          <div className="mentorship-information-category"> Website: </div> <div className="mentorship-information-content"> {mentorship.mentee.website} </div>
-          <div className="mentorship-information-category"> Sector: </div> <div className="mentorship-information-content"> {mentorship.mentee.sector} </div>
+          <p>Name: {mentorship.mentee.firstName} {mentorship.mentee.lastName}</p>
+          <p>Username: {mentorship.mentee.username}</p>
+          <p>Contact Details: {mentorship.mentee.contactDetails}</p>
+          <p>Required Support: {mentorship.mentee.requiredSupport}</p>
+          <p>Business Name: {mentorship.mentee.businessName}</p>
+          <p>Business Description: {mentorship.mentee.businessDescription}</p>
+          <p>Years Of Operation Of Business: {mentorship.mentee.yearsOfOperation}</p>
+          <p>Website: {mentorship.mentee.website}</p>
+          <p>Sector: {mentorship.mentee.sector}</p>
           <br></br>
-          <div className="button-container"> 
-          <button className = "form-button" onClick={this.detailView}>Messaging</button>
-          </div>
+
+          <button onClick={this.detailView}>See Or Send Messages</button>
+          
           {this.state.detailView && (              
-              <div >
-                <h3>Chat</h3>
-                <div className="message-container">
+              <div>
+                <h2>Messages:</h2>
                 { mentorship.messages.map(message => {
-                    return message.author === this.state.user 
-                    ?  
-                    <div className="message-content-container-me"> <p className="message-me" >{`You: ${message.message}`}</p> </div>
-                    :  
-                    <div className="message-content-container-you"> <p className="message-you" >{`Mentor: ${message.message}`}</p> </div>
+                    return message.author === this.state.user ?  <p>{`You: ${message.message}`}</p> :  <p>{`Mentor: ${message.message}`}</p>;
                   })
                 }
-                </div>
 
                 <form onSubmit={this.sendMessage}>
                 
                 <label htmlFor="message"></label>
                 <input
-                  className = "profile-information-content-update"
                   type="text"
                   id="message"
                   name="message"
                   value={this.state.message}
                   onChange={this.handleChange}
-                  placeholder = "Type ..."
                 />
                 <input
                 type="mentorship"
@@ -171,17 +162,14 @@ render() {
                 value={mentorship._id}
                 style={{display: "none"}}
                 />
-                <div className="button-container">
-                <button className = "form-button" type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
-                </div>
+                <button type="submit" onClick ={(() =>{this.handleShitter(mentorship._id, this.props.user._id)})}> Send message</button>
                 </form>
-                
               </div>
           )}
 
-            
-            </div>
+            <p>-------</p>
           </div>
+          
       )
     })
 
@@ -191,7 +179,7 @@ render() {
     }
   
   return (
-    <div className="body">
+    <div>
       <h1>Mentorship Overview</h1>
 
         {mentorshipProfiles}

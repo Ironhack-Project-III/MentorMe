@@ -44,19 +44,19 @@ export default class MenteeProfile extends Component {
 
         <img className='profile-picture' src={this.state.menteeProfile.imgPath} alt="userPhoto"/>
         
-        <div className="profile-information">
-        <div className="profile-information-category">Username </div> <div className="profile-information-content">{this.props.user.username} </div>
-        <div className="profile-information-category">First Name </div> <div className="profile-information-content">{this.state.menteeProfile.firstName}</div>
-        <div className="profile-information-category">Last Name</div> <div className="profile-information-content">{this.state.menteeProfile.lastName}</div>
-        <div className="profile-information-category">Age</div><div className="profile-information-content"> {this.state.menteeProfile.age}</div>
-        <div className="profile-information-category">Nationality</div> <div className="profile-information-content">{this.state.menteeProfile.nationality}</div>
-        <div className="profile-information-category">Contact Details</div> <div className="profile-information-content">{this.state.menteeProfile.contactDetails}</div>
-        <div className="profile-information-category">Required Support <div className="profile-information-content"></div>{this.state.menteeProfile.requiredSupport}</div>
-        <div className="profile-information-category">Business Name</div> <div className="profile-information-content">{this.state.menteeProfile.businessName}</div>
-        <div className="profile-information-category">Business Description</div> <div className="profile-information-content">{this.state.menteeProfile.businessDescription}</div>
-        <div className="profile-information-category">Years of Operation</div><div className="profile-information-content"> {this.state.menteeProfile.yearsOfOperation}</div>
-        <div className="profile-information-category">Sector</div> <div className="profile-information-content">{this.state.menteeProfile.sector}</div>
-        <div className="profile-information-category">Website</div> <div className="profile-information-content">{this.state.menteeProfile.website}</div>
+        <div className="mentorship-information">
+        <div className="mentorship-information-category">Username </div> <div className="mentorship-information-content">{this.props.user.username} </div>
+        <div className="mentorship-information-category">First Name </div> <div className="mentorship-information-content">{this.state.menteeProfile.firstName}</div>
+        <div className="mentorship-information-category">Last Name</div> <div className="mentorship-information-content">{this.state.menteeProfile.lastName}</div>
+        <div className="mentorship-information-category">Age</div><div className="mentorship-information-content"> {this.state.menteeProfile.age}</div>
+        <div className="mentorship-information-category">Nationality</div> <div className="mentorship-information-content">{this.state.menteeProfile.nationality}</div>
+        <div className="mentorship-information-category">Contact Details</div> <div className="mentorship-information-content">{this.state.menteeProfile.contactDetails}</div>
+        <div className="mentorship-information-category">Required Support <div className="mentorship-information-content"></div>{this.state.menteeProfile.requiredSupport}</div>
+        <div className="mentorship-information-category">Business Name</div> <div className="mentorship-information-content">{this.state.menteeProfile.businessName}</div>
+        <div className="mentorship-information-category">Business Description</div> <div className="mentorship-information-content">{this.state.menteeProfile.businessDescription}</div>
+        <div className="mentorship-information-category">Years of Operation</div><div className="mentorship-information-content"> {this.state.menteeProfile.yearsOfOperation}</div>
+        <div className="mentorship-information-category">Sector</div> <div className="mentorship-information-content">{this.state.menteeProfile.sector}</div>
+        <div className="mentorship-information-category">Website</div> <div className="mentorship-information-content">{this.state.menteeProfile.website}</div>
 
         <div className="button-container">
         <div className="button">
