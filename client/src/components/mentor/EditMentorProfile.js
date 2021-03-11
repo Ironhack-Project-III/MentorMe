@@ -100,7 +100,7 @@ export default class EditMentorProfile extends Component {
 
       <div className="body">
       
-        <h3 className = "top">Edit Your Profile, {this.state.nameHeader}</h3>
+        <h3 className = "top">Edit Your Profile</h3>
         
         <form className="profile-information" onSubmit={this.handleSubmit}>
 
@@ -210,10 +210,9 @@ export default class EditMentorProfile extends Component {
           <button className="form-button"type='submit'>Update</button>
           </div>
         </form>
-        <form className="profile-information" onSubmit={e => this.handleSubmitUpload(e)}>
+        <form onSubmit={e => this.handleSubmitUpload(e)}>
             
-            <label className="profile-information-category">Name</label>
-            <input className="profile-information-content-update" type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
+            <input className="profile-information-content-update" style={{marginRight:"10px"}} type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
             <input  type="file" onChange={e => this.handleFileUpload(e)} />
             
             <div className="button-container">

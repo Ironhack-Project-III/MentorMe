@@ -31,35 +31,37 @@ export default class EditMentorship extends Component {
   render() {
     
     return (
-      <div>
-        <div className="button-container">
-          <button className="form-button" onClick={() => {this.toggleEditForm()}}>Change Dates</button>
-        </div>
-        {this.state.toggled ? 
+      <div className = 'details-body'>
         <div>
-          <form className="profile-information" onSubmit={(event) => this.handleSubmit(event, this.props.mentorship._id, this.state.startDate, this.state.endDate)}>
-            <label className="profile-information-category" htmlFor="startDate">Start Date: </label>
-            <input className="profile-information-content-update"
-              type="date"
-              id="startDate"
-              name="startDate"
-              value={this.state.startDate}
-              onChange={this.handleChange}
-              />
-            <label className="profile-information-category" htmlFor="endDate">End Date: </label>
-            <input className="profile-information-content-update"
-              type="date"
-              id="endDate"
-              name="endDate"
-              value={this.state.endDate}
-              onChange={this.handleChange}
-              />
-            <div className="button-container">
-              <button className="form-button" type='submit'>Update Dates</button>
-            </div>
-          </form>
+          <div className="button-container">
+            <button className="form-button" onClick={() => {this.toggleEditForm()}}>Change Dates</button>
+          </div>
+          {this.state.toggled ?
+          <div style={{marginRight:"25px"}}>
+            <form className="mentorship-information" onSubmit={(event) => this.handleSubmit(event, this.props.mentorship._id, this.state.startDate, this.state.endDate)}>
+              <label className="profile-information-category" htmlFor="startDate">Start Date: </label>
+              <input className="profile-information-content-update"
+                type="date"
+                id="startDate"
+                name="startDate"
+                value={this.state.startDate}
+                onChange={this.handleChange}
+                />
+              <label className="profile-information-category" htmlFor="endDate">End Date: </label>
+              <input className="profile-information-content-update"
+                type="date"
+                id="endDate"
+                name="endDate"
+                value={this.state.endDate}
+                onChange={this.handleChange}
+                />
+              <div className="button-container">
+                <button className="form-button" type='submit'>Update</button>
+              </div>
+            </form>
+          </div>
+           : '' }
         </div>
-         : '' }
       </div>
     )
   }

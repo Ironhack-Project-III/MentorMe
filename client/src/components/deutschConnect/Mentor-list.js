@@ -102,23 +102,25 @@ deleteMentor = (event) => {
       } else {
         showMentors = displayMentors.map(mentor => {
           return (
-            <div className="mentorship-information"> 
             
-            <div key = {mentor._id}> 
-            <img className = "profile-picture" src={mentor.imgPath} alt="userPhoto"/>
-            <h3>{mentor.username}</h3>
-            <h3>{mentor.firstName}, {mentor.lastName}</h3>
             
-            <div className="button-container">
-            <button className="form-button" style={{width:"200px"}} onClick={() => {this.deleteMentor(mentor._id)}}> Delete Mentor & Mentorships </button>
+            <div key = {mentor._id} className="mentorship-information"> 
+                <img className = "profile-picture" src={mentor.imgPath} alt="userPhoto"/>
+                <br></br>
+                <div className="mentorship-information-category">Username</div> <div className="mentorship-information-content">{mentor.username}</div>
+                  <div className="mentorship-information-category">Name (first name, last name)</div> <div className="mentorship-information-content">{mentor.firstName}, {mentor.lastName}</div>
+
+                <MentorDetailDC
+                  mentor = {mentor}
+                  {...this.props} 
+                />
+                            
+                <div className="button-container">
+                    <button className="form-button" style={{width:"200px"}} onClick={() => {this.deleteMentor(mentor._id)}}> Delete Mentor and its Mentorships </button>
+                </div>
+                
             </div>
-            <MentorDetailDC
-              mentor = {mentor}
-              {...this.props} 
-            />
             
-            </div>
-            </div>
           )
         })
       }
