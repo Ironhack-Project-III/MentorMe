@@ -100,7 +100,7 @@ export default class EditMentorProfile extends Component {
 
       <div>
       
-        <h1>Edit Your Profile, {this.state.nameHeader}</h1>
+        <h2>Edit Your Profile, {this.state.nameHeader}</h2>
         
         <form className="profile-information" onSubmit={this.handleSubmit}>
 
@@ -204,14 +204,24 @@ export default class EditMentorProfile extends Component {
             value={this.state.availableFromDate}
             onChange={this.handleChange}
           />
-          <button type='submit'>Update Your Profile</button>
+
+          <div className="button-container">
+
+          <button className="form-button"type='submit'>Update</button>
+          </div>
         </form>
-        <form onSubmit={e => this.handleSubmitUpload(e)}>
-            <label>Name</label>
-            <input type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
-            <input type="file" onChange={e => this.handleFileUpload(e)} />
-            <button type="submit">Upload photo</button>
+        <form className="profile-information" onSubmit={e => this.handleSubmitUpload(e)}>
+            
+            <label className="profile-information-category">Name</label>
+            <input className="profile-information-content-update" type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
+            <input  type="file" onChange={e => this.handleFileUpload(e)} />
+            
+            <div className="button-container">
+            
+            <button className = "form-button" type="submit">Upload</button>
           
+            </div>
+            <p className = "help-text">Please ckick on the update button after clicking on upload</p>
           </form>
         
       </div>
