@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import service from '../../services/cloudinary'
+import './mentee.css'
 
 
 
@@ -119,51 +120,51 @@ export default class EditMenteeProfile extends Component {
     
     return (
       
-      <div>
+      <div className="body">
         <h1>Edit Your Mentee Profile, {this.state.nameHeader}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="firstName">First Name: </label>
-          <input
+        <form className="profile-information" onSubmit={this.handleSubmit}>
+          <label className="profile-information-category" htmlFor="firstName">First Name </label>
+          <input   className="profile-information-content-update"
             type="text"
             id="firstName"
             name="firstName"
             value={this.state.firstName}
             onChange={this.handleChange}
           />
-          <label htmlFor="lastName">Last Name: </label>
-          <input
+          <label className="profile-information-category" htmlFor="lastName">Last Name </label>
+          <input  className="profile-information-content-update"
             type="text"
             id="lastName"
             name="lastName"
             value={this.state.lastName}
             onChange={this.handleChange}
           />
-          <label htmlFor="age">Age: </label>
-          <input
+          <label className="profile-information-category"  htmlFor="age">Age </label>
+          <input className="profile-information-content-update"
             type="number"
             id="age"
             name="age"
             value={this.state.age}
             onChange={this.handleChange}
           />
-          <label htmlFor="nationality">Nationality: </label>
-          <input
+          <label className="profile-information-category" htmlFor="nationality">Nationality </label>
+          <input className="profile-information-content-update"
             type="text"
             id="nationality"
             name="nationality"
             value={this.state.nationality}
             onChange={this.handleChange}
           />
-          <label htmlFor="contactDetails">Contact Details: </label>
-          <input
+          <label className="profile-information-category" htmlFor="contactDetails">Contact Details </label>
+          <input className="profile-information-content-update"
             type="text"
             id="contactDetails"
             name="contactDetails"
             value={this.state.contactDetails}
             onChange={this.handleChange}
           />
-          <label htmlFor="website">website: </label>
-          <input
+          <label className="profile-information-category" htmlFor="website">Website </label>
+          <input className="profile-information-content-update"
             type="text"
             id="website"
             name="website"
@@ -171,8 +172,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
          
-          <label htmlFor="requiredSupport">Required Support: </label>
-          <input
+          <label className="profile-information-category" htmlFor="requiredSupport">Required Support </label>
+          <input className="profile-information-content-update"
             type="text"
             id="requiredSupport"
             name="requiredSupport"
@@ -180,8 +181,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="businessName">Business Name: </label>
-          <input
+          <label className="profile-information-category" htmlFor="businessName">Business Name </label>
+          <input className="profile-information-content-update"
             type="text"
             id="businessName"
             name="businessName"
@@ -189,8 +190,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="businessDescription">Business Description: </label>
-          <input
+          <label className="profile-information-category" htmlFor="businessDescription">Business Description </label>
+          <input className="profile-information-content-update"
             type="text"
             id="businessDescription"
             name="businessDescription"
@@ -198,8 +199,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="yearsOfOperation">Years of Operation: </label>
-          <input
+          <label className="profile-information-category" htmlFor="yearsOfOperation">Years of Operation </label>
+          <input className="profile-information-content-update"
             type="text"
             id="yearsOfOperation"
             name="yearsOfOperation"
@@ -207,8 +208,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="sector">Sector: </label>
-          <input
+          <label className="profile-information-category" htmlFor="sector">Sector </label>
+          <input className="profile-information-content-update"
             type="text"
             id="sector"
             name="sector"
@@ -216,8 +217,8 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="keyPersonalityTraits">Key Personality Traits: </label>
-          <input
+          <label className="profile-information-category" htmlFor="keyPersonalityTraits">Key Personality Traits </label>
+          <input className="profile-information-content-update"
             type="text"
             id="keyPersonalityTraits"
             name="keyPersonalityTraits"
@@ -225,40 +226,48 @@ export default class EditMenteeProfile extends Component {
             onChange={this.handleChange}
           />
           
-          <label htmlFor="availableForNewMentorship">availableForNewMentorship: </label>
-          <input
+          <label className="profile-information-category" htmlFor="availableForNewMentorship">availableForNewMentorship </label>
+          <input className="profile-information-content-update"
             type="checkbox"
             id="availableForNewMentorship"
             name="availableForNewMentorship"
             checked={this.state.availableForNewMentorship}
             onChange={this.handleChange}
           />
-          <label htmlFor="activeMentorship">activeMentorship: </label>
-          <input
+          <label className="profile-information-category" htmlFor="activeMentorship">activeMentorship </label>
+          <input className="profile-information-content-update"
             type="checkbox"
             id="activeMentorship"
             name="activeMentorship"
             checked={this.state.activeMentorship}
             onChange={this.handleChange}
           />
-          <label htmlFor="availableFromDate">availableFromDate: </label>
-          <input
+          <label className="profile-information-category" htmlFor="availableFromDate">availableFromDate </label>
+          <input className="profile-information-content-update"
             type="date"
             id="availableFromDate"
             name="availableFromDate"
             value={this.state.availableFromDate}
             onChange={this.handleChange}
           />
-          <button type='submit'>Update your profile</button>
+          <div className="button-container">
+          <button className="form-button" type='submit'>Update</button>
+          </div>
         </form>
-        <form onSubmit={e => this.handleSubmitUpload(e)}>
-            <label>Name</label>
-            <input type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
+        <form className="profile-information" onSubmit={e => this.handleSubmitUpload(e)}>
+            
+            <input className="profile-information-content-update" type="text" name="imgName" value={this.state.imgName} placeholder="Upload your picture" onChange={e => this.handleChangeUpload(e)} />
             <input type="file" onChange={e => this.handleFileUpload(e)} />
-            <button type="submit">Upload photo</button>
+            <div className="button-container">
+            
+            <button className = "form-button" type="submit">Upload</button>
+            </div>
+            <p className = "help-text">Please ckick on the update button after clicking on upload</p>
           </form>
+        
       
-      </div>
+        
+        </div>
     )
   }
 }

@@ -11,7 +11,6 @@ import EditMentorProfile from './components/mentor/EditMentorProfile'
 import MenteeProfile from './components/mentee/MenteeProfile'
 import MentorList from './components/mentee/MentorList'
 import EditMenteeProfile from './components/mentee/EditMenteeProfile'
-import DeutschConnectProfile from './components/deutschConnect/DeutschConnectProfile'
 import MentorshipOverview from './components/deutschConnect/MentorshipOverview'
 import CreateNewMentorship from './components/deutschConnect/CreateNewMentorship'
 import MyMentorship from './components/mentee/MyMentorship';

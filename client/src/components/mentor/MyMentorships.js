@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './mentor.css'
 //import { v4 as uuid } from "uuid";
 
 export default class MyMentorships extends Component {
@@ -146,20 +147,17 @@ render() {
               { mentorship.messages.map(message => {
                 return message.author === this.state.user 
                 ? 
-                <div className="message-content-container-me"> <p className="message-me">{`You: ${message.message}`}</p>  </div>
+                <div className="message-inline-container-me"> <div className="message-content-container-me"> <p className="message-me">{`You: ${message.message}`}</p>  </div> </div>
                 :  
-                <div className="message-content-container-you"> <p className="message-you">{`Mentee: ${message.message}`}</p>  </div>
+                <div className="message-inline-container-you"> <div className="message-content-container-you"> <p className="message-you">{`Mentee: ${message.message}`}</p>  </div> </div>
                 
                 ;
                 })
               }
-            
-                 
-
             </div>
             <form onSubmit={this.sendMessage}>
             
-            <label  htmlFor="message"></label>
+            <label htmlFor="message"></label>
             <input
               className = "profile-information-content-update"
               type="text"
@@ -167,6 +165,7 @@ render() {
               name="message"
               value={this.state.message}
               onChange={this.handleChange}
+              placeholder="Type ..."
             />
             <input
             type="mentorship"
@@ -181,10 +180,8 @@ render() {
           </div>
         )}
 
-          
           </div>
 
-        
         )
     })
 
