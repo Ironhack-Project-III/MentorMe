@@ -19,6 +19,7 @@ import MentorListDC from './components/deutschConnect/Mentor-list'
 import MenteeListDC from './components/deutschConnect/Mentee-list'
 import CreateNewMentorshipID from './components/deutschConnect/CreateNewMentorshipID';
 import MyMentorships from './components/mentor/MyMentorships'
+import Home from './components/Home'
 
 
 
@@ -67,6 +68,14 @@ class App extends React.Component {
           exact
           path='/login'
           render={(props) => <Login setUser={this.setUser} {...props}/>}
+        />
+
+        <Route
+          exact path='/home'
+          render={(props) => {
+            if (this.state.user.role === 'Mentor'|| this.state.user.role === 'Mentee' || this.state.user.role === 'DeutschConnect') return <Home {...props} user={this.state.user} setUser={this.setUser}/>
+            else return <Redirect to='/' />
+          }}
         />
 
         <Route
