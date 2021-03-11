@@ -97,35 +97,39 @@ export default class EditMentorProfile extends Component {
     
     return (
       
+
       <div>
-        <h1>Edit Your Mentor Profile, {this.state.nameHeader}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="firstName">First Name: </label>
-          <input
+      
+        <h1>Edit Your Profile, {this.state.nameHeader}</h1>
+        
+        <form className="profile-information" onSubmit={this.handleSubmit}>
+
+          <label className="profile-information-category" htmlFor="firstName">First Name: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="firstName"
             name="firstName"
             value={this.state.firstName}
             onChange={this.handleChange}
           />
-          <label htmlFor="lastName">Last Name: </label>
-          <input
+          <label  className="profile-information-category" htmlFor="lastName">Last Name: </label>
+          <input  className="profile-information-content-update"
             type="text"
             id="lastName"
             name="lastName"
             value={this.state.lastName}
             onChange={this.handleChange}
           />
-          <label htmlFor="age">Age: </label>
-          <input
+          <label className="profile-information-category" htmlFor="age">Age: </label>
+          <input className="profile-information-content-update"
             type="number"
             id="age"
             name="age"
             value={this.state.age}
             onChange={this.handleChange}
           />
-          <label htmlFor="nationality">Nationality: </label>
-          <input
+          <label className="profile-information-category" htmlFor="nationality">Nationality: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="nationality"
             name="nationality"
@@ -133,8 +137,8 @@ export default class EditMentorProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="contactDetails">Contact Details: </label>
-          <input
+          <label className="profile-information-category" htmlFor="contactDetails">Contact Details: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="contactDetails"
             name="contactDetails"
@@ -142,24 +146,24 @@ export default class EditMentorProfile extends Component {
             onChange={this.handleChange}
           />
          
-          <label htmlFor="experience">Experience: </label>
-          <input
+          <label className="profile-information-category" htmlFor="experience">Experience: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="experience"
             name="experience"
             value={this.state.experience}
             onChange={this.handleChange}
           />
-          <label htmlFor="industryExpertise">Industry Expertise: </label>
-          <input
+          <label className="profile-information-category" htmlFor="industryExpertise">Industry Expertise: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="generalExpertise"
             name="industryExpertise"
             value={this.state.industryExpertise}
             onChange={this.handleChange}
           />
-          <label htmlFor="keySkills">Key Skills: </label>
-          <input
+          <label className="profile-information-category" htmlFor="keySkills">Key Skills: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="keySkills"
             name="keySkills"
@@ -167,8 +171,8 @@ export default class EditMentorProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="keyPersonalityTraits">Key Personality Traits: </label>
-          <input
+          <label className="profile-information-category" htmlFor="keyPersonalityTraits">Key Personality Traits: </label>
+          <input className="profile-information-content-update"
             type="text"
             id="keyPersonalityTraits"
             name="keyPersonalityTraits"
@@ -176,24 +180,24 @@ export default class EditMentorProfile extends Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="availableForNewMentorship">Are You Available For A New Mentorship?</label>
-          <input
+          <label className="profile-information-category" htmlFor="availableForNewMentorship">Are You Available For A New Mentorship?</label>
+          <input className="profile-information-content-update"
             type="checkbox"
             id="availableForNewMentorship"
             name="availableForNewMentorship"
             checked={this.state.availableForNewMentorship}
             onChange={this.handleChange}
           />
-          <label htmlFor="activelyMentoring">Do Have Active Mentorships At The Moment?</label>
-          <input
+          <label className="profile-information-category" htmlFor="activelyMentoring">Do Have Active Mentorships At The Moment?</label>
+          <input className="profile-information-content-update"
             type="checkbox"
             id="activelyMentoring"
             name="activelyMentoring"
             checked={this.state.activelyMentoring}
             onChange={this.handleChange}
           />
-          <label htmlFor="availableFromDate">From When On Will You Be Available For A New Mentorship?</label>
-          <input
+          <label className="profile-information-category" htmlFor="availableFromDate">From When On Will You Be Available For A New Mentorship?</label>
+          <input className="profile-information-content-update"
             type="date"
             id="availableFromDate"
             name="availableFromDate"
@@ -207,8 +211,11 @@ export default class EditMentorProfile extends Component {
             <input type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
             <input type="file" onChange={e => this.handleFileUpload(e)} />
             <button type="submit">Upload photo</button>
+          
           </form>
+        
       </div>
+    
     )
   }
 }
