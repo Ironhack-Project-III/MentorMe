@@ -19,13 +19,13 @@
 
 .profile-information-content {
   text-align: left;
-  padding: 0 5px;
   border: 2px solid #F87171;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .button {
@@ -46,9 +46,28 @@
 
 .profile-information-content-update {
   text-align: left;
+  margin-top: none;
   padding: 0 5px;
   background-color: #E5E7EB;
   border: none;
+}
 
+.form-button {
+  background-color: #F87171;
+  width: 70px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7%;
+  border: none;
+  color: #374151;
+  font-size: 0.7rem
+}
+
+.help-text {
+  color: #9CA3AF;
+  font-size: 0.7rem;
+  padding: 0 50px
 }
 
