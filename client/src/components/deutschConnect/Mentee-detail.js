@@ -37,21 +37,21 @@ export default class MenteeDetailDC extends Component {
           </div>
          {this.state.detailView && (
           <div className="mentorship-information">
-            <p>Active Mentorship? {this.props.mentee.activeMentorship}</p>
-            <p>Available From Date: {this.props.mentee.availableFromDate}</p>
+            <div className="mentorship-information-category">Active Mentorship</div> <div className="mentorship-information-content">{this.props.mentee.activeMentorship}</div>
+            <div className="mentorship-information-category">Available From Date</div> <div className="mentorship-information-content">{this.props.mentee.availableFromDate}</div>
             <div className="mentors-preferred">
               <h3>Preferred Mentors</h3> {preferred}
             </div>
-            <p>Required Support: {this.props.mentee.requiredSupport}</p>
-            <p>Age: {this.props.mentee.age}</p>
-            <p>Nationality: {this.props.mentee.nationality}</p>
-            <p>Contact Details: {this.props.mentee.contactDetails}</p>
-            <p>Key Personality Traits: {this.props.mentee.keyPersonalityTraits}</p>
-            <p>Business Name: {this.props.mentee.businessName}</p>
-            <p>Business Description: {this.props.mentee.businessDescription}</p>
-            <p>Years Of Operation: {this.props.mentee.yearsOfOperation}</p>
-            <p>Business Website: {this.props.mentee.website}</p>
-            <p>Sector: {this.props.mentee.sector}</p>
+            <div className="mentorship-information-category">Required Support </div><div className="mentorship-information-content">{this.props.mentee.requiredSupport}</div>
+            <div className="mentorship-information-category">Age</div> <div className="mentorship-information-content">{this.props.mentee.age}</div>
+            <div className="mentorship-information-category">Nationality </div><div className="mentorship-information-content">{this.props.mentee.nationality}</div>
+            <div className="mentorship-information-category">Contact Details</div> <div>{this.props.mentee.contactDetails}</div>
+            <div className="mentorship-information-category">Key Personality Traits </div> <div className="mentorship-information-content">{this.props.mentee.keyPersonalityTraits} </div>
+            <div className="mentorship-information-category">Business Name</div> <div className="mentorship-information-content">{this.props.mentee.businessName}</div>
+            <div className="mentorship-information-category">Business Description</div> <div className="mentorship-information-content">{this.props.mentee.businessDescription}</div>
+            <div className="mentorship-information-category">Years Of Operation </div><div className="mentorship-information-content">{this.props.mentee.yearsOfOperation}</div>
+            <div className="mentorship-information-category">Business Website</div> <div className="mentorship-information-content">{this.props.mentee.website}</div>
+            <div className="mentorship-information-category">Sector </div><div className="mentorship-information-content">{this.props.mentee.sector}</div>
           </div>
         )} 
       </div>

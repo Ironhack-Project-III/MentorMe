@@ -173,7 +173,8 @@ deleteMentee = (event) => {
                         mentee: mentee
                       }
                       }}
-                      className="button button-text">
+                      className="button button-text"
+                    >
                     Match Mentor
                     </Link>
                   </div>

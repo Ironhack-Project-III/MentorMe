@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './DC.css';
 
 export default class CreateNewMentorshipID extends Component {
   
@@ -91,63 +92,71 @@ export default class CreateNewMentorshipID extends Component {
     const preferred = this.props.location.state.mentee.preferredMentors.map( (mentor, index) => {
       return (
           <div key={mentor._id}>
-            <p> {index+1}.: </p>
-            <p>Username: {mentor.username}</p>
-            <p>First Name: {mentor.firstName}</p>
-            <p>Last Name: {mentor.lastName}</p>
+            <p className="num"> {index+1}. </p>
+            <div className="mentorship-information-category">Username </div><div className="mentorship-information-content">{mentor.username}</div>
+            <div className="mentorship-information-category">First Name</div> <div className="mentorship-information-content">{mentor.firstName}</div>
+            <div className="mentorship-information-category">Last Name</div> <div className="mentorship-information-content">{mentor.lastName}</div>
+            <p>----</p>
           </div>
       )
     })
 
     return (
       
-      <div>
-        <h1>Create New Mentorship</h1>
-        
-        <h2>Mentee:</h2>
-          <p>Username:{this.props.location.state.mentee.username}</p>
-          <p>First Name:{this.props.location.state.mentee.firstName}</p>  
-          <p>Last Name:{this.props.location.state.mentee.lastName}</p>  
-        <h2>Preferred Mentors by Mentee:</h2>
-        {preferred}
-        <form onSubmit={this.handleSubmit}>
-        <label htmlFor="mentor">Mentor:</label>
-        <select 
-            name="mentor"
-            id="mentor"
-            onChange={this.handleChange}
-            >
-            <option></option>
-            {mentorOptions}
-        </select>
-
-        <label htmlFor="mentee">Mentee:</label>
-        <select 
-            name="mentee"
-            id="mentee"
-            onChange={this.handleChange}
-            >
-            <option></option>
-            {menteeOptions}
-        </select>
-        <label htmlFor="startDate">Start Date:</label>
-        <input
-            name="startDate"
-            type="date"
-            value={this.state.startDate}
-            onChange={this.handleChange}
-            id="startDate"
-        />
-        <label htmlFor="endDate">End Date:</label>
-        <input
-            name="endDate"
-            type="date"
-            value={this.state.endDate}
-            onChange={this.handleChange}
-            id="endDate"
-        />
-        <button type="submit">Confirm New Mentorship</button>
-        </form>
+      <div className="body mentorship-information">
+        <h3>Create New Mentorship For Mentee</h3>
+        <div>
+            <div className="mentorship-information-category">Username </div><div className="mentorship-information-content">{this.props.location.state.mentee.username}</div>
+            <div className="mentorship-information-category">First Name</div> <div className="mentorship-information-content">{this.props.location.state.mentee.firstName}</div>
+            <div className="mentorship-information-category">Last Name</div> <div className="mentorship-information-content">{this.props.location.state.mentee.lastName}</div>
+          
+            <div className="mentors-preferred">
+          
+                <h3>Preferred Mentors</h3>
+                {preferred}
+            </div>
+          <div className="body">
+            <form className="profile-information" onSubmit={this.handleSubmit}>
+                <label className="profile-information-category"  htmlFor="mentor">Mentor</label>
+                <select className="profile-information-content-update"
+                    name="mentor"
+                    id="mentor"
+                    onChange={this.handleChange}
+                    >
+                    <option></option>
+                    {mentorOptions}
+                </select>
+                <label className="profile-information-category" htmlFor="mentee">Mentee</label>
+                <select className="profile-information-content-update"
+                    name="mentee"
+                    id="mentee"
+                    onChange={this.handleChange}
+                 >
+                    <option></option>
+                    {menteeOptions}
+                </select>
+                <label className="profile-information-category" htmlFor="startDate">Start Date</label>
+                <input className="profile-information-content-update"
+                    name="startDate"
+                    type="date"
+                    value={this.state.startDate}
+                    onChange={this.handleChange}
+                    id="startDate"
+                />
+                <label className="profile-information-category" htmlFor="endDate">End Date</label>
+                <input className="profile-information-content-update"
+                    name="endDate"
+                    type="date"
+                    value={this.state.endDate}
+                    onChange={this.handleChange}
+                    id="endDate"
+                />
+                <div className="button-container">
+                  <button className="form-button" type="submit">Confirm</button>
+                </div>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }
