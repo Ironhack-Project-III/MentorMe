@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import './mentee.css'
 
 export default class MenteeProfile extends Component {
   
@@ -38,26 +39,34 @@ export default class MenteeProfile extends Component {
       return <h3>Loading...</h3>
     }    return (
       
-      <div>
-        <h1>Your Mentee Profile</h1>
+      <div className="body">
+        <h2>Your Mentee Profile</h2>
 
-        <img src={this.state.menteeProfile.imgPath} alt="userPhoto"/>
-        <p>Username: {this.props.user.username}</p> 
-        <p>First Name: {this.state.menteeProfile.firstName}</p>
-        <p>Last Name: {this.state.menteeProfile.lastName}</p>
-        <p>Age: {this.state.menteeProfile.age}</p>
-        <p>Nationality: {this.state.menteeProfile.nationality}</p>
-        <p>Contact Details: {this.state.menteeProfile.contactDetails}</p>
-        <p>Required Support: {this.state.menteeProfile.requiredSupport}</p>
-        <p>Business Name: {this.state.menteeProfile.businessName}</p>
-        <p>Business Description: {this.state.menteeProfile.businessDescription}</p>
-        <p>Years of Operation: {this.state.menteeProfile.yearsOfOperation}</p>
-        <p>Sector: {this.state.menteeProfile.sector}</p>
-        <p>Website: {this.state.menteeProfile.website}</p>
+        <img className='profile-picture' src={this.state.menteeProfile.imgPath} alt="userPhoto"/>
+        
+        <div className="profile-information">
+        <div className="profile-information-category">Username </div> <div className="profile-information-content">{this.props.user.username} </div>
+        <div className="profile-information-category">First Name </div> <div className="profile-information-content">{this.state.menteeProfile.firstName}</div>
+        <div className="profile-information-category">Last Name</div> <div className="profile-information-content">{this.state.menteeProfile.lastName}</div>
+        <div className="profile-information-category">Age</div><div className="profile-information-content"> {this.state.menteeProfile.age}</div>
+        <div className="profile-information-category">Nationality</div> <div className="profile-information-content">{this.state.menteeProfile.nationality}</div>
+        <div className="profile-information-category">Contact Details</div> <div className="profile-information-content">{this.state.menteeProfile.contactDetails}</div>
+        <div className="profile-information-category">Required Support <div className="profile-information-content"></div>{this.state.menteeProfile.requiredSupport}</div>
+        <div className="profile-information-category">Business Name</div> <div className="profile-information-content">{this.state.menteeProfile.businessName}</div>
+        <div className="profile-information-category">Business Description</div> <div className="profile-information-content">{this.state.menteeProfile.businessDescription}</div>
+        <div className="profile-information-category">Years of Operation</div><div className="profile-information-content"> {this.state.menteeProfile.yearsOfOperation}</div>
+        <div className="profile-information-category">Sector</div> <div className="profile-information-content">{this.state.menteeProfile.sector}</div>
+        <div className="profile-information-category">Website</div> <div className="profile-information-content">{this.state.menteeProfile.website}</div>
 
-        <Link style={{color:'blue'}} to={`/mentee/profile/${this.state.menteeProfile._id}/edit`}>
-              Edit your profile
+        <div className="button-container">
+        <div className="button">
+        <Link className = "button-text" to={`/mentee/profile/${this.state.menteeProfile._id}/edit`}>
+              Edit
         </Link>
+        </div>
+        </div>
+
+        </div>
 
       </div>
     )

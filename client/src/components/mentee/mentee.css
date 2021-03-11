@@ -8,7 +8,6 @@
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
-	align-items: center;
 }
 
 .profile-picture {
@@ -21,9 +20,10 @@
   flex-direction: column;
   justify-content: left;
   margin: 20px;
-  padding: 15px 15px;
-
+  width: 95%
 }
+
+
 
 .profile-information-category {
   text-align: left;
@@ -35,7 +35,8 @@
 .profile-information-content {
   text-align: left;
   border-bottom: 2px solid #F87171;
-  font-size: 1rem
+  font-size: 1rem;
+
 }
 
 .button-container {
@@ -94,6 +95,7 @@
   justify-content: left;
   margin: 20px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05);
+  width: 95%;
 }
 
 .mentorship-information-category {
@@ -116,22 +118,40 @@
   margin-bottom: 20px
 }
 
+.message-inline-container-me {
+  background-color: blue;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	align-content: flex-end;
+  width: 150px
+}
+
 
 .message-content-container-me {
   background-color: #BFDBFE;
   border-radius: 5px;
   margin: 2px 0;
-  flex-wrap: wrap;
+  
 }
+
+
 
 .message-me {
   color: #374151;
   text-align: right;
   font-size: 0.7rem;
+  word-wrap: break-word;
+}
+
+.message-inline-container-you {
+  display:flex
 }
 
 .message-content-container-you {
-  background-color: #cacada;
+  background-color: #c0c0c5;
   border-radius: 5px;
   margin: 2px 0;
 }
@@ -140,4 +160,35 @@
   color: #374151;
   text-align: left;
   font-size: 0.7rem;
+  word-wrap: break-word;
+}
+
+.form-search {
+  border: 2px solid #F87171;
+  border-radius: 5px;
+  height: 25px;
+  width: 180px;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  background-color: white;
+  font-family: inherit;
+  font-size: .7rem;
+}
+
+.form-search:hover, .form-search:focus {
+  border: 1.5px solid #FECACA;
+  background-color: white;
+}
+
+.like-button {
+  width: 90px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.7rem;
+  border: 1px solid #F87171;
+
 }

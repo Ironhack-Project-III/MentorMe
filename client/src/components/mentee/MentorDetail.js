@@ -17,14 +17,16 @@ export default class MentorDetail extends Component {
   render() {
     return (
       <div>
-         <button onClick={this.detailView}>Details</button>
+      <div className="button-container">
+         <button className = "form-button" onClick={this.detailView}>Details</button>
+         </div>
          {this.state.detailView && (
           <>
           <h3>Details</h3> 
-          <p>Industry Expertise: {this.props.mentor.industryExpertise}</p>
-          <p>Experience: {this.props.mentor.experience}</p>
-          <p>Key Skills: {this.props.mentor.keySkills}</p>
-          <p>Available From Date: {this.props.mentor.availableFromDate}</p>
+          <div className="profile-information-category">Industry Expertise:</div> <div className="profile-information-content">{this.props.mentor.industryExpertise}</div>
+          <div className="profile-information-category">Experience:</div> <div className="profile-information-content">{this.props.mentor.experience}</div>
+          <div className="profile-information-category">Key Skills:</div> <div className="profile-information-content">{this.props.mentor.keySkills}</div>
+          <div className="profile-information-category">Available FromDate: </div> <div className="profile-information-content">{this.props.mentor.availableFromDate}</div>
           </>
         )} 
       </div>

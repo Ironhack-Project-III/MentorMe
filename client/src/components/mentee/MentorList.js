@@ -118,15 +118,21 @@ getMentors = () => {
       } else {
         showMentors = displayMentors.map(mentor => {
           return (
-            
+            <div className="mentorship-information"> 
             <div key = {mentor._id}>
-            <img style = {{width: "200px"}} src={mentor.imgPath} alt="userPhoto"/>
+
+  
+
+            <img className = "profile-picture" src={mentor.imgPath} alt="userPhoto"/>
             <h3>{mentor.username}</h3>
             <MentorDetail
               mentor = {mentor}
               {...this.props} 
             />
-            <button onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? "Unlike" : "Like"} </button>
+            <div className="button-container">
+            <button className = "like-button" onClick={() => {this.likeMentor(mentor._id)}}> {this.props.user.preferredMentors.includes(mentor._id) ? " 👎🏼" : "👍🏼"} </button>
+            </div>
+            </div>
             </div>
           )
         })
@@ -135,10 +141,10 @@ getMentors = () => {
 
       return (
       
-        <div>
+        <div className="body">
           <h1>Mentor Overview</h1>
           <SearchBar
-            setQuery={this.setQuery} 
+            setQuery={this.setQuery}  
             search={this.state.search}
           />
   

@@ -13,8 +13,8 @@ class SearchBar extends React.Component {
         return (
 
             <div> 
-                <label htmlFor="searchBar">Search</label>
                 <input
+                    className = "form-search"
                     type="text"
                     name="search"
                     value={this.props.search}

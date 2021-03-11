@@ -45,7 +45,7 @@ export default class MentorProfile extends Component {
     }
     return (
       
-      <div className="body">
+      <div className = "body">
         <h2>Your Profile</h2>
         
         <img className='profile-picture'src={this.state.mentorProfile.imgPath} alt="userPhoto"/>

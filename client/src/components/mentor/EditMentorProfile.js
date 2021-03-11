@@ -98,7 +98,7 @@ export default class EditMentorProfile extends Component {
     return (
       
 
-      <div >
+      <div className="body">
       
         <h3 className = "top">Edit Your Profile, {this.state.nameHeader}</h3>
         
