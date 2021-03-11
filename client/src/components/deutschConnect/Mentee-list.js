@@ -159,7 +159,7 @@ deleteMentee = (event) => {
       return <h3>Loading...</h3>  
     } else {
           const displayMentees = this.filterMentees();
-          console.log('test', displayMentees)
+          //console.log('test', displayMentees)
           if (displayMentees.length <= 0) {
             showMentees = <p>No Mentees</p>
           } else {

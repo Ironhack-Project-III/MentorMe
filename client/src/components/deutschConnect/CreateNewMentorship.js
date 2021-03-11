@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-//import { v4 as uuid } from "uuid";
+import './DC.css'
 
 export default class CreateNewMentorship extends Component {
   
@@ -94,47 +94,50 @@ handleSubmit = (event) => {
     //how can I best get all mentors in select and save them back as selected?+
     return (
       
-      <div>
+      <div className="body mentorship-information">
         <h1>Create New Mentorship</h1>
         
-        <form onSubmit={this.handleSubmit}>
-        <label htmlFor="mentor">Mentor:</label>
-        <select 
-            name="mentor"
-            id="mentor"
-            onChange={this.handleChange}
-            >
-            <option></option>
-            {mentorOptions}
-        </select>
-
-        <label htmlFor="mentee">Mentee:</label>
-        <select 
-            name="mentee"
-            id="mentee"
-            onChange={this.handleChange}
-            >
-            <option></option>
-            {menteeOptions}
-        </select>
-        <label htmlFor="startDate">Start Date:</label>
-        <input
-            name="startDate"
-            type="date"
-            value={this.state.startDate}
-            onChange={this.handleChange}
-            id="startDate"
-        />
-        <label htmlFor="endDate">End Date:</label>
-        <input
-            name="endDate"
-            type="date"
-            value={this.state.endDate}
-            onChange={this.handleChange}
-            id="endDate"
-        />
-        <button type="submit">Confirm New Mentorship</button>
-        </form>
+        <div className="body">
+          <form className="profile-information" onSubmit={this.handleSubmit}>
+          <label className="profile-information-category" htmlFor="mentor">Mentor</label>
+          <select className="profile-information-content-update"
+              name="mentor"
+              id="mentor"
+              onChange={this.handleChange}
+              >
+              <option></option>
+              {mentorOptions}
+          </select>
+          <label className="profile-information-category" htmlFor="mentee">Mentee</label>
+          <select className="profile-information-content-update"
+              name="mentee"
+              id="mentee"
+              onChange={this.handleChange}
+              >
+              <option></option>
+              {menteeOptions}
+          </select>
+          <label className="profile-information-category" htmlFor="startDate">Start Date</label>
+          <input className="profile-information-content-update"
+              name="startDate"
+              type="date"
+              value={this.state.startDate}
+              onChange={this.handleChange}
+              id="startDate"
+          />
+          <label className="profile-information-category" htmlFor="endDate">End Date</label>
+          <input className="profile-information-content-update"
+              name="endDate"
+              type="date"
+              value={this.state.endDate}
+              onChange={this.handleChange}
+              id="endDate"
+          />
+            <div className="button-container">
+              <button className="form-button" type="submit">Confirm</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

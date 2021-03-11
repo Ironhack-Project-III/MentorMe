@@ -121,8 +121,8 @@ export default class EditMenteeProfile extends Component {
     return (
       
       <div className="body">
-        <h1>Edit Your Mentee Profile, {this.state.nameHeader}</h1>
-        <form className="profile-information" onSubmit={this.handleSubmit}>
+        <h3>Edit Your Mentee Profile</h3>
+        <form className="mentorship-information" onSubmit={this.handleSubmit}>
           <label className="profile-information-category" htmlFor="firstName">First Name </label>
           <input   className="profile-information-content-update"
             type="text"
@@ -254,17 +254,14 @@ export default class EditMenteeProfile extends Component {
           <button className="form-button" type='submit'>Update</button>
           </div>
         </form>
-        <form className="profile-information" onSubmit={e => this.handleSubmitUpload(e)}>
-            
-            <input className="profile-information-content-update" type="text" name="imgName" value={this.state.imgName} placeholder="Upload your picture" onChange={e => this.handleChangeUpload(e)} />
-            <input type="file" onChange={e => this.handleFileUpload(e)} />
-            <div className="button-container">
-            
-            <button className = "form-button" type="submit">Upload</button>
-            </div>
-            <p className = "help-text">Please ckick on the update button after clicking on upload</p>
-          </form>
-        
+        <form onSubmit={e => this.handleSubmitUpload(e)}> 
+                <input className="profile-information-content-update" style={{marginRight:"10px"}} type="text" name="imgName" value={this.state.imgName} placeholder="Upload your picture" onChange={e => this.handleChangeUpload(e)} />
+                <input type="file" onChange={e => this.handleFileUpload(e)} />
+                <div className="button-container">
+                <button className = "form-button" type="submit">Upload</button>
+                </div>
+                <p className = "help-text">Please ckick on the update button after clicking on upload</p>
+        </form>
       
         
         </div>
