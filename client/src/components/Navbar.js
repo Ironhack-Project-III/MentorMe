@@ -21,10 +21,20 @@ const Navbar = props => {
 
         <Nav.Collapse id="basic-navbar-nav">
        
-        <Nav.Brand>
-          <Link style={{color:'grey'}} to='/'>Home</Link>
-        </Nav.Brand>
-        {/* {console.log(props.user.role)} */}
+        {(props.user.role === 'Mentor' || props.user.role === 'Mentee' || props.user.role === 'DeutschConnect') ?  
+        (<Nav.Brand>
+          <Link style={{color:'grey'}} to='/home'>Home</Link>
+        </Nav.Brand>) 
+        :(
+          <>
+            <Nav.Brand>
+              <Link style={{color:'grey'}} to='/signup'>Signup</Link>
+            </Nav.Brand>
+            <Nav.Brand>
+              <Link style={{color:'grey'}} to='/login'>Login</Link>
+            </Nav.Brand>
+          </>
+        )}
         
         {(props.user.role === 'Mentor') ? (
           <Nav.Brand>
