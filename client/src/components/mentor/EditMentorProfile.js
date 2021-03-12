@@ -210,18 +210,14 @@ export default class EditMentorProfile extends Component {
           <button className="form-button"type='submit'>Update</button>
           </div>
         </form>
-        <form onSubmit={e => this.handleSubmitUpload(e)}>
-            
-            <input className="profile-information-content-update" style={{marginRight:"10px"}} type="text" name="imgName" value={this.state.imgName} onChange={e => this.handleChangeUpload(e)} />
-            <input  type="file" onChange={e => this.handleFileUpload(e)} />
-            
-            <div className="button-container">
-            
-            <button className = "form-button" type="submit">Upload</button>
-          
-            </div>
-            <p className = "help-text">Please ckick on the update button after clicking on upload</p>
-          </form>
+        <form onSubmit={e => this.handleSubmitUpload(e)}> 
+                <input className="profile-information-content-update" style={{marginRight:"10px"}} type="text" name="imgName" value={this.state.imgName} placeholder="Upload your picture" onChange={e => this.handleChangeUpload(e)} />
+                <input type="file" onChange={e => this.handleFileUpload(e)} />
+                <div className="button-container">
+                <button className = "form-button" type="submit">Upload</button>
+                </div>
+                <p className = "help-text">Please ckick on the update button after clicking on upload</p>
+        </form>
         
       </div>
     
