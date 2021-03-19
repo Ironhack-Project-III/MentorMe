@@ -50,7 +50,7 @@ export default class EditMentorProfile extends Component {
       availableForNewMentorship: this.state.availableForNewMentorship,
       activelyMentoring: this.state.activelyMentoring,
       availableFromDate: this.state.availableFromDate,
-      imgPath: this.props.imgPath
+      imgPath: this.state.imgPath
     })
       .then(response => {
 
@@ -66,6 +66,7 @@ export default class EditMentorProfile extends Component {
   }
 
     handleChangeUpload = e => {
+      console.log(e.target)
       const { name, value } = e.target;
       this.setState({ [name]: value });
     };
@@ -81,14 +82,29 @@ export default class EditMentorProfile extends Component {
       service
         .handleUpload(uploadData)
         .then(response => {
-          //console.log(response.secure_url)
+          console.log(response.secure_url)
           // console.log('response is: ', response);
           // after the console.log we can see that response carries 'secure_url' which we can use to update the state
           this.setState({ imgPath: response.secure_url });
-          //console.log(this.state)
+          console.log(this.state)
         })
         .catch(err => {
           console.log('Error while uploading the file: ', err);
+        });
+    };
+
+      // this method submits the form
+    handleSubmitUpload = e => {
+      e.preventDefault();
+  
+      service
+        .saveNewThing(this.state)
+        .then(res => {
+          //console.log('added: ', res);
+          // here you would redirect to some other page
+        })
+        .catch(err => {
+          console.log('Error while adding the thing: ', err);
         });
     };
 

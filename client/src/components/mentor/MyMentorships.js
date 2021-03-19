@@ -114,27 +114,27 @@ render() {
            
         <div key={index}>
           
-         <div className="mentorship-information-category">  Duration: </div>  <div className="mentorship-information-content"> {mentorship.startDate} - {mentorship.endDate} </div>
-         <div className="mentorship-information-category">  Confirmed: </div> <div className="mentorship-information-content"> {String(mentorship.confirmed)} </div>
+         <div className="mentorship-information-category">  Duration </div>  <div className="mentorship-information-content"> {mentorship.startDate} - {mentorship.endDate} </div>
+         <div className="mentorship-information-category">  Confirmed </div> <div className="mentorship-information-content"> {String(mentorship.confirmed)} </div>
           <br></br>
           <h3>Mentee</h3>
-         <div className="mentorship-information-category">  Name: </div> <div className="mentorship-information-content">  {mentorship.mentee.firstName} {mentorship.mentee.lastName} </div>
-         <div className="mentorship-information-category">  Username: </div> <div className="mentorship-information-content"> {mentorship.mentee.username} </div>
-         <div className="mentorship-information-category">  Contact Details: </div> <div className="mentorship-information-content"> {mentorship.mentee.contactDetails} </div>
-         <div className="mentorship-information-category">  Required Support: </div> <div className="mentorship-information-content"> {mentorship.mentee.requiredSupport} </div>
-         <div className="mentorship-information-category">  Business Name: </div> <div className="mentorship-information-content"> {mentorship.mentee.businessName} </div>
-         <div className="mentorship-information-category">  Business Description: </div> <div className="mentorship-information-content"> {mentorship.mentee.businessDescription} </div>
-         <div className="mentorship-information-category">  Years Of Operation Of Business: </div> <div className="mentorship-information-content"> {mentorship.mentee.yearsOfOperation} </div>
-         <div className="mentorship-information-category">  Website: </div> <div className="mentorship-information-content"> {mentorship.mentee.website} </div>
-         <div className="mentorship-information-category">  Sector: </div> <div className="mentorship-information-content"> {mentorship.mentee.sector} </div>
+         <div className="mentorship-information-category">  Name </div> <div className="mentorship-information-content">  {mentorship.mentee.firstName} {mentorship.mentee.lastName} </div>
+         <div className="mentorship-information-category">  Username </div> <div className="mentorship-information-content"> {mentorship.mentee.username} </div>
+         <div className="mentorship-information-category">  Contact Details </div> <div className="mentorship-information-content"> {mentorship.mentee.contactDetails} </div>
+         <div className="mentorship-information-category">  Required Support </div> <div className="mentorship-information-content"> {mentorship.mentee.requiredSupport} </div>
+         <div className="mentorship-information-category">  Business Name </div> <div className="mentorship-information-content"> {mentorship.mentee.businessName} </div>
+         <div className="mentorship-information-category">  Business Description </div> <div className="mentorship-information-content"> {mentorship.mentee.businessDescription} </div>
+         <div className="mentorship-information-category">  Years Of Operation Of Business </div> <div className="mentorship-information-content"> {mentorship.mentee.yearsOfOperation} </div>
+         <div className="mentorship-information-category">  Website </div> <div className="mentorship-information-content"> {mentorship.mentee.website} </div>
+         <div className="mentorship-information-category">  Sector </div> <div className="mentorship-information-content"> {mentorship.mentee.sector} </div>
           <br></br>
           <h3>You</h3>
-          <div className="mentorship-information-category"> Name:</div> {mentorship.mentor.firstName} <div className="mentorship-information-content"> {mentorship.mentor.lastName} </div>
-          <div className="mentorship-information-category"> Username:</div> <div className="mentorship-information-content"> {mentorship.mentor.username} </div>
-          <div className="mentorship-information-category"> Contact Details:</div> <div className="mentorship-information-content"> {mentorship.mentor.contactDetails} </div>
-          <div className="mentorship-information-category"> Experience:</div> {mentorship.mentor.experience} </div>
-          <div className="mentorship-information-category"> Industry Expertise:</div> <div className="mentorship-information-content"> {mentorship.mentor.industryExpertise} </div>
-          <div className="mentorship-information-category"> Key Skills:</div> <div className="mentorship-information-content"> {mentorship.mentor.keySkills} </div>
+          <div className="mentorship-information-category"> Name</div> {mentorship.mentor.firstName} <div className="mentorship-information-content"> {mentorship.mentor.lastName} </div>
+          <div className="mentorship-information-category"> Username</div> <div className="mentorship-information-content"> {mentorship.mentor.username} </div>
+          <div className="mentorship-information-category"> Contact Details</div> <div className="mentorship-information-content"> {mentorship.mentor.contactDetails} </div>
+          <div className="mentorship-information-category"> Experience</div> {mentorship.mentor.experience} </div>
+          <div className="mentorship-information-category"> Industry Expertise</div> <div className="mentorship-information-content"> {mentorship.mentor.industryExpertise} </div>
+          <div className="mentorship-information-category"> Key Skills</div> <div className="mentorship-information-content"> {mentorship.mentor.keySkills} </div>
           <br></br>
           <div className="button-container">
           <button className = "form-button"  onClick={this.detailView}>Messaging</button>
