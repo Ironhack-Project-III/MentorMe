@@ -4,7 +4,7 @@ const router = express.Router();
 // include CLOUDINARY:
 const { uploader } = require('../config/cloudinary');
  
-router.post('/upload/', uploader.single('imgPath'), (req, res, next) => {
+router.post('/upload', uploader.single('imgPath'), (req, res, next) => {
   // console.log('file is: ', req.file)
   // const imgPath = req.file.path;
   // const imgName = req.file.originalname;
